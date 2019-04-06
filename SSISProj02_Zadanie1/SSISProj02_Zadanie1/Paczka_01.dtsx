@@ -1,0 +1,589 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/6/2019 2:01:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PK6-14"
+  DTS:CreatorName="WSEI\michal.rzechowicz"
+  DTS:DTSID="{55BA49B5-6463-445D-8164-EC2F26312C77}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Paczka_01"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{23629C4E-FCB1-4CA0-B3A8-8311E6CD4FBC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load_WizWydaneToDB"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{58261975-5B5B-446A-B9BA-E7F9BCC5BD88}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load_WizWydaneToDB"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load_WizWydaneToDB\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[T01_WizyWydane]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load_WizWydaneToDB\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{10686F4C-2B09-4951-8254-98184BB31CB7}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalDB_MR]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OSG]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="OSG"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OSG]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[OSG]" />
+                    <inputColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PSG]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PSG"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PSG]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[PSG]" />
+                    <inputColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Obywatelstwo]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Obywatelstwo"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Obywatelstwo]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Obywatelstwo]" />
+                    <inputColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Symbol]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Symbol"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Symbol]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Symbol]" />
+                    <inputColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WydWizySchengenZasiegTerytSchengen]"
+                      cachedDataType="i2"
+                      cachedName="WydWizySchengenZasiegTerytSchengen"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytSchengen]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytSchengen]" />
+                    <inputColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WydWizySchengenZasiegTerytPolska]"
+                      cachedDataType="i2"
+                      cachedName="WydWizySchengenZasiegTerytPolska"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytPolska]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytPolska]" />
+                    <inputColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RodzajWizyVD]"
+                      cachedDataType="i2"
+                      cachedName="RodzajWizyVD"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVD]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVD]" />
+                    <inputColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RodzajWizyVC]"
+                      cachedDataType="i2"
+                      cachedName="RodzajWizyVC"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVC]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVC]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="10"
+                      name="OSG" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="PSG" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Obywatelstwo]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Obywatelstwo" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Symbol]"
+                      codePage="1250"
+                      dataType="str"
+                      length="2"
+                      name="Symbol" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytSchengen]"
+                      dataType="i2"
+                      name="WydWizySchengenZasiegTerytSchengen" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytPolska]"
+                      dataType="i2"
+                      name="WydWizySchengenZasiegTerytPolska" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVD]"
+                      dataType="i2"
+                      name="RodzajWizyVD" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVC]"
+                      dataType="i2"
+                      name="RodzajWizyVC" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load_WizWydaneToDB\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load_WizWydaneToDB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load_WizWydaneToDB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1045"
+              name="SRC_WizWydaneCSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Connections[FlatFileConnection]"
+                  connectionManagerID="{2A19A583-499A-481D-BB42-9D3A4D9FC042}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SRC_WizWydaneCSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[OSG]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[OSG]"
+                      length="10"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[OSG]"
+                      name="OSG"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[PSG]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[PSG]"
+                      length="50"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[PSG]"
+                      name="PSG"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Obywatelstwo]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[Obywatelstwo]"
+                      length="50"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Obywatelstwo]"
+                      name="Obywatelstwo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Symbol]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[Symbol]"
+                      length="2"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Symbol]"
+                      name="Symbol"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytSchengen]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[WydWizySchengenZasiegTerytSchengen]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytSchengen]"
+                      name="WydWizySchengenZasiegTerytSchengen"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytPolska]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[WydWizySchengenZasiegTerytPolska]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytPolska]"
+                      name="WydWizySchengenZasiegTerytPolska"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVD]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[RodzajWizyVD]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVD]"
+                      name="RodzajWizyVD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVC]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[RodzajWizyVC]"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVC]"
+                      name="RodzajWizyVC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[OSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="10"
+                      name="OSG" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[PSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="PSG" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[Obywatelstwo]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Obywatelstwo" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[Symbol]"
+                      codePage="1250"
+                      dataType="str"
+                      length="2"
+                      name="Symbol" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[WydWizySchengenZasiegTerytSchengen]"
+                      dataType="i2"
+                      name="WydWizySchengenZasiegTerytSchengen" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[WydWizySchengenZasiegTerytPolska]"
+                      dataType="i2"
+                      name="WydWizySchengenZasiegTerytPolska" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[RodzajWizyVD]"
+                      dataType="i2"
+                      name="RodzajWizyVD" />
+                    <externalMetadataColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[RodzajWizyVC]"
+                      dataType="i2"
+                      name="RodzajWizyVC" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1250"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load_WizWydaneToDB.Paths[Flat File Source Output]"
+              endId="Package\Load_WizWydaneToDB\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Load_WizWydaneToDB"
+          TopLeft="186,154" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load_WizWydaneToDB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV"
+          TopLeft="199,106" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Load_WizWydaneToDB\OLE DB Destination"
+          TopLeft="202,236" />
+        <EdgeLayout
+          Id="Package\Load_WizWydaneToDB.Paths[Flat File Source Output]"
+          TopLeft="292.25,148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,88"
+              Start="0,0"
+              End="0,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load_WizWydaneToDB\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

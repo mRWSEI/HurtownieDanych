@@ -1,0 +1,1118 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/6/2019 2:16:19 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PK6-14"
+  DTS:CreatorName="WSEI\michal.rzechowicz"
+  DTS:DTSID="{725F0D9C-16FB-4162-86DE-E3E09C4EFA7E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Paczka_03"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{CB68C052-0325-428C-9999-61A75CD5A18D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load WizWydaneCSV to LocalDB"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2D30DEA6-8DBD-4D76-AB38-3D0B6FEC2F73}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load WizWydaneCSV to LocalDB"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Export to T03_MOSG"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[T03_MOSG]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Connections[OleDbConnection]"
+                  connectionManagerID="{10686F4C-2B09-4951-8254-98184BB31CB7}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalDB_MR]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].Columns[PSG]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PSG"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[PSG]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[PSG]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].Columns[Obywatelstwo]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Obywatelstwo"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[Obywatelstwo]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Obywatelstwo]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].Columns[Symbol]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Symbol"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[Symbol]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Symbol]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].Columns[WydWizySchengenZasiegTerytSchengen]"
+                      cachedDataType="i2"
+                      cachedName="WydWizySchengenZasiegTerytSchengen"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytSchengen]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytSchengen]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].Columns[WydWizySchengenZasiegTerytPolska]"
+                      cachedDataType="i2"
+                      cachedName="WydWizySchengenZasiegTerytPolska"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytPolska]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytPolska]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].Columns[RodzajWizyVD]"
+                      cachedDataType="i2"
+                      cachedName="RodzajWizyVD"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVD]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVD]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].Columns[RodzajWizyVC]"
+                      cachedDataType="i2"
+                      cachedName="RodzajWizyVC"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVC]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVC]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[PSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="PSG" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[Obywatelstwo]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Obywatelstwo" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[Symbol]"
+                      codePage="1250"
+                      dataType="str"
+                      length="2"
+                      name="Symbol" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytSchengen]"
+                      dataType="i2"
+                      name="WydWizySchengenZasiegTerytSchengen" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytPolska]"
+                      dataType="i2"
+                      name="WydWizySchengenZasiegTerytPolska" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVD]"
+                      dataType="i2"
+                      name="RodzajWizyVD" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVC]"
+                      dataType="i2"
+                      name="RodzajWizyVC" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Export to T03_NOSG"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[T03_NOSG]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Connections[OleDbConnection]"
+                  connectionManagerID="{10686F4C-2B09-4951-8254-98184BB31CB7}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalDB_MR]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].Columns[PSG]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PSG"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[PSG]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[PSG]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].Columns[Obywatelstwo]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Obywatelstwo"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[Obywatelstwo]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Obywatelstwo]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].Columns[Symbol]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Symbol"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[Symbol]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Symbol]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].Columns[WydWizySchengenZasiegTerytSchengen]"
+                      cachedDataType="i2"
+                      cachedName="WydWizySchengenZasiegTerytSchengen"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytSchengen]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytSchengen]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].Columns[WydWizySchengenZasiegTerytPolska]"
+                      cachedDataType="i2"
+                      cachedName="WydWizySchengenZasiegTerytPolska"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytPolska]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytPolska]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].Columns[RodzajWizyVD]"
+                      cachedDataType="i2"
+                      cachedName="RodzajWizyVD"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVD]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVD]" />
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].Columns[RodzajWizyVC]"
+                      cachedDataType="i2"
+                      cachedName="RodzajWizyVC"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVC]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVC]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[PSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="PSG" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[Obywatelstwo]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Obywatelstwo" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[Symbol]"
+                      codePage="1250"
+                      dataType="str"
+                      length="2"
+                      name="Symbol" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytSchengen]"
+                      dataType="i2"
+                      name="WydWizySchengenZasiegTerytSchengen" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydWizySchengenZasiegTerytPolska]"
+                      dataType="i2"
+                      name="WydWizySchengenZasiegTerytPolska" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVD]"
+                      dataType="i2"
+                      name="RodzajWizyVD" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[RodzajWizyVC]"
+                      dataType="i2"
+                      name="RodzajWizyVC" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Filter Only MOSG or NOSG"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Inputs[Conditional Split Input].Columns[OSG]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="OSG"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[OSG]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Outputs[MOSG NOSG]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="MOSG NOSG"
+                  synchronousInputId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[OSG]} == "MOSG" || #{Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[OSG]} == "NOSG"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">OSG == "MOSG" || OSG == "NOSG"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Outputs[OSG is MOSG or NOSG]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="OSG is MOSG or NOSG"
+                  synchronousInputId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Split Data MOSG NOSG"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Inputs[Conditional Split Input].Columns[OSG]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="OSG"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[OSG]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Outputs[MOSG]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="MOSG"
+                  synchronousInputId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[OSG]} == "MOSG"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">OSG == "MOSG"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Outputs[NOSG]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="NOSG"
+                  synchronousInputId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[OSG]} == "NOSG"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">OSG == "NOSG"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1045"
+              name="SRC_WizWydaneCSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Connections[FlatFileConnection]"
+                  connectionManagerID="{2A19A583-499A-481D-BB42-9D3A4D9FC042}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SRC_WizWydaneCSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[OSG]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[OSG]"
+                      length="10"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[OSG]"
+                      name="OSG"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[PSG]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[PSG]"
+                      length="50"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[PSG]"
+                      name="PSG"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Obywatelstwo]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[Obywatelstwo]"
+                      length="50"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Obywatelstwo]"
+                      name="Obywatelstwo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Symbol]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[Symbol]"
+                      length="2"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[Symbol]"
+                      name="Symbol"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytSchengen]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[WydWizySchengenZasiegTerytSchengen]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytSchengen]"
+                      name="WydWizySchengenZasiegTerytSchengen"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytPolska]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[WydWizySchengenZasiegTerytPolska]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[WydWizySchengenZasiegTerytPolska]"
+                      name="WydWizySchengenZasiegTerytPolska"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVD]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[RodzajWizyVD]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVD]"
+                      name="RodzajWizyVD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVC]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[RodzajWizyVC]"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].Columns[RodzajWizyVC]"
+                      name="RodzajWizyVC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[OSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="10"
+                      name="OSG" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[PSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="PSG" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[Obywatelstwo]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Obywatelstwo" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[Symbol]"
+                      codePage="1250"
+                      dataType="str"
+                      length="2"
+                      name="Symbol" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[WydWizySchengenZasiegTerytSchengen]"
+                      dataType="i2"
+                      name="WydWizySchengenZasiegTerytSchengen" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[WydWizySchengenZasiegTerytPolska]"
+                      dataType="i2"
+                      name="WydWizySchengenZasiegTerytPolska" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[RodzajWizyVD]"
+                      dataType="i2"
+                      name="RodzajWizyVD" />
+                    <externalMetadataColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output].ExternalColumns[RodzajWizyVC]"
+                      dataType="i2"
+                      name="RodzajWizyVC" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1250"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load WizWydaneCSV to LocalDB.Paths[Flat File Source Output]"
+              endId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Inputs[Conditional Split Input]"
+              name="Flat File Source Output"
+              startId="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Load WizWydaneCSV to LocalDB.Paths[MOSG]"
+              endId="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG.Inputs[OLE DB Destination Input]"
+              name="MOSG"
+              startId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Outputs[MOSG]" />
+            <path
+              refId="Package\Load WizWydaneCSV to LocalDB.Paths[MOSG NOSG]"
+              endId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Inputs[Conditional Split Input]"
+              name="MOSG NOSG"
+              startId="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG.Outputs[MOSG NOSG]" />
+            <path
+              refId="Package\Load WizWydaneCSV to LocalDB.Paths[NOSG]"
+              endId="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG.Inputs[OLE DB Destination Input]"
+              name="NOSG"
+              startId="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG.Outputs[NOSG]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Load WizWydaneCSV to LocalDB"
+          TopLeft="100,162" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load WizWydaneCSV to LocalDB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV"
+          TopLeft="144,138" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG"
+          TopLeft="160,237" />
+        <EdgeLayout
+          Id="Package\Load WizWydaneCSV to LocalDB.Paths[Flat File Source Output]"
+          TopLeft="239,180">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28,57"
+              Start="0,0"
+              End="28,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
+                  <mssgle:LineSegment
+                    End="24,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24,28.5"
+                    Point2="28,28.5"
+                    Point3="28,32.5" />
+                  <mssgle:LineSegment
+                    End="28,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG"
+          TopLeft="164,317" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG"
+          TopLeft="69,433" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG"
+          TopLeft="289,434" />
+        <EdgeLayout
+          Id="Package\Load WizWydaneCSV to LocalDB.Paths[MOSG]"
+          TopLeft="231.666666666667,359">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-70.6666666666667,74"
+              Start="0,0"
+              End="-70.6666666666667,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.9541375872383" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.9541375872383"
+                    Point2="0,29.9541375872383"
+                    Point3="-4,29.9541375872383" />
+                  <mssgle:LineSegment
+                    End="-66.6666666666667,29.9541375872383" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-66.6666666666667,29.9541375872383"
+                    Point2="-70.6666666666667,29.9541375872383"
+                    Point3="-70.6666666666667,33.9541375872383" />
+                  <mssgle:LineSegment
+                    End="-70.6666666666667,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-58.1114778645833,34.9541375872383,45.5562890625,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load WizWydaneCSV to LocalDB.Paths[NOSG]"
+          TopLeft="295.333333333333,359">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85.1666666666667,75"
+              Start="0,0"
+              End="85.1666666666667,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.3589232303091" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.3589232303091"
+                    Point2="0,30.3589232303091"
+                    Point3="4,30.3589232303091" />
+                  <mssgle:LineSegment
+                    End="81.1666666666667,30.3589232303091" />
+                  <mssgle:CubicBezierSegment
+                    Point1="81.1666666666667,30.3589232303091"
+                    Point2="85.1666666666667,30.3589232303091"
+                    Point3="85.1666666666667,34.3589232303091" />
+                  <mssgle:LineSegment
+                    End="85.1666666666667,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="20.3251888020833,35.3589232303091,44.5162890625,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load WizWydaneCSV to LocalDB.Paths[MOSG NOSG]"
+          TopLeft="265.25,279">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.4694921875,10.46337890625,56.938984375,9.5732421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
