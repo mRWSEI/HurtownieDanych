@@ -26,11 +26,12 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">PK2-18</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAVufPhC1A+kKAU1uAOnfyjgAAAAACAAAAAAADZgAAwAAAABAAAADQdAn+9IbDzqKX1MjXLMokAAAAAASAAACgAAAAEAAAANKQHtdXYjGbtaaKdlyu5LqIAAAAdXvHuHmHsdBjnahk2JGD83viMEVgsbuNGjdcuKqwfozRZPSVRkPMXASHfrShFgKIpyjC/7zhU3bDZ9EHSq+yGZ3GihpdHzu6VHmWQEWmAVZEAaKiRC3IpGgnDbqijXv6z+azLLfHf0zyhwniOyDTRzHsSALiM7WI8kCOfcfjjpr0zZi3WsTY0hQAAAB313sTIMqKcKxyOA5Pf0BDUuy5yQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAVufPhC1A+kKAU1uAOnfyjgAAAAACAAAAAAADZgAAwAAAABAAAAC4NPtPNNyhugu4NXRDwXCqAAAAAASAAACgAAAAEAAAAKt4n5qFAp+uw/2/pYdvYISIAAAA1LnrtmgcOsNP8c/nzAUfUhfRiieGm5WaYjEyodkZUfl1vlRuC7N5qP3ArByZ3eka5KfkIghWneTJrLufu2uaCRUTsdJF4rMrVzbf3jfMCcYnvI06uNGJHhwUeSRQqzhezdhTDzrJdxRn8xYuVnyPG2U4jAN4Si+987zbE97snyTJ+m28dmjiZxQAAAC29JZT6q/sIDmUdsu7kzp/NAG34w==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="Package.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Abalone.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Adult.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="LocalMR.conmgr" />
@@ -183,7 +184,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">D:\Users\michal.rzechowicz\pliki\abalone.csv</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">D:\Users\michal.rzechowicz\source\repos\HurtownieDanych\SSISProj01\SSISProj01\abalone.csv</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -335,7 +336,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">1252</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">1250</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -365,7 +366,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">D:\Users\michal.rzechowicz\pliki\adult.csv</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">D:\Users\michal.rzechowicz\source\repos\HurtownieDanych\SSISProj01\SSISProj01\adult.csv</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -456,6 +457,8 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">
+                </SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -491,16 +494,33 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="Package.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="Abalone.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{BC1C1252-8A29-4F7B-AB3D-8A03D3BA8EFF}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{3D2399BA-867B-4F7E-BBFB-B62942D0135E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Abalone</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A4F5F65C-2082-46F5-A402-21AE4B02F775}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B937768B-4E65-4AC7-AF18-222F17C61456}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Adult.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{70FFE57F-8FD0-4EA6-80EF-B5BD8B6A9011}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Adult</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C99F39F2-D972-4284-9FB5-2932C47DE9E5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -514,7 +534,16 @@
     </Manifest>
   </DeploymentModelSpecificContent>
   <ControlFlowParts />
-  <Miscellaneous />
+  <Miscellaneous>
+    <ProjectItem>
+      <Name>abalone.csv</Name>
+      <FullPath>abalone.csv</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>adult.csv</Name>
+      <FullPath>adult.csv</FullPath>
+    </ProjectItem>
+  </Miscellaneous>
   <Configurations>
     <Configuration>
       <Name>Development</Name>
