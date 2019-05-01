@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Project02 LoadUCIML", "SSISProj01\Project02 LoadUCIML.dtproj", "{D04D8009-9007-43FE-A08F-0B5C10FDCD86}"
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Project02 LoadUCIML", "Project02LoadUCIML\Project02 LoadUCIML.dtproj", "{D04D8009-9007-43FE-A08F-0B5C10FDCD86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
