@@ -12,7 +12,7 @@
       DTS:RowDelimiter=""
       DTS:TextQualifier="_x003C_none_x003E_"
       DTS:CodePage="1250"
-      DTS:ConnectionString="D:\Users\michal.rzechowicz\source\repos\mRWSEI\HurtownieDanych\SSISProj02_Zadanie1\SSISProj02_Zadanie1\WizyWydane.csv">
+      DTS:ConnectionString="C:\Users\admin\source\repos\mRWSEI\HurtownieDanych\SSISProj02_Zadanie1\SSISProj02_Zadanie1\WizyWydane.csv">
       <DTS:FlatFileColumns>
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -21,7 +21,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="OSG"
-          DTS:DTSID="{164ACBA5-5C59-4CA5-8858-F6F483A9B935}"
+          DTS:DTSID="{DCCFDCF1-0E97-4CB0-997A-9E79426564FC}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -30,7 +30,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="PSG"
-          DTS:DTSID="{AAF17B58-AC82-4E28-A1AC-F778E986D5DF}"
+          DTS:DTSID="{975887E9-6093-47BE-9A59-3ABDE9B9236B}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -39,7 +39,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="Obywatelstwo"
-          DTS:DTSID="{28962BB3-70FB-4B25-A8EA-0452D838AC62}"
+          DTS:DTSID="{8356A777-5693-4097-924E-A0130F6B514C}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -48,7 +48,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="Symbol"
-          DTS:DTSID="{EB927442-A642-4C4A-8656-A4D200ED891E}"
+          DTS:DTSID="{1F57C11B-7C2B-45F7-8ED1-24DE6C70CF13}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -56,7 +56,7 @@
           DTS:DataType="2"
           DTS:TextQualified="True"
           DTS:ObjectName="WydWizySchengenZasiegTerytSchengen"
-          DTS:DTSID="{EEFCD12D-EE55-45FB-A5AF-958D0FCCCDFB}"
+          DTS:DTSID="{0EBA009C-4B2A-4152-BDDB-6242966E3BCC}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -64,7 +64,7 @@
           DTS:DataType="2"
           DTS:TextQualified="True"
           DTS:ObjectName="WydWizySchengenZasiegTerytPolska"
-          DTS:DTSID="{AF7D80C6-9B6B-4014-B222-8E9B3EEF630F}"
+          DTS:DTSID="{380ADF7B-7E42-4186-966F-422DC873B06F}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -72,7 +72,7 @@
           DTS:DataType="2"
           DTS:TextQualified="True"
           DTS:ObjectName="RodzajWizyVD"
-          DTS:DTSID="{DDB854A6-2B21-4C24-96D7-F988DF0C1227}"
+          DTS:DTSID="{117FC42B-9D12-4553-949F-2F7C9618E64E}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -80,7 +80,7 @@
           DTS:DataType="2"
           DTS:TextQualified="True"
           DTS:ObjectName="RodzajWizyVC"
-          DTS:DTSID="{2423794D-3791-4728-9BDE-AC0CA83EB92E}"
+          DTS:DTSID="{A5DEAF7E-4DE9-42BA-BC3A-0868035DB787}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>

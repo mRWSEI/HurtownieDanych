@@ -7,12 +7,12 @@
   DTS:CreatorName="WSEI\michal.rzechowicz"
   DTS:DTSID="{05F502EA-8901-47E2-8474-3E2B2D48A637}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
   DTS:LocaleID="1045"
   DTS:ObjectName="Paczka_02"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{6FD3F079-2FD1-49E8-88ED-71CB070CEF06}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{3CFEE9C3-049E-4444-A828-3971A5AAAAAE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -302,7 +302,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[c]</property>
+                  name="OpenRowset">[T02_WizyAgregacje]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -716,9 +716,9 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="222,42"
+          Size="222.4,41.6"
           Id="Package\Load WizWydaneCSV To DB"
-          TopLeft="106,160" />
+          TopLeft="130.000000408718,55.9999985414393" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -728,27 +728,31 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="190,42"
-          Id="Package\Load WizWydaneCSV To DB\SRC_WizWydaneCSV"
-          TopLeft="117,148" />
+          Size="176.8,41.6"
+          Id="Package\Load WizWydaneCSV To DB\OLE DB Destination"
+          TopLeft="111.428571078242,177.247056232439" />
         <NodeLayout
-          Size="181,42"
+          Size="180.8,41.6"
           Id="Package\Load WizWydaneCSV To DB\Group BY OSG,PSG"
-          TopLeft="125,256" />
+          TopLeft="108.999999727522,112.235292101401" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Load WizWydaneCSV To DB\SRC_WizWydaneCSV"
+          TopLeft="107.857142701441,36.0470572534317" />
         <EdgeLayout
           Id="Package\Load WizWydaneCSV To DB.Paths[Flat File Source Output]"
-          TopLeft="213.75,190">
+          TopLeft="197.828571214481,77.6470572534317">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,66"
+              EndConnector="0,34.5882348479696"
               Start="0,0"
-              End="0,58.5">
+              End="0,27.0882348479696">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,58.5" />
+                    End="0,27.0882348479696" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -757,24 +761,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Load WizWydaneCSV To DB\OLE DB Destination"
-          TopLeft="132,362" />
         <EdgeLayout
           Id="Package\Load WizWydaneCSV To DB.Paths[Aggregate Output 1]"
-          TopLeft="218,298">
+          TopLeft="199.614285402882,153.835292101401">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,64"
+              EndConnector="0,23.4117641310378"
               Start="0,0"
-              End="0,56.5">
+              End="0,15.9117641310378">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.5" />
+                    End="0,15.9117641310378" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

@@ -7,12 +7,12 @@
   DTS:CreatorName="WSEI\michal.rzechowicz"
   DTS:DTSID="{725F0D9C-16FB-4162-86DE-E3E09C4EFA7E}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
   DTS:LocaleID="1045"
   DTS:ObjectName="Paczka_03"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{CB68C052-0325-428C-9999-61A75CD5A18D}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{2A7C23AF-49EC-4EAC-9DBA-7A819A1E793F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -47,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[T03_MOSG]</property>
+                  name="OpenRowset">[Export to T03_MOSG]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -924,9 +924,9 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="244,42"
+          Size="244,41.6"
           Id="Package\Load WizWydaneCSV to LocalDB"
-          TopLeft="100,162" />
+          TopLeft="91.4285712826009,65.9529398294468" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -936,39 +936,147 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="190,42"
-          Id="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV"
-          TopLeft="144,138" />
+          Size="183.2,41.6"
+          Id="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG"
+          TopLeft="250.142856481124,298.799998103871" />
         <NodeLayout
-          Size="214,42"
+          Size="214.4,41.6"
           Id="Package\Load WizWydaneCSV to LocalDB\Filter Only MOSG or NOSG"
-          TopLeft="160,237" />
+          TopLeft="106.285713370965,120.623527678651" />
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG"
+          TopLeft="106.285713302846,195.8705865365" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Load WizWydaneCSV to LocalDB\SRC_WizWydaneCSV"
+          TopLeft="109.142856549243,38.8941162571363" />
+        <NodeLayout
+          Size="184,41.6"
+          Id="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG"
+          TopLeft="10.142856140526,295.964703960485" />
         <EdgeLayout
-          Id="Package\Load WizWydaneCSV to LocalDB.Paths[Flat File Source Output]"
-          TopLeft="239,180">
+          Id="Package\Load WizWydaneCSV to LocalDB.Paths[NOSG]"
+          TopLeft="237.752379969513,237.4705865365">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="28,57"
+              EndConnector="103.990476511611,61.3294115673712"
               Start="0,0"
-              End="28,49.5">
+              End="103.990476511611,53.8294115673712">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5" />
+                    End="0,20.8249729691032" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,24.5"
-                    Point2="0,28.5"
-                    Point3="4,28.5" />
+                    Point1="0,20.8249729691032"
+                    Point2="0,24.8249729691032"
+                    Point3="4,24.8249729691032" />
                   <mssgle:LineSegment
-                    End="24,28.5" />
+                    End="99.9904765116113,24.8249729691032" />
                   <mssgle:CubicBezierSegment
-                    Point1="24,28.5"
-                    Point2="28,28.5"
-                    Point3="28,32.5" />
+                    Point1="99.9904765116113,24.8249729691032"
+                    Point2="103.990476511611,24.8249729691032"
+                    Point3="103.990476511611,28.8249729691032" />
                   <mssgle:LineSegment
-                    End="28,49.5" />
+                    End="103.990476511611,53.8294115673712" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="38.6057460683057,29.8249729691032,26.778984375,9.5732421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load WizWydaneCSV to LocalDB.Paths[MOSG NOSG]"
+          TopLeft="209.685713336906,162.223527678651">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.6470588578485"
+              Start="0,0"
+              End="0,26.1470588578485">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.1470588578485" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.4694921875,8.28690833517423,56.938984375,9.5732421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load WizWydaneCSV to LocalDB.Paths[MOSG]"
+          TopLeft="174.019046636179,237.4705865365">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-71.8761904956532,58.4941174239848"
+              Start="0,0"
+              End="-71.8761904956532,50.9941174239848">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.6773001206249" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.6773001206249"
+                    Point2="0,23.6773001206249"
+                    Point3="-4,23.6773001206249" />
+                  <mssgle:LineSegment
+                    End="-67.8761904956532,23.6773001206249" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.8761904956532,23.6773001206249"
+                    Point2="-71.8761904956532,23.6773001206249"
+                    Point3="-71.8761904956532,27.6773001206249" />
+                  <mssgle:LineSegment
+                    End="-71.8761904956532,50.9941174239848" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-49.8475874353266,28.6773001206249,27.818984375,9.5732421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load WizWydaneCSV to LocalDB.Paths[Flat File Source Output]"
+          TopLeft="204.342856549243,80.4941162571363">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.14285682172192,40.1294114215151"
+              Start="0,0"
+              End="9.14285682172192,32.6294114215151">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.0647057107576" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.0647057107576"
+                    Point2="0,20.0647057107576"
+                    Point3="4,20.0647057107576" />
+                  <mssgle:LineSegment
+                    End="5.14285682172192,20.0647057107576" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.14285682172192,20.0647057107576"
+                    Point2="9.14285682172192,20.0647057107576"
+                    Point3="9.14285682172192,24.0647057107576" />
+                  <mssgle:LineSegment
+                    End="9.14285682172192,32.6294114215151" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -977,119 +1085,11 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="199,42"
-          Id="Package\Load WizWydaneCSV to LocalDB\Split Data MOSG NOSG"
-          TopLeft="164,317" />
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG"
-          TopLeft="69,433" />
-        <NodeLayout
-          Size="183,42"
-          Id="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG"
-          TopLeft="289,434" />
-        <EdgeLayout
-          Id="Package\Load WizWydaneCSV to LocalDB.Paths[MOSG]"
-          TopLeft="231.666666666667,359">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-70.6666666666667,74"
-              Start="0,0"
-              End="-70.6666666666667,66.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.9541375872383" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.9541375872383"
-                    Point2="0,29.9541375872383"
-                    Point3="-4,29.9541375872383" />
-                  <mssgle:LineSegment
-                    End="-66.6666666666667,29.9541375872383" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-66.6666666666667,29.9541375872383"
-                    Point2="-70.6666666666667,29.9541375872383"
-                    Point3="-70.6666666666667,33.9541375872383" />
-                  <mssgle:LineSegment
-                    End="-70.6666666666667,66.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-58.1114778645833,34.9541375872383,45.5562890625,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load WizWydaneCSV to LocalDB.Paths[NOSG]"
-          TopLeft="295.333333333333,359">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="85.1666666666667,75"
-              Start="0,0"
-              End="85.1666666666667,67.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.3589232303091" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.3589232303091"
-                    Point2="0,30.3589232303091"
-                    Point3="4,30.3589232303091" />
-                  <mssgle:LineSegment
-                    End="81.1666666666667,30.3589232303091" />
-                  <mssgle:CubicBezierSegment
-                    Point1="81.1666666666667,30.3589232303091"
-                    Point2="85.1666666666667,30.3589232303091"
-                    Point3="85.1666666666667,34.3589232303091" />
-                  <mssgle:LineSegment
-                    End="85.1666666666667,67.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="20.3251888020833,35.3589232303091,44.5162890625,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load WizWydaneCSV to LocalDB.Paths[MOSG NOSG]"
-          TopLeft="265.25,279">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38"
-              Start="0,0"
-              End="0,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-28.4694921875,10.46337890625,56.938984375,9.5732421875"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG">
+    design-time-name="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1102,7 +1102,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load WizWydaneCSV to LocalDB\Export to T03_NOSG">
+    design-time-name="Package\Load WizWydaneCSV to LocalDB\Export to T03_MOSG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

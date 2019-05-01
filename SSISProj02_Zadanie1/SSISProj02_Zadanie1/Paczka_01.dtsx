@@ -7,12 +7,12 @@
   DTS:CreatorName="WSEI\michal.rzechowicz"
   DTS:DTSID="{55BA49B5-6463-445D-8164-EC2F26312C77}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
   DTS:LocaleID="1045"
   DTS:ObjectName="Paczka_01"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{23629C4E-FCB1-4CA0-B3A8-8311E6CD4FBC}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{AD545D89-CD9B-4221-B35D-E951631EE7F0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -528,7 +528,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="196,42"
+          Size="196,41.6"
           Id="Package\Load_WizWydaneToDB"
           TopLeft="186,154" />
       </GraphLayout>
@@ -540,27 +540,27 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="190,42"
+          Size="176.8,41.6"
+          Id="Package\Load_WizWydaneToDB\OLE DB Destination"
+          TopLeft="205.42857148696,178.211763839326" />
+        <NodeLayout
+          Size="190.4,41.6"
           Id="Package\Load_WizWydaneToDB\SRC_WizWydaneCSV"
           TopLeft="199,106" />
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Load_WizWydaneToDB\OLE DB Destination"
-          TopLeft="202,236" />
         <EdgeLayout
           Id="Package\Load_WizWydaneToDB.Paths[Flat File Source Output]"
-          TopLeft="292.25,148">
+          TopLeft="294.01428574348,147.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,88"
+              EndConnector="0,30.6117638393257"
               Start="0,0"
-              End="0,80.5">
+              End="0,23.1117638393257">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,80.5" />
+                    End="0,23.1117638393257" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
