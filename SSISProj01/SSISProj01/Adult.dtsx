@@ -7,12 +7,12 @@
   DTS:CreatorName="WSEI\michal.rzechowicz"
   DTS:DTSID="{70FFE57F-8FD0-4EA6-80EF-B5BD8B6A9011}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
   DTS:LocaleID="1045"
   DTS:ObjectName="Adult"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{C99F39F2-D972-4284-9FB5-2932C47DE9E5}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{F913484E-E074-4A23-B6FE-A51CD9DEB957}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -32,11 +32,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Load Adult\OLE DB Destination"
+              refId="Package\Load Adult\Load to Adult Table"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination"
+              name="Load to Adult Table"
               usesDispositions="true"
               version="4">
               <properties>
@@ -89,7 +89,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Adult\OLE DB Destination.Connections[OleDbConnection]"
+                  refId="Package\Load Adult\Load to Adult Table.Connections[OleDbConnection]"
                   connectionManagerID="{D1377AC3-C825-401C-8297-6D081B3F0904}:external"
                   connectionManagerRefId="Project.ConnectionManagers[LocalMR]"
                   description="The OLE DB runtime connection used to access the database."
@@ -97,222 +97,222 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[age]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[age]"
                       cachedDataType="i4"
                       cachedName="age"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[age]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[age]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[age]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[age]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[workclass]"
-                      cachedCodepage="1252"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[workclass]"
+                      cachedCodepage="1250"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="40"
                       cachedName="workclass"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[workclass]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[workclass]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[workclass]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[workclass]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[fnlwgt]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[fnlwgt]"
                       cachedDataType="i4"
                       cachedName="fnlwgt"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fnlwgt]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[fnlwgt]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[fnlwgt]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[fnlwgt]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[education]"
-                      cachedCodepage="1252"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[education]"
+                      cachedCodepage="1250"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="40"
                       cachedName="education"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[education]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[education]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[education]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[education]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[education-num]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[education-num]"
                       cachedDataType="i4"
                       cachedName="education-num"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[education-num]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[education-num]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[education-num]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[education-num]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[marital-status]"
-                      cachedCodepage="1252"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[marital-status]"
+                      cachedCodepage="1250"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="30"
                       cachedName="marital-status"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[marital-status]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[marital-status]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[marital-status]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[marital-status]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[occupation]"
-                      cachedCodepage="1252"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[occupation]"
+                      cachedCodepage="1250"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="40"
                       cachedName="occupation"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[occupation]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[occupation]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[occupation]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[occupation]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[relationship]"
-                      cachedCodepage="1252"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[relationship]"
+                      cachedCodepage="1250"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="40"
                       cachedName="relationship"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[relationship]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[relationship]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[relationship]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[relationship]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[race]"
-                      cachedCodepage="1252"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[race]"
+                      cachedCodepage="1250"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="40"
                       cachedName="race"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[race]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[race]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[race]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[race]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sex]"
-                      cachedCodepage="1252"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[sex]"
+                      cachedCodepage="1250"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="10"
                       cachedName="sex"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sex]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[sex]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[sex]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[sex]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[capital-gain]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[capital-gain]"
                       cachedDataType="i4"
                       cachedName="capital-gain"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[capital-gain]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[capital-gain]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[capital-gain]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[capital-gain]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[capital-loss]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[capital-loss]"
                       cachedDataType="i4"
                       cachedName="capital-loss"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[capital-loss]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[capital-loss]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[capital-loss]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[capital-loss]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[hours-per-week]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[hours-per-week]"
                       cachedDataType="i4"
                       cachedName="hours-per-week"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hours-per-week]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[hours-per-week]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[hours-per-week]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[hours-per-week]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[native-country]"
-                      cachedCodepage="1252"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[native-country]"
+                      cachedCodepage="1250"
                       cachedDataType="str"
-                      cachedLength="50"
+                      cachedLength="40"
                       cachedName="native-country"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[native-country]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[native-country]" />
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[native-country]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[native-country]" />
                     <inputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Col14]"
-                      cachedCodepage="1252"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].Columns[city-population]"
+                      cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="Col14"
-                      externalMetadataColumnId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Col14]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[Col14]" />
+                      cachedName="city-population"
+                      externalMetadataColumnId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[city-population]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[city-population]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[age]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[age]"
                       dataType="i4"
                       name="age" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[workclass]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[workclass]"
                       codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="workclass" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fnlwgt]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[fnlwgt]"
                       dataType="i4"
                       name="fnlwgt" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[education]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[education]"
                       codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="education" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[education-num]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[education-num]"
                       dataType="i4"
                       name="education-num" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[marital-status]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[marital-status]"
                       codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="30"
                       name="marital-status" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[occupation]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[occupation]"
                       codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="occupation" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[relationship]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[relationship]"
                       codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="relationship" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[race]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[race]"
                       codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="race" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sex]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[sex]"
                       codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="10"
                       name="sex" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[capital-gain]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[capital-gain]"
                       dataType="i4"
                       name="capital-gain" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[capital-loss]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[capital-loss]"
                       dataType="i4"
                       name="capital-loss" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hours-per-week]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[hours-per-week]"
                       dataType="i4"
                       name="hours-per-week" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[native-country]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[native-country]"
                       codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="native-country" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Col14]"
+                      refId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input].ExternalColumns[city-population]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      name="Col14" />
+                      name="city-population" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Adult\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Load Adult\Load to Adult Table.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Adult\Load to Adult Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Adult\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Adult\Load to Adult Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Adult\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Adult\Load to Adult Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Adult\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Adult\Load to Adult Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -321,12 +321,12 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Adult\SRC_AdultCSV"
+              refId="Package\Load Adult\READ Adult csv"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
               localeId="1033"
-              name="SRC_AdultCSV"
+              name="READ Adult csv"
               usesDispositions="true"
               version="1">
               <properties>
@@ -341,23 +341,23 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Adult\SRC_AdultCSV.Connections[FlatFileConnection]"
+                  refId="Package\Load Adult\READ Adult csv.Connections[FlatFileConnection]"
                   connectionManagerID="{8502FD65-577F-44AA-811D-F42F4C8EC699}:external"
                   connectionManagerRefId="Project.ConnectionManagers[SRC_Adult]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output]"
+                  refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[age]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[age]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[age]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[age]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[age]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[age]"
                       name="age"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -372,14 +372,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[workclass]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[workclass]"
+                      codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[workclass]"
-                      length="50"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[workclass]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[workclass]"
+                      length="40"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[workclass]"
                       name="workclass"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -394,12 +394,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[fnlwgt]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[fnlwgt]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[fnlwgt]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[fnlwgt]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[fnlwgt]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[fnlwgt]"
                       name="fnlwgt"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -414,14 +414,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[education]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[education]"
+                      codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[education]"
-                      length="50"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[education]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[education]"
+                      length="40"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[education]"
                       name="education"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -436,12 +436,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[education-num]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[education-num]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[education-num]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[education-num]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[education-num]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[education-num]"
                       name="education-num"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -456,14 +456,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[marital-status]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[marital-status]"
+                      codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[marital-status]"
-                      length="50"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[marital-status]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[marital-status]"
+                      length="30"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[marital-status]"
                       name="marital-status"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -478,14 +478,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[occupation]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[occupation]"
+                      codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[occupation]"
-                      length="50"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[occupation]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[occupation]"
+                      length="40"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[occupation]"
                       name="occupation"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -500,14 +500,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[relationship]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[relationship]"
+                      codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[relationship]"
-                      length="50"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[relationship]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[relationship]"
+                      length="40"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[relationship]"
                       name="relationship"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -522,14 +522,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[race]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[race]"
+                      codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[race]"
-                      length="50"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[race]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[race]"
+                      length="40"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[race]"
                       name="race"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -544,14 +544,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[sex]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[sex]"
+                      codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[sex]"
-                      length="50"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[sex]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[sex]"
+                      length="10"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[sex]"
                       name="sex"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -566,12 +566,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[capital-gain]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[capital-gain]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[capital-gain]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[capital-gain]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[capital-gain]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[capital-gain]"
                       name="capital-gain"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -586,12 +586,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[capital-loss]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[capital-loss]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[capital-loss]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[capital-loss]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[capital-loss]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[capital-loss]"
                       name="capital-loss"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -606,12 +606,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[hours-per-week]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[hours-per-week]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[hours-per-week]"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[hours-per-week]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[hours-per-week]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[hours-per-week]"
                       name="hours-per-week"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -626,14 +626,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[native-country]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[native-country]"
+                      codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[native-country]"
-                      length="50"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[native-country]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[native-country]"
+                      length="40"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[native-country]"
                       name="native-country"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -648,15 +648,15 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[Col14]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[city-population]"
+                      codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[Col14]"
+                      externalMetadataColumnId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[city-population]"
                       length="50"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].Columns[Col14]"
-                      name="Col14"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].Columns[city-population]"
+                      name="city-population"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -673,107 +673,107 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[age]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[age]"
                       dataType="i4"
                       name="age" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[workclass]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[workclass]"
+                      codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="workclass" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[fnlwgt]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[fnlwgt]"
                       dataType="i4"
                       name="fnlwgt" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[education]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[education]"
+                      codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="education" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[education-num]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[education-num]"
                       dataType="i4"
                       name="education-num" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[marital-status]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[marital-status]"
+                      codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="30"
                       name="marital-status" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[occupation]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[occupation]"
+                      codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="occupation" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[relationship]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[relationship]"
+                      codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="relationship" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[race]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[race]"
+                      codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="race" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[sex]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[sex]"
+                      codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="10"
                       name="sex" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[capital-gain]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[capital-gain]"
                       dataType="i4"
                       name="capital-gain" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[capital-loss]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[capital-loss]"
                       dataType="i4"
                       name="capital-loss" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[hours-per-week]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[hours-per-week]"
                       dataType="i4"
                       name="hours-per-week" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[native-country]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[native-country]"
+                      codePage="1250"
                       dataType="str"
-                      length="50"
+                      length="40"
                       name="native-country" />
                     <externalMetadataColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output].ExternalColumns[Col14]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output].ExternalColumns[city-population]"
+                      codePage="1250"
                       dataType="str"
                       length="50"
-                      name="Col14" />
+                      name="city-population" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Error Output]"
+                  refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
-                      codePage="1252"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1250"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -785,14 +785,40 @@
           <paths>
             <path
               refId="Package\Load Adult.Paths[Flat File Source Output]"
-              endId="Package\Load Adult\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\Load Adult\Load to Adult Table.Inputs[OLE DB Destination Input]"
               name="Flat File Source Output"
-              startId="Package\Load Adult\SRC_AdultCSV.Outputs[Flat File Source Output]" />
+              startId="Package\Load Adult\READ Adult csv.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate ADULT table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D955B249-84E4-4C7C-8D7F-9849DD13D247}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate ADULT table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D1377AC3-C825-401C-8297-6D081B3F0904}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ADULT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0A56C3ED-65EF-45EF-971C-3CFD2371CDE4}"
+      DTS:From="Package\Truncate ADULT table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Adult" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -804,11 +830,37 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="132,42"
+          Size="132,41.6"
           Id="Package\Load Adult"
-          TopLeft="316,155" />
+          TopLeft="316,157.447058857848" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Truncate ADULT table"
+          TopLeft="288.000004904611,40.3764711545001" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="380.600002452305,81.9764711545001">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75.4705877033484"
+              Start="0,0"
+              End="0,67.9705877033484">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.9705877033484" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -818,39 +870,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
-          Id="Package\Load Adult\OLE DB Destination"
-          TopLeft="312,217" />
+          Size="150.4,41.6"
+          Id="Package\Load Adult\READ Adult csv"
+          TopLeft="144.000002452305,49.5529418714319" />
         <NodeLayout
-          Size="156,42"
-          Id="Package\Load Adult\SRC_AdultCSV"
-          TopLeft="261,65" />
+          Size="170.4,41.6"
+          Id="Package\Load Adult\Load to Adult Table"
+          TopLeft="149.142859682745,165.788237619235" />
         <EdgeLayout
           Id="Package\Load Adult.Paths[Flat File Source Output]"
-          TopLeft="339,107">
+          TopLeft="219.200002452305,91.1529418714319">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="61.5,110"
+              EndConnector="15.1428572304395,74.6352957478032"
               Start="0,0"
-              End="61.5,102.5">
+              End="15.1428572304395,67.1352957478032">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51" />
+                    End="0,33.3176478739016" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,51"
-                    Point2="0,55"
-                    Point3="4,55" />
+                    Point1="0,33.3176478739016"
+                    Point2="0,37.3176478739016"
+                    Point3="4,37.3176478739016" />
                   <mssgle:LineSegment
-                    End="57.5,55" />
+                    End="11.1428572304395,37.3176478739016" />
                   <mssgle:CubicBezierSegment
-                    Point1="57.5,55"
-                    Point2="61.5,55"
-                    Point3="61.5,59" />
+                    Point1="11.1428572304395,37.3176478739016"
+                    Point2="15.1428572304395,37.3176478739016"
+                    Point3="15.1428572304395,41.3176478739016" />
                   <mssgle:LineSegment
-                    End="61.5,102.5" />
+                    End="15.1428572304395,67.1352957478032" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -863,7 +915,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Adult\OLE DB Destination">
+    design-time-name="Package\Load Adult\Load to Adult Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

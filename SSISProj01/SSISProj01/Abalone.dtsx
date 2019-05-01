@@ -7,16 +7,32 @@
   DTS:CreatorName="WSEI\michal.rzechowicz"
   DTS:DTSID="{3D2399BA-867B-4F7E-BBFB-B62942D0135E}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.0900.40"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
   DTS:LocaleID="1045"
   DTS:ObjectName="Abalone"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{B937768B-4E65-4AC7-AF18-222F17C61456}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{DB20984A-3F4B-4136-892A-A80CCD270432}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{263F8DD2-C656-428A-83C5-8CB9A125A732}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D1377AC3-C825-401C-8297-6D081B3F0904}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ABALONE" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Load Abalone"
       DTS:CreationName="Microsoft.Pipeline"
@@ -32,324 +48,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Load Abalone\Flat File Source"
-              componentClassID="Microsoft.FlatFileSource"
-              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Flat File Source"
-              localeId="2057"
-              name="Flat File Source"
-              usesDispositions="true"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Boolean"
-                  description="Specifies whether zero-length columns are treated as null."
-                  name="RetainNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
-                  name="FileNameColumnName"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load Abalone\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="{13B7E42C-149B-4F55-A8A7-DCC5373463B7}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SRC_AbaloneCSV]"
-                  name="FlatFileConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output]"
-                  name="Flat File Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Sex]"
-                      codePage="1250"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Sex]"
-                      length="1"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Sex]"
-                      name="Sex"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Length]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Length]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Length]"
-                      name="Length"
-                      precision="10"
-                      scale="5"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Diameter]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Diameter]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Diameter]"
-                      name="Diameter"
-                      precision="10"
-                      scale="5"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Height]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Height]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Height]"
-                      name="Height"
-                      precision="10"
-                      scale="5"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[WholeWeight]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[WholeWeight]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[WholeWeight]"
-                      name="WholeWeight"
-                      precision="10"
-                      scale="5"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[ShuckedWeight]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ShuckedWeight]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[ShuckedWeight]"
-                      name="ShuckedWeight"
-                      precision="10"
-                      scale="5"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[VisceraWeight]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[VisceraWeight]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[VisceraWeight]"
-                      name="VisceraWeight"
-                      precision="10"
-                      scale="5"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[ShellWeight]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ShellWeight]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[ShellWeight]"
-                      name="ShellWeight"
-                      precision="10"
-                      scale="5"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Rings]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Rings]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Rings]"
-                      name="Rings"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Sex]"
-                      codePage="1250"
-                      dataType="str"
-                      length="1"
-                      name="Sex" />
-                    <externalMetadataColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Length]"
-                      dataType="numeric"
-                      name="Length"
-                      precision="10"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Diameter]"
-                      dataType="numeric"
-                      name="Diameter"
-                      precision="10"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Height]"
-                      dataType="numeric"
-                      name="Height"
-                      precision="10"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[WholeWeight]"
-                      dataType="numeric"
-                      name="WholeWeight"
-                      precision="10"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ShuckedWeight]"
-                      dataType="numeric"
-                      name="ShuckedWeight"
-                      precision="10"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[VisceraWeight]"
-                      dataType="numeric"
-                      name="VisceraWeight"
-                      precision="10"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ShellWeight]"
-                      dataType="numeric"
-                      name="ShellWeight"
-                      precision="10"
-                      scale="5" />
-                    <externalMetadataColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Rings]"
-                      dataType="i4"
-                      name="Rings" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Error Output]"
-                  isErrorOut="true"
-                  name="Flat File Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
-                      codePage="1250"
-                      dataType="text"
-                      description="Flat File Source Error Output Column"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
-                      name="Flat File Source Error Output Column" />
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Load Abalone\OLE DB Destination"
+              refId="Package\Load Abalone\Load to Abalone table"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination"
+              name="Load to Abalone table"
               usesDispositions="true"
               version="4">
               <properties>
@@ -402,7 +105,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Abalone\OLE DB Destination.Connections[OleDbConnection]"
+                  refId="Package\Load Abalone\Load to Abalone table.Connections[OleDbConnection]"
                   connectionManagerID="{D1377AC3-C825-401C-8297-6D081B3F0904}:external"
                   connectionManagerRefId="Project.ConnectionManagers[LocalMR]"
                   description="The OLE DB runtime connection used to access the database."
@@ -410,135 +113,135 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Length]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].Columns[Length]"
                       cachedDataType="numeric"
                       cachedName="Length"
                       cachedPrecision="10"
                       cachedScale="5"
-                      externalMetadataColumnId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Length]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Length]" />
+                      externalMetadataColumnId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[Length]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Length]" />
                     <inputColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Diameter]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].Columns[Diameter]"
                       cachedDataType="numeric"
                       cachedName="Diameter"
                       cachedPrecision="10"
                       cachedScale="5"
-                      externalMetadataColumnId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Diameter]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Diameter]" />
+                      externalMetadataColumnId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[Diameter]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Diameter]" />
                     <inputColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Height]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].Columns[Height]"
                       cachedDataType="numeric"
                       cachedName="Height"
                       cachedPrecision="10"
                       cachedScale="5"
-                      externalMetadataColumnId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Height]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Height]" />
+                      externalMetadataColumnId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[Height]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Height]" />
                     <inputColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WholeWeight]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].Columns[WholeWeight]"
                       cachedDataType="numeric"
                       cachedName="WholeWeight"
                       cachedPrecision="10"
                       cachedScale="5"
-                      externalMetadataColumnId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WholeWeight]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[WholeWeight]" />
+                      externalMetadataColumnId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[WholeWeight]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[WholeWeight]" />
                     <inputColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ShuckedWeight]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].Columns[ShuckedWeight]"
                       cachedDataType="numeric"
                       cachedName="ShuckedWeight"
                       cachedPrecision="10"
                       cachedScale="5"
-                      externalMetadataColumnId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShuckedWeight]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[ShuckedWeight]" />
+                      externalMetadataColumnId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[ShuckedWeight]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[ShuckedWeight]" />
                     <inputColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VisceraWeight]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].Columns[VisceraWeight]"
                       cachedDataType="numeric"
                       cachedName="VisceraWeight"
                       cachedPrecision="10"
                       cachedScale="5"
-                      externalMetadataColumnId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VisceraWeight]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[VisceraWeight]" />
+                      externalMetadataColumnId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[VisceraWeight]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[VisceraWeight]" />
                     <inputColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ShellWeight]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].Columns[ShellWeight]"
                       cachedDataType="numeric"
                       cachedName="ShellWeight"
                       cachedPrecision="10"
                       cachedScale="5"
-                      externalMetadataColumnId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShellWeight]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[ShellWeight]" />
+                      externalMetadataColumnId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[ShellWeight]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[ShellWeight]" />
                     <inputColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Rings]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].Columns[Rings]"
                       cachedDataType="i4"
                       cachedName="Rings"
-                      externalMetadataColumnId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rings]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Rings]" />
+                      externalMetadataColumnId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[Rings]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Rings]" />
                     <inputColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sex]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].Columns[Sex]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="Sex"
-                      externalMetadataColumnId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sex]"
-                      lineageId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output].Columns[Sex]" />
+                      externalMetadataColumnId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[Sex]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Sex]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sex]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[Sex]"
                       codePage="1250"
                       dataType="str"
                       length="1"
                       name="Sex" />
                     <externalMetadataColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Length]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[Length]"
                       dataType="numeric"
                       name="Length"
                       precision="10"
                       scale="5" />
                     <externalMetadataColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Diameter]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[Diameter]"
                       dataType="numeric"
                       name="Diameter"
                       precision="10"
                       scale="5" />
                     <externalMetadataColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Height]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[Height]"
                       dataType="numeric"
                       name="Height"
                       precision="10"
                       scale="5" />
                     <externalMetadataColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WholeWeight]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[WholeWeight]"
                       dataType="numeric"
                       name="WholeWeight"
                       precision="10"
                       scale="5" />
                     <externalMetadataColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShuckedWeight]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[ShuckedWeight]"
                       dataType="numeric"
                       name="ShuckedWeight"
                       precision="10"
                       scale="5" />
                     <externalMetadataColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VisceraWeight]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[VisceraWeight]"
                       dataType="numeric"
                       name="VisceraWeight"
                       precision="10"
                       scale="5" />
                     <externalMetadataColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShellWeight]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[ShellWeight]"
                       dataType="numeric"
                       name="ShellWeight"
                       precision="10"
                       scale="5" />
                     <externalMetadataColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rings]"
+                      refId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input].ExternalColumns[Rings]"
                       dataType="i4"
                       name="Rings" />
                   </externalMetadataColumns>
@@ -546,22 +249,335 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Abalone\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Load Abalone\Load to Abalone table.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Abalone\Load to Abalone table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Abalone\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Abalone\Load to Abalone table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Abalone\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Abalone\Load to Abalone table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Abalone\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Abalone\Load to Abalone table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Abalone\Read Abalone csv"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="Read Abalone csv"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Abalone\Read Abalone csv.Connections[FlatFileConnection]"
+                  connectionManagerID="{13B7E42C-149B-4F55-A8A7-DCC5373463B7}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SRC_AbaloneCSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Sex]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[Sex]"
+                      length="1"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Sex]"
+                      name="Sex"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Length]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[Length]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Length]"
+                      name="Length"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Diameter]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[Diameter]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Diameter]"
+                      name="Diameter"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Height]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[Height]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Height]"
+                      name="Height"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[WholeWeight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[WholeWeight]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[WholeWeight]"
+                      name="WholeWeight"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[ShuckedWeight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[ShuckedWeight]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[ShuckedWeight]"
+                      name="ShuckedWeight"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[VisceraWeight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[VisceraWeight]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[VisceraWeight]"
+                      name="VisceraWeight"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[ShellWeight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[ShellWeight]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[ShellWeight]"
+                      name="ShellWeight"
+                      precision="10"
+                      scale="5"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Rings]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[Rings]"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].Columns[Rings]"
+                      name="Rings"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[Sex]"
+                      codePage="1250"
+                      dataType="str"
+                      length="1"
+                      name="Sex" />
+                    <externalMetadataColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[Length]"
+                      dataType="numeric"
+                      name="Length"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[Diameter]"
+                      dataType="numeric"
+                      name="Diameter"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[Height]"
+                      dataType="numeric"
+                      name="Height"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[WholeWeight]"
+                      dataType="numeric"
+                      name="WholeWeight"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[ShuckedWeight]"
+                      dataType="numeric"
+                      name="ShuckedWeight"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[VisceraWeight]"
+                      dataType="numeric"
+                      name="VisceraWeight"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[ShellWeight]"
+                      dataType="numeric"
+                      name="ShellWeight"
+                      precision="10"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output].ExternalColumns[Rings]"
+                      dataType="i4"
+                      name="Rings" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1250"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -573,14 +589,24 @@
           <paths>
             <path
               refId="Package\Load Abalone.Paths[Flat File Source Output]"
-              endId="Package\Load Abalone\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\Load Abalone\Load to Abalone table.Inputs[OLE DB Destination Input]"
               name="Flat File Source Output"
-              startId="Package\Load Abalone\Flat File Source.Outputs[Flat File Source Output]" />
+              startId="Package\Load Abalone\Read Abalone csv.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9BDAEC51-D8C2-42FC-A280-478F627939F1}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Abalone" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -592,11 +618,49 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="147,42"
+          Size="142.4,41.6"
           Id="Package\Load Abalone"
-          TopLeft="328,155" />
+          TopLeft="174.857140249136,118.905881846735" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="156.000002656664,33.0352945809546" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="237.200002656664,74.6352945809546">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.85713759247136,44.2705872657802"
+              Start="0,0"
+              End="8.85713759247136,36.7705872657802">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.1352936328901" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.1352936328901"
+                    Point2="0,22.1352936328901"
+                    Point3="4,22.1352936328901" />
+                  <mssgle:LineSegment
+                    End="4.85713759247136,22.1352936328901" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.85713759247136,22.1352936328901"
+                    Point2="8.85713759247136,22.1352936328901"
+                    Point3="8.85713759247136,26.1352936328901" />
+                  <mssgle:LineSegment
+                    End="8.85713759247136,36.7705872657802" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -606,39 +670,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="156,42"
-          Id="Package\Load Abalone\Flat File Source"
-          TopLeft="332,103" />
+          Size="180.8,41.6"
+          Id="Package\Load Abalone\Load to Abalone table"
+          TopLeft="233.571426537572,252.094117423985" />
         <NodeLayout
-          Size="177,42"
-          Id="Package\Load Abalone\OLE DB Destination"
-          TopLeft="353,268" />
+          Size="161.6,41.6"
+          Id="Package\Load Abalone\Read Abalone csv"
+          TopLeft="205.714283563653,138.482353438803" />
         <EdgeLayout
           Id="Package\Load Abalone.Paths[Flat File Source Output]"
-          TopLeft="410,145">
+          TopLeft="286.514283563653,180.082353438803">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="31.5,123"
+              EndConnector="37.4571429739192,72.0117639851818"
               Start="0,0"
-              End="31.5,115.5">
+              End="37.4571429739192,64.5117639851818">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.5" />
+                    End="0,32.0058819925909" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,57.5"
-                    Point2="0,61.5"
-                    Point3="4,61.5" />
+                    Point1="0,32.0058819925909"
+                    Point2="0,36.0058819925909"
+                    Point3="4,36.0058819925909" />
                   <mssgle:LineSegment
-                    End="27.5,61.5" />
+                    End="33.4571429739192,36.0058819925909" />
                   <mssgle:CubicBezierSegment
-                    Point1="27.5,61.5"
-                    Point2="31.5,61.5"
-                    Point3="31.5,65.5" />
+                    Point1="33.4571429739192,36.0058819925909"
+                    Point2="37.4571429739192,36.0058819925909"
+                    Point3="37.4571429739192,40.0058819925909" />
                   <mssgle:LineSegment
-                    End="31.5,115.5" />
+                    End="37.4571429739192,64.5117639851818" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -651,7 +715,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Abalone\OLE DB Destination">
+    design-time-name="Package\Load Abalone\Load to Abalone table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

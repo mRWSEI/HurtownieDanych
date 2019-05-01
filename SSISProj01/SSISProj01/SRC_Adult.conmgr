@@ -11,7 +11,7 @@
       DTS:RowDelimiter=""
       DTS:TextQualifier="_x003C_none_x003E_"
       DTS:CodePage="1250"
-      DTS:ConnectionString="D:\Users\michal.rzechowicz\source\repos\HurtownieDanych\SSISProj01\SSISProj01\adult.csv">
+      DTS:ConnectionString="C:\Users\admin\source\repos\mRWSEI\HurtownieDanych\SSISProj01\SSISProj01\adult.csv">
       <DTS:FlatFileColumns>
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -19,16 +19,16 @@
           DTS:DataType="3"
           DTS:TextQualified="True"
           DTS:ObjectName="age"
-          DTS:DTSID="{D851121C-392C-4116-AF46-592A9664BA15}"
+          DTS:DTSID="{D12DB4F3-9659-4AB2-8C88-E7AA667D1CEC}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
+          DTS:MaximumWidth="40"
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="workclass"
-          DTS:DTSID="{BB4EC2BE-1135-4FD9-9787-B947F1EE146D}"
+          DTS:DTSID="{0D8FB1A8-D7D6-4F78-9DCC-D26F0D293172}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -36,16 +36,16 @@
           DTS:DataType="3"
           DTS:TextQualified="True"
           DTS:ObjectName="fnlwgt"
-          DTS:DTSID="{0ADDEECB-1A8E-4A7C-91E6-827CF6C3F207}"
+          DTS:DTSID="{B6224C6D-D5F6-437D-8A2D-D61A5B6F12AF}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
+          DTS:MaximumWidth="40"
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="education"
-          DTS:DTSID="{8F7D31B3-145B-471A-B1E7-800207E5C943}"
+          DTS:DTSID="{065C5C54-2D0B-407F-9691-C1433FBE6212}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -53,52 +53,52 @@
           DTS:DataType="3"
           DTS:TextQualified="True"
           DTS:ObjectName="education-num"
-          DTS:DTSID="{30F30D61-9226-45CD-B2BA-2B87DE671737}"
+          DTS:DTSID="{4C98E814-024A-450F-ABA5-F932851BEA75}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
+          DTS:MaximumWidth="30"
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="marital-status"
-          DTS:DTSID="{59C327A4-91BA-4325-98F9-D0FD04022E9B}"
+          DTS:DTSID="{C45A286B-5CA5-468B-8325-52EDAF74BE57}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
+          DTS:MaximumWidth="40"
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="occupation"
-          DTS:DTSID="{81BF1782-E480-481B-A4EB-2EBC43AE4ED2}"
+          DTS:DTSID="{B40D3CDB-DA02-4E88-B580-3AF4068D26DA}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
+          DTS:MaximumWidth="40"
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="relationship"
-          DTS:DTSID="{9A202C8B-CBA0-47DC-ACE4-755DD302AF31}"
+          DTS:DTSID="{D77FD2D7-A919-413D-AA4C-DF1514910BD0}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
+          DTS:MaximumWidth="40"
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="race"
-          DTS:DTSID="{42CA0657-2D5F-4BD1-B014-9CE21AB1D439}"
+          DTS:DTSID="{78AD907D-CCE5-41F0-871B-9C06A64DF01F}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
+          DTS:MaximumWidth="10"
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="sex"
-          DTS:DTSID="{11654C04-69BA-4740-A5B7-C57783971405}"
+          DTS:DTSID="{B4672F6A-FA2E-4FE7-85E0-F87DB737545F}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -106,7 +106,7 @@
           DTS:DataType="3"
           DTS:TextQualified="True"
           DTS:ObjectName="capital-gain"
-          DTS:DTSID="{D65509C8-82E6-4790-9BFD-278E3E636B72}"
+          DTS:DTSID="{5AF4CCA0-F691-477C-9471-8391858B868F}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -114,7 +114,7 @@
           DTS:DataType="3"
           DTS:TextQualified="True"
           DTS:ObjectName="capital-loss"
-          DTS:DTSID="{C6080D1B-CDE7-4ADA-BD32-6E055D296055}"
+          DTS:DTSID="{425499BD-8D4C-44E2-BCC5-175CEC91A696}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -122,16 +122,16 @@
           DTS:DataType="3"
           DTS:TextQualified="True"
           DTS:ObjectName="hours-per-week"
-          DTS:DTSID="{38CC8C06-0665-49A7-830A-20C716A2CA5F}"
+          DTS:DTSID="{6D553125-F5CD-4B35-898D-BB579F3105C2}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
+          DTS:MaximumWidth="40"
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="native-country"
-          DTS:DTSID="{CA11D929-80AB-46D1-B5B5-3AC6B3464AC8}"
+          DTS:DTSID="{4C0242C4-29FE-4D50-99EB-F14438C40799}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -139,8 +139,8 @@
           DTS:MaximumWidth="50"
           DTS:DataType="129"
           DTS:TextQualified="True"
-          DTS:ObjectName="Col14"
-          DTS:DTSID="{631CFDB6-FB9E-4E1C-BE8B-8C71DF306C11}"
+          DTS:ObjectName="city-population"
+          DTS:DTSID="{BD2EBD3F-F95A-4523-A6A7-4B4C865A5EAB}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>
