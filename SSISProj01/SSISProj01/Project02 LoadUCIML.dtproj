@@ -15,7 +15,7 @@
       <SSIS:Project SSIS:ProtectionLevel="EncryptSensitiveWithUserKey" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
         <SSIS:Properties>
           <SSIS:Property SSIS:Name="ID">{394da017-f2a5-4886-8955-eb77d8740eaf}</SSIS:Property>
-          <SSIS:Property SSIS:Name="Name">SSISProj01</SSIS:Property>
+          <SSIS:Property SSIS:Name="Name">Project02 LoadUCIML</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">PK2-18</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa948Gu2o0UywCdJZBdDvTQAAAAACAAAAAAAQZgAAAAEAACAAAADVHSUO3joTMLTkTUVc8xBj8KFeG/kb4xmnNM6T6S6R9gAAAAAOgAAAAAIAACAAAABReTqQEsGlFsPlU3HM1e8L3bImxLeA24H2SmDYYXeFlJAAAAAszF4xHBHL4LYfg2VQW07w0ad1qWfsY3ZcG+/gB/cyJJCsAkKwPQ+Oo42u2xOPABr3Z5yOCGP/0TUsjQmZFYzOFoGk/HQhvML5hswOpbIj6b2cEcxcakTAAOutaxIuYGF1B9BCZziDTA/T/gwuRL5l6EjAdf2sxk7wx2jgXzKSBU9U5Lx9o/xi9Bt+mTiq+mtAAAAAFSYFq0tQ9JZx1wRPVHRS2DiCuV00IInX6N85Q8TkADHkWMySzWHAk15824LvpCTzJFqEVxpz2MIbTxWzoJJ7XA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa948Gu2o0UywCdJZBdDvTQAAAAACAAAAAAAQZgAAAAEAACAAAAAtqVktaJ1qaJFjlfd5PYo/7yYeG9WASANfgJKpon1QXgAAAAAOgAAAAAIAACAAAABp5RhG/YDVYobMLSkw1BT9HhgMzJ8h3CXzrAYonPnca5AAAACou0VPVYteJ0zDNyGF2AJ8JGDaz+C9ssgkMab8NI6T0kDNo1SHKCP2i1CWGf4apdcECiz5WqFyDHMzuK+apFvIXVGv4WVU5Oc+J9m05Nv0bfJYJTloMDSZA5ZVT2oqXwH+FXOISGa1pEiIsvbTDhEQcP1GXDwXJyuAAUNnT2vPyqoJmDLSNfJZDbeIJa7G8t9AAAAAERTmrkxGha6/mpEF273SAmZo/budVD5IBL00Bb64TcQJVN2z2bu39KafFlRgwBr7HvTWoNDYb1ARBPxeOkGO2g==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
