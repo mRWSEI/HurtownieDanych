@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Abalone"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{DB20984A-3F4B-4136-892A-A80CCD270432}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{548FBA21-AF13-42F5-B072-B9F7BD6D27A6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -596,6 +596,22 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Log Data to PackageLogs table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BDDC277C-F583-4E94-B0F1-857C13BC2FC3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Log Data to PackageLogs table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D1377AC3-C825-401C-8297-6D081B3F0904}"
+          SQLTask:SqlStatementSource="INSERT INTO [PackageLogs]&#xA;&#x9;([StartDate], [StartedBy], [PackageName])&#xA;  VALUES (GETDATE(), SUSER_SNAME(), 'Abalone')&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -606,6 +622,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Load Abalone" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{92EC855A-664C-40FD-A8D2-89C0BA8ED66E}"
+      DTS:From="Package\Load Abalone"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Log Data to PackageLogs table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -618,41 +642,55 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="142.4,41.6"
-          Id="Package\Load Abalone"
-          TopLeft="174.857140249136,118.905881846735" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="162.4,41.6"
           Id="Package\Execute SQL Task"
           TopLeft="156.000002656664,33.0352945809546" />
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\Load Abalone"
+          TopLeft="165.714282950577,115.847058274424" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="237.200002656664,74.6352945809546">
+          TopLeft="237.05714280362,74.6352945809546">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="8.85713759247136,44.2705872657802"
+              EndConnector="0,41.2117636934698"
               Start="0,0"
-              End="8.85713759247136,36.7705872657802">
+              End="0,33.7117636934698">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.1352936328901" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.1352936328901"
-                    Point2="0,22.1352936328901"
-                    Point3="4,22.1352936328901" />
+                    End="0,33.7117636934698" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="224,41.6"
+          Id="Package\Log Data to PackageLogs table"
+          TopLeft="126.285716436347,197.600002771265" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="237.599999693462,157.447058274424">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.1529444968409"
+              Start="0,0"
+              End="0,32.6529444968409">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="4.85713759247136,22.1352936328901" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.85713759247136,22.1352936328901"
-                    Point2="8.85713759247136,22.1352936328901"
-                    Point3="8.85713759247136,26.1352936328901" />
-                  <mssgle:LineSegment
-                    End="8.85713759247136,36.7705872657802" />
+                    End="0,32.6529444968409" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -668,15 +706,15 @@
     design-time-name="Package\Load Abalone">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="180.8,41.6"
-          Id="Package\Load Abalone\Load to Abalone table"
-          TopLeft="233.571426537572,252.094117423985" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="161.6,41.6"
           Id="Package\Load Abalone\Read Abalone csv"
           TopLeft="205.714283563653,138.482353438803" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Load Abalone\Load to Abalone table"
+          TopLeft="233.571426537572,252.094117423985" />
         <EdgeLayout
           Id="Package\Load Abalone.Paths[Flat File Source Output]"
           TopLeft="286.514283563653,180.082353438803">
@@ -708,7 +746,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
