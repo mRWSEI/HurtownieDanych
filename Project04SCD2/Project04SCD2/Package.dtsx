@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{70CA6BE0-D929-4B74-B872-C982F32C0166}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{53EEC051-60BD-4F15-B9FD-3090B7A05292}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1159,7 +1159,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{C5F0D95E-AC94-4C8B-B49B-E5FFF53774C2}"
-          SQLTask:SqlStatementSource="if not exists (select * from sysobjects where name='sObszar' and xtype='U')&#xA;CREATE TABLE [sObszar] (&#xA;    [GeographyKey] smallint,&#xA;    [ContinentName] varchar(30),&#xA;    [CityName] varchar(30),&#xA;    [StateProvinceName] varchar(50),&#xA;    [RegionCountryName] varchar(25)&#xA;)&#xA;&#xA;GO&#xA;&#xA;if not exists (select * from sysobjects where name='sPracownik' and xtype='U')&#xA; CREATE TABLE [sPracownik] (&#xA;    [EmployeeKey] smallint,&#xA;    [FirstName] varchar(20),&#xA;    [LastName] varchar(30),&#xA;    [Title] varchar(30)&#xA;)&#xA;&#xA;GO&#xA;&#xA;if not exists (select * from sysobjects where name='sSklep' and xtype='U')&#xA;CREATE TABLE [sSklep] (&#xA;    [StoreBusinessId] smallint,&#xA;    [StoreName] varchar(50),&#xA;    [StoreDescription] varchar(50),&#xA;    [Status] varchar(5),&#xA;    [ManagerKey] smallint,&#xA;    [GeographyKey] smallint&#xA;)&#xA;GO&#xA;&#xA;if not exists (select * from sysobjects where name='DimStore' and xtype='U')&#xA;CREATE TABLE [DimStore] (&#xA;    [StoreBusinessId] smallint,&#xA;    [StoreName] varchar(50),&#xA;    [StoreDescription] varchar(50),&#xA;    [Status] varchar(5),&#xA;    [FirstName] varchar(20),&#xA;    [LastName] varchar(30),&#xA;    [Title] varchar(30),&#xA;    [ContinentName] varchar(30),&#xA;    [CityName] varchar(30),&#xA;    [StateProvinceName] varchar(50),&#xA;    [RegionCountryName] varchar(25)&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="if not exists (select * from sysobjects where name='sObszar' and xtype='U')&#xA;CREATE TABLE [sObszar] (&#xA;    [GeographyKey] smallint,&#xA;    [ContinentName] varchar(30),&#xA;    [CityName] varchar(30),&#xA;    [StateProvinceName] varchar(50),&#xA;    [RegionCountryName] varchar(25)&#xA;)&#xA;&#xA;GO&#xA;&#xA;if not exists (select * from sysobjects where name='sPracownik' and xtype='U')&#xA; CREATE TABLE [sPracownik] (&#xA;    [EmployeeKey] smallint,&#xA;    [FirstName] varchar(20),&#xA;    [LastName] varchar(30),&#xA;    [Title] varchar(30)&#xA;)&#xA;&#xA;GO&#xA;&#xA;if not exists (select * from sysobjects where name='sSklep' and xtype='U')&#xA;CREATE TABLE [sSklep] (&#xA;    [StoreBusinessId] smallint,&#xA;    [StoreName] varchar(50),&#xA;    [StoreDescription] varchar(50),&#xA;    [Status] varchar(5),&#xA;    [ManagerKey] smallint,&#xA;    [GeographyKey] smallint&#xA;)&#xA;GO&#xA;&#xA;if not exists (select * from sysobjects where name='DimStore' and xtype='U')&#xA;CREATE TABLE [DimStore] (&#xA;    [StoreBusinessId] smallint,&#xA;    [StoreName] varchar(50),&#xA;    [StoreDescription] varchar(50),&#xA;    [Status] varchar(5),&#xA;    [FirstName] varchar(20),&#xA;    [LastName] varchar(30),&#xA;    [Title] varchar(30),&#xA;    [ContinentName] varchar(30),&#xA;    [CityName] varchar(30),&#xA;    [StateProvinceName] varchar(50),&#xA;    [RegionCountryName] varchar(25),&#xA;    [StartDate] datetime,&#xA;    [EndDate] datetime&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1177,11 +1177,159 @@
           version="1">
           <components>
             <component
-              refId="Package\Transform Data\Export to DimStore"
+              refId="Package\Transform Data\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Transform Data\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform Data\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Transform Data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform Data\Derived Column.Outputs[Derived Column Output].Columns[EndDate]"
+                      dataType="dbTimeStamp"
+                      description="EndDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transform Data\Derived Column.Outputs[Derived Column Output].Columns[EndDate]"
+                      name="EndDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform Data\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Transform Data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform Data\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Transform Data\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform Data\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Transform Data\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform Data\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]"
+                      dataType="dbTimeStamp"
+                      description="StartDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transform Data\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]"
+                      name="StartDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform Data\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Transform Data\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform Data\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform Data\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform Data\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform Data\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform Data\Insert Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="Export to DimStore"
+              name="Insert Destination"
               usesDispositions="true"
               version="4">
               <properties>
@@ -1214,7 +1362,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -1226,7 +1374,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                  name="FastLoadOptions"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -1234,7 +1382,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Transform Data\Export to DimStore.Connections[OleDbConnection]"
+                  refId="Package\Transform Data\Insert Destination.Connections[OleDbConnection]"
                   connectionManagerID="{C5F0D95E-AC94-4C8B-B49B-E5FFF53774C2}:external"
                   connectionManagerRefId="Project.ConnectionManagers[MR]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1242,186 +1390,200 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input]"
+                  refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].Columns[StoreBusinessId]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[StoreBusinessId]"
                       cachedDataType="i2"
                       cachedName="StoreBusinessId"
-                      externalMetadataColumnId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[StoreBusinessId]"
-                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]" />
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreBusinessId]"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreBusinessId]" />
                     <inputColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].Columns[StoreName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[StoreName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StoreName"
-                      externalMetadataColumnId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
-                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StoreName]" />
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreName]" />
                     <inputColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].Columns[StoreDescription]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[StoreDescription]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StoreDescription"
-                      externalMetadataColumnId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[StoreDescription]"
-                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StoreDescription]" />
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreDescription]"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreDescription]" />
                     <inputColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].Columns[Status]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[Status]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="5"
                       cachedName="Status"
-                      externalMetadataColumnId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
-                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[Status]" />
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[Status]" />
                     <inputColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[FirstName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="20"
                       cachedName="FirstName"
-                      externalMetadataColumnId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
-                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[FirstName]" />
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[FirstName]" />
                     <inputColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[LastName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="30"
                       cachedName="LastName"
-                      externalMetadataColumnId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
-                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[LastName]" />
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[LastName]" />
                     <inputColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].Columns[Title]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[Title]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="30"
                       cachedName="Title"
-                      externalMetadataColumnId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
-                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[Title]" />
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[Title]" />
                     <inputColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].Columns[ContinentName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[ContinentName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="30"
                       cachedName="ContinentName"
-                      externalMetadataColumnId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[ContinentName]"
-                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[ContinentName]" />
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContinentName]"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[ContinentName]" />
                     <inputColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].Columns[CityName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[CityName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="30"
                       cachedName="CityName"
-                      externalMetadataColumnId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
-                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[CityName]" />
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[CityName]" />
                     <inputColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].Columns[StateProvinceName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[StateProvinceName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StateProvinceName"
-                      externalMetadataColumnId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
-                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StateProvinceName]" />
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceName]" />
                     <inputColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].Columns[RegionCountryName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[RegionCountryName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="25"
                       cachedName="RegionCountryName"
-                      externalMetadataColumnId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[RegionCountryName]"
-                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[RegionCountryName]" />
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegionCountryName]"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[RegionCountryName]" />
+                    <inputColumn
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[StartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="StartDate"
+                      externalMetadataColumnId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      lineageId="Package\Transform Data\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[StoreBusinessId]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreBusinessId]"
                       dataType="i2"
                       name="StoreBusinessId" />
                     <externalMetadataColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
                       name="StoreName" />
                     <externalMetadataColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[StoreDescription]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreDescription]"
                       codePage="1250"
                       dataType="str"
                       length="50"
                       name="StoreDescription" />
                     <externalMetadataColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
                       codePage="1250"
                       dataType="str"
                       length="5"
                       name="Status" />
                     <externalMetadataColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
                       codePage="1250"
                       dataType="str"
                       length="20"
                       name="FirstName" />
                     <externalMetadataColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
                       codePage="1250"
                       dataType="str"
                       length="30"
                       name="LastName" />
                     <externalMetadataColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       codePage="1250"
                       dataType="str"
                       length="30"
                       name="Title" />
                     <externalMetadataColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[ContinentName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContinentName]"
                       codePage="1250"
                       dataType="str"
                       length="30"
                       name="ContinentName" />
                     <externalMetadataColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
                       codePage="1250"
                       dataType="str"
                       length="30"
                       name="CityName" />
                     <externalMetadataColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
                       name="StateProvinceName" />
                     <externalMetadataColumn
-                      refId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input].ExternalColumns[RegionCountryName]"
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegionCountryName]"
                       codePage="1250"
                       dataType="str"
                       length="25"
                       name="RegionCountryName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      dataType="dbTimeStamp"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      dataType="dbTimeStamp"
+                      name="EndDate" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Transform Data\Export to DimStore.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Transform Data\Insert Destination.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transform Data\Export to DimStore.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Transform Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Transform Data\Export to DimStore.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Transform Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Transform Data\Export to DimStore.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Transform Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Transform Data\Export to DimStore.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Transform Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1963,6 +2125,1161 @@
                       </properties>
                     </outputColumn>
                   </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform Data\NewData Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="NewData Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Transform Data\NewData Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform Data\NewData Sort.Inputs[Sort Input].Columns[StoreBusinessId]"
+                      cachedDataType="i2"
+                      cachedName="StoreBusinessId"
+                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\NewData Sort.Inputs[Sort Input].Columns[StoreName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StoreName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\NewData Sort.Inputs[Sort Input].Columns[StoreDescription]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreDescription"
+                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StoreDescription]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\NewData Sort.Inputs[Sort Input].Columns[Status]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Status"
+                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[Status]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\NewData Sort.Inputs[Sort Input].Columns[FirstName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="FirstName"
+                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\NewData Sort.Inputs[Sort Input].Columns[LastName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="LastName"
+                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\NewData Sort.Inputs[Sort Input].Columns[Title]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Title"
+                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[Title]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\NewData Sort.Inputs[Sort Input].Columns[ContinentName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="ContinentName"
+                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[ContinentName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\NewData Sort.Inputs[Sort Input].Columns[CityName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="CityName"
+                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[CityName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\NewData Sort.Inputs[Sort Input].Columns[StateProvinceName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StateProvinceName"
+                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StateProvinceName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\NewData Sort.Inputs[Sort Input].Columns[RegionCountryName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="RegionCountryName"
+                      lineageId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[RegionCountryName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform Data\NewData Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreBusinessId]"
+                      dataType="i2"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreBusinessId]"
+                      name="StoreBusinessId"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreName]"
+                      name="StoreName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StoreName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreDescription]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreDescription]"
+                      name="StoreDescription">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StoreDescription]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Status]"
+                      codePage="1250"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Status]"
+                      name="Status">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[Status]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[FirstName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[FirstName]"
+                      name="FirstName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[FirstName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[LastName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[LastName]"
+                      name="LastName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[LastName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Title]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Title]"
+                      name="Title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[Title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[ContinentName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[ContinentName]"
+                      name="ContinentName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[ContinentName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[CityName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[CityName]"
+                      name="CityName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[CityName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StateProvinceName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StateProvinceName]"
+                      name="StateProvinceName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[StateProvinceName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[RegionCountryName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[RegionCountryName]"
+                      name="RegionCountryName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output].Columns[RegionCountryName]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform Data\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[DimStore] SET [EndDate] = ? WHERE [StoreName] = ? AND [EndDate] IS NULL</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform Data\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{C5F0D95E-AC94-4C8B-B49B-E5FFF53774C2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MR]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transform Data\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command.Inputs[OLE DB Command Input].Columns[StoreName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreName]" />
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command.Inputs[OLE DB Command Input].Columns[EndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EndDate"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Transform Data\Derived Column.Outputs[Derived Column Output].Columns[EndDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform Data\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Transform Data\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform Data\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Transform Data\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform Data\OLE DB Command 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[DimStore] SET [CityName] = ?,[ContinentName] = ?,[FirstName] = ?,[LastName] = ?,[RegionCountryName] = ?,[StateProvinceName] = ?,[Status] = ?,[StoreBusinessId] = ?,[StoreDescription] = ?,[Title] = ? WHERE [StoreName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform Data\OLE DB Command 1.Connections[OleDbConnection]"
+                  connectionManagerID="{C5F0D95E-AC94-4C8B-B49B-E5FFF53774C2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MR]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[CityName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="CityName"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[CityName]" />
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ContinentName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="ContinentName"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[ContinentName]" />
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[FirstName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[LastName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[RegionCountryName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="RegionCountryName"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[RegionCountryName]" />
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[StateProvinceName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StateProvinceName"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StateProvinceName]" />
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Status]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[StoreBusinessId]"
+                      cachedDataType="i2"
+                      cachedName="StoreBusinessId"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreBusinessId]" />
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[StoreDescription]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreDescription"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreDescription]" />
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[StoreName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreName]" />
+                    <inputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Title]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Title]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1250"
+                      dataType="str"
+                      length="20"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1250"
+                      dataType="str"
+                      length="25"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      codePage="1250"
+                      dataType="str"
+                      length="5"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      dataType="i2"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      name="Param_9">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Param_10">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform Data\OLE DB Command 1.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform Data\OLE DB Command 1.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform Data\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform Data\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform Data\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform Data\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [CityName], [ContinentName], [FirstName], [LastName], [RegionCountryName], [StateProvinceName], [Status], [StoreDescription], [StoreName], [Title],[StartDate],[EndDate] FROM [dbo].[DimStore]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[StartDate] IS NOT NULL AND [EndDate] IS NULL</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform Data\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{C5F0D95E-AC94-4C8B-B49B-E5FFF53774C2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MR]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[CityName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="CityName"
+                      externalMetadataColumnId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CityName]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[CityName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ContinentName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="ContinentName"
+                      externalMetadataColumnId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ContinentName]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[ContinentName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[FirstName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[FirstName]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[LastName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[LastName]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[RegionCountryName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="RegionCountryName"
+                      externalMetadataColumnId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[RegionCountryName]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[RegionCountryName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[StateProvinceName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StateProvinceName"
+                      externalMetadataColumnId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StateProvinceName]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StateProvinceName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Status]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Status]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Status]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[StoreDescription]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreDescription"
+                      externalMetadataColumnId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StoreDescription]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreDescription]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[StoreName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      externalMetadataColumnId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StoreName]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Title]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Title]"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Title]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CityName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ContinentName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      name="ContinentName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[FirstName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="20"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[LastName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[RegionCountryName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="25"
+                      name="RegionCountryName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StateProvinceName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Status]"
+                      codePage="1250"
+                      dataType="str"
+                      length="5"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StoreDescription]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="StoreDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StoreName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="StoreName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Title]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StartDate]"
+                      dataType="dbTimeStamp"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EndDate]"
+                      dataType="dbTimeStamp"
+                      name="EndDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform Data\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform Data\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform Data\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform Data\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform Data\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform Data\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -3448,8 +4765,472 @@
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Transform Data\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Transform Data\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 1].Columns[StoreBusinessId]"
+                      cachedDataType="i2"
+                      cachedName="StoreBusinessId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreBusinessId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreBusinessId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 1].Columns[StoreName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 1].Columns[StoreDescription]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreDescription"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreDescription]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreDescription]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 1].Columns[Status]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Status"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 1].Columns[FirstName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="FirstName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[FirstName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 1].Columns[LastName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="LastName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[LastName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 1].Columns[Title]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Title"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Title]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[Title]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 1].Columns[ContinentName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="ContinentName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[ContinentName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[ContinentName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 1].Columns[CityName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="CityName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[CityName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[CityName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 1].Columns[StateProvinceName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StateProvinceName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StateProvinceName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 1].Columns[RegionCountryName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="RegionCountryName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[RegionCountryName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[RegionCountryName]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Transform Data\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 2].Columns[StoreBusinessId]"
+                      cachedDataType="i2"
+                      cachedName="StoreBusinessId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreBusinessId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreBusinessId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 2].Columns[StoreName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 2].Columns[StoreDescription]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreDescription"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StoreDescription]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreDescription]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 2].Columns[Status]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Status"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 2].Columns[FirstName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="FirstName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[FirstName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 2].Columns[LastName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="LastName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[LastName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 2].Columns[Title]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Title"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[Title]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[Title]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 2].Columns[ContinentName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="ContinentName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[ContinentName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[ContinentName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 2].Columns[CityName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="CityName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[CityName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[CityName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 2].Columns[StateProvinceName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StateProvinceName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[StateProvinceName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform Data\Union All.Inputs[Union All Input 2].Columns[RegionCountryName]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="RegionCountryName"
+                      lineageId="Package\Transform Data\NewData Sort.Outputs[Sort Output].Columns[RegionCountryName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[RegionCountryName]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Transform Data\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform Data\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreBusinessId]"
+                      dataType="i2"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreBusinessId]"
+                      name="StoreBusinessId" />
+                    <outputColumn
+                      refId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreName]"
+                      name="StoreName" />
+                    <outputColumn
+                      refId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreDescription]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StoreDescription]"
+                      name="StoreDescription" />
+                    <outputColumn
+                      refId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[Status]"
+                      codePage="1250"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[FirstName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[LastName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[Title]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[ContinentName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[ContinentName]"
+                      name="ContinentName" />
+                    <outputColumn
+                      refId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[CityName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[CityName]"
+                      name="CityName" />
+                    <outputColumn
+                      refId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[StateProvinceName]"
+                      name="StateProvinceName" />
+                    <outputColumn
+                      refId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[RegionCountryName]"
+                      codePage="1250"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Transform Data\Union All.Outputs[Union All Output 1].Columns[RegionCountryName]"
+                      name="RegionCountryName" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
+            <path
+              refId="Package\Transform Data.Paths[Derived Column Output]"
+              endId="Package\Transform Data\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Transform Data\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Transform Data.Paths[Derived Column Output1]"
+              endId="Package\Transform Data\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Transform Data\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Transform Data.Paths[Historical Attribute Inserts Output]"
+              endId="Package\Transform Data\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\Transform Data\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\Transform Data.Paths[Inferred Member Updates Output]"
+              endId="Package\Transform Data\OLE DB Command 1.Inputs[OLE DB Command Input]"
+              name="Inferred Member Updates Output"
+              startId="Package\Transform Data\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]" />
             <path
               refId="Package\Transform Data.Paths[Merge Join Output]"
               endId="Package\Transform Data\Sort.Inputs[Sort Input]"
@@ -3457,14 +5238,19 @@
               startId="Package\Transform Data\Join by Employee Manager Key.Outputs[Merge Join Output]" />
             <path
               refId="Package\Transform Data.Paths[Merge Join Output1]"
-              endId="Package\Transform Data\Export to DimStore.Inputs[OLE DB Destination Input]"
+              endId="Package\Transform Data\NewData Sort.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\Transform Data\Join By GeographyKey.Outputs[Merge Join Output]" />
             <path
-              refId="Package\Transform Data.Paths[OLE DB Source Output]"
-              endId="Package\Transform Data\Sort by ManagerKey.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\Transform Data\sSklep.Outputs[OLE DB Source Output]" />
+              refId="Package\Transform Data.Paths[New Output]"
+              endId="Package\Transform Data\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\Transform Data\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\Transform Data.Paths[OLE DB Command Output]"
+              endId="Package\Transform Data\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\Transform Data\OLE DB Command.Outputs[OLE DB Command Output]" />
             <path
               refId="Package\Transform Data.Paths[OLE DB Source Output1]"
               endId="Package\Transform Data\Sort By EmployeeKey.Inputs[Sort Input]"
@@ -3476,15 +5262,10 @@
               name="OLE DB Source Output"
               startId="Package\Transform Data\sObszar.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Transform Data.Paths[Sort Output]"
-              endId="Package\Transform Data\Join by Employee Manager Key.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\Transform Data\Sort by ManagerKey.Outputs[Sort Output]" />
-            <path
-              refId="Package\Transform Data.Paths[Sort Output1]"
-              endId="Package\Transform Data\Join by Employee Manager Key.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\Transform Data\Sort By EmployeeKey.Outputs[Sort Output]" />
+              refId="Package\Transform Data.Paths[OLE DB Source Output]"
+              endId="Package\Transform Data\Sort by ManagerKey.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Transform Data\sSklep.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\Transform Data.Paths[Sort Output2]"
               endId="Package\Transform Data\Join By GeographyKey.Inputs[Merge Join Left Input]"
@@ -3495,6 +5276,26 @@
               endId="Package\Transform Data\Join By GeographyKey.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\Transform Data\Sort by GeopraphyKey.Outputs[Sort Output]" />
+            <path
+              refId="Package\Transform Data.Paths[Sort Output1]"
+              endId="Package\Transform Data\Join by Employee Manager Key.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Transform Data\Sort By EmployeeKey.Outputs[Sort Output]" />
+            <path
+              refId="Package\Transform Data.Paths[Sort Output4]"
+              endId="Package\Transform Data\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Sort Output"
+              startId="Package\Transform Data\NewData Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Transform Data.Paths[Sort Output]"
+              endId="Package\Transform Data\Join by Employee Manager Key.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Transform Data\Sort by ManagerKey.Outputs[Sort Output]" />
+            <path
+              refId="Package\Transform Data.Paths[Union All Output 1]"
+              endId="Package\Transform Data\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\Transform Data\Union All.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -3816,37 +5617,37 @@
     design-time-name="Package\Transform Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="115.2,41.6"
           Id="Package\Transform Data\sObszar"
-          TopLeft="440.8,43.2" />
+          TopLeft="43.1,208.7" />
         <NodeLayout
           Size="131.2,41.6"
           Id="Package\Transform Data\sPracownik"
-          TopLeft="256,52" />
+          TopLeft="29.1000000000001,5.49999999999995" />
         <NodeLayout
           Size="108,41.6"
           Id="Package\Transform Data\sSklep"
-          TopLeft="79.2,52.8" />
+          TopLeft="277.7,5.49999999999995" />
         <NodeLayout
           Size="173.6,41.6"
           Id="Package\Transform Data\Sort by ManagerKey"
-          TopLeft="44.8,138.4" />
+          TopLeft="244.9,107.1" />
         <EdgeLayout
           Id="Package\Transform Data.Paths[OLE DB Source Output]"
-          TopLeft="132.4,94.4">
+          TopLeft="331.7,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,36.5">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.5" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3858,21 +5659,21 @@
         <NodeLayout
           Size="178.4,41.6"
           Id="Package\Transform Data\Sort By EmployeeKey"
-          TopLeft="232.8,138.4" />
+          TopLeft="5.50000000000004,107.1" />
         <EdgeLayout
           Id="Package\Transform Data.Paths[OLE DB Source Output1]"
-          TopLeft="321.8,93.6">
+          TopLeft="94.7,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.8"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,37.3">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.3" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3884,33 +5685,33 @@
         <NodeLayout
           Size="224.8,41.6"
           Id="Package\Transform Data\Join by Employee Manager Key"
-          TopLeft="135.2,223.2" />
+          TopLeft="219.3,208.7" />
         <EdgeLayout
           Id="Package\Transform Data.Paths[Sort Output]"
-          TopLeft="131.6,180">
+          TopLeft="331.7,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="79.8666666666667,43.2"
+              EndConnector="36.1333333333333,59.9999999999999"
               Start="0,0"
-              End="79.8666666666667,35.7">
+              End="36.1333333333333,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.7368197879859" />
+                    End="0,31.7455830388692" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.7368197879859"
-                    Point2="0,25.7368197879859"
-                    Point3="4,25.7368197879859" />
+                    Point1="0,31.7455830388692"
+                    Point2="0,35.7455830388692"
+                    Point3="4,35.7455830388692" />
                   <mssgle:LineSegment
-                    End="75.8666666666667,25.7368197879859" />
+                    End="32.1333333333333,35.7455830388692" />
                   <mssgle:CubicBezierSegment
-                    Point1="75.8666666666667,25.7368197879859"
-                    Point2="79.8666666666667,25.7368197879859"
-                    Point3="79.8666666666667,29.7368197879859" />
+                    Point1="32.1333333333333,35.7455830388692"
+                    Point2="36.1333333333333,35.7455830388692"
+                    Point3="36.1333333333333,39.7455830388692" />
                   <mssgle:LineSegment
-                    End="79.8666666666667,35.7" />
+                    End="36.1333333333333,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3921,30 +5722,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transform Data.Paths[Sort Output1]"
-          TopLeft="322,180">
+          TopLeft="94.7,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-38.2666666666667,43.2"
+              EndConnector="200.866666666667,59.9999999999999"
               Start="0,0"
-              End="-38.2666666666667,35.7">
+              End="200.866666666667,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.7368197879859" />
+                    End="0,31.7455830388692" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.7368197879859"
-                    Point2="0,25.7368197879859"
-                    Point3="-4,25.7368197879859" />
+                    Point1="0,31.7455830388692"
+                    Point2="0,35.7455830388692"
+                    Point3="4,35.7455830388692" />
                   <mssgle:LineSegment
-                    End="-34.2666666666667,25.7368197879859" />
+                    End="196.866666666667,35.7455830388692" />
                   <mssgle:CubicBezierSegment
-                    Point1="-34.2666666666667,25.7368197879859"
-                    Point2="-38.2666666666667,25.7368197879859"
-                    Point3="-38.2666666666667,29.7368197879859" />
+                    Point1="196.866666666667,35.7455830388692"
+                    Point2="200.866666666667,35.7455830388692"
+                    Point3="200.866666666667,39.7455830388692" />
                   <mssgle:LineSegment
-                    End="-38.2666666666667,35.7" />
+                    End="200.866666666667,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3956,21 +5757,33 @@
         <NodeLayout
           Size="184,41.6"
           Id="Package\Transform Data\Sort by GeopraphyKey"
-          TopLeft="412.8,308" />
+          TopLeft="38.7000000000002,310.3" />
         <EdgeLayout
           Id="Package\Transform Data.Paths[OLE DB Source Output2]"
-          TopLeft="501.6,84.8">
+          TopLeft="100.7,250.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,223.2"
+              EndConnector="30.0000000000001,59.9999999999999"
               Start="0,0"
-              End="0,215.7">
+              End="30.0000000000001,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,215.7" />
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="26.0000000000001,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26.0000000000001,30"
+                    Point2="30.0000000000001,30"
+                    Point3="30.0000000000001,34" />
+                  <mssgle:LineSegment
+                    End="30.0000000000001,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3982,33 +5795,21 @@
         <NodeLayout
           Size="97.6,41.6"
           Id="Package\Transform Data\Sort"
-          TopLeft="181.6,301.6" />
+          TopLeft="282.9,310.3" />
         <EdgeLayout
           Id="Package\Transform Data.Paths[Merge Join Output]"
-          TopLeft="247.6,264.8">
+          TopLeft="331.7,250.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-17.2000000000001,36.8"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="-17.2000000000001,29.3">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.4"
-                    Point2="0,18.4"
-                    Point3="-4,18.4" />
-                  <mssgle:LineSegment
-                    End="-13.2000000000001,18.4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-13.2000000000001,18.4"
-                    Point2="-17.2000000000001,18.4"
-                    Point3="-17.2000000000001,22.4" />
-                  <mssgle:LineSegment
-                    End="-17.2000000000001,29.3" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4020,33 +5821,33 @@
         <NodeLayout
           Size="183.2,41.6"
           Id="Package\Transform Data\Join By GeographyKey"
-          TopLeft="276,372.8" />
+          TopLeft="240.1,411.9" />
         <EdgeLayout
           Id="Package\Transform Data.Paths[Sort Output2]"
-          TopLeft="230.4,343.2">
+          TopLeft="331.7,351.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="108,29.6"
+              EndConnector="29.2,59.9999999999999"
               Start="0,0"
-              End="108,22.1">
+              End="29.2,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.6062337662338" />
+                    End="0,31.6883116883116" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.6062337662338"
-                    Point2="0,17.6062337662338"
-                    Point3="4,17.6062337662338" />
+                    Point1="0,31.6883116883116"
+                    Point2="0,35.6883116883116"
+                    Point3="4,35.6883116883116" />
                   <mssgle:LineSegment
-                    End="104,17.6062337662338" />
+                    End="25.2,35.6883116883116" />
                   <mssgle:CubicBezierSegment
-                    Point1="104,17.6062337662338"
-                    Point2="108,17.6062337662338"
-                    Point3="108,21.6062337662338" />
+                    Point1="25.2,35.6883116883116"
+                    Point2="29.2,35.6883116883116"
+                    Point3="29.2,39.6883116883116" />
                   <mssgle:LineSegment
-                    End="108,22.1" />
+                    End="29.2,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4057,30 +5858,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transform Data.Paths[Sort Output3]"
-          TopLeft="504.8,349.6">
+          TopLeft="130.7,351.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-108,23.2"
+              EndConnector="171.8,59.9999999999999"
               Start="0,0"
-              End="-108,15.7">
+              End="171.8,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.79948051948054" />
+                    End="0,31.6883116883116" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.79948051948054"
-                    Point2="0,13.7994805194805"
-                    Point3="-4,13.7994805194805" />
+                    Point1="0,31.6883116883116"
+                    Point2="0,35.6883116883116"
+                    Point3="4,35.6883116883116" />
                   <mssgle:LineSegment
-                    End="-104,13.7994805194805" />
+                    End="167.8,35.6883116883116" />
                   <mssgle:CubicBezierSegment
-                    Point1="-104,13.7994805194805"
-                    Point2="-108,13.7994805194805"
-                    Point3="-108,17.7994805194805" />
+                    Point1="167.8,35.6883116883116"
+                    Point2="171.8,35.6883116883116"
+                    Point3="171.8,39.6883116883116" />
                   <mssgle:LineSegment
-                    End="-108,15.7" />
+                    End="171.8,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4090,29 +5891,287 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="168,41.6"
-          Id="Package\Transform Data\Export to DimStore"
-          TopLeft="277.6,452" />
+          Size="143.2,41.6"
+          Id="Package\Transform Data\NewData Sort"
+          TopLeft="260.1,513.5" />
         <EdgeLayout
           Id="Package\Transform Data.Paths[Merge Join Output1]"
-          TopLeft="364.6,414.4">
+          TopLeft="331.7,453.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37.5999999999999"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="0,30.0999999999999">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.0999999999999" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Transform Data\Slowly Changing Dimension"
+          TopLeft="227.7,615.099999999999" />
+        <EdgeLayout
+          Id="Package\Transform Data.Paths[Sort Output4]"
+          TopLeft="331.7,555.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Transform Data\Derived Column"
+          TopLeft="118.3,716.699999999999" />
+        <EdgeLayout
+          Id="Package\Transform Data.Paths[Historical Attribute Inserts Output]"
+          TopLeft="281.7,656.699999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-87,60"
+              Start="0,0"
+              End="-87,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5063291139241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5063291139241"
+                    Point2="0,20.5063291139241"
+                    Point3="-4,20.5063291139241" />
+                  <mssgle:LineSegment
+                    End="-83,20.5063291139241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-83,20.5063291139241"
+                    Point2="-87,20.5063291139241"
+                    Point3="-87,24.5063291139241" />
+                  <mssgle:LineSegment
+                    End="-87,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-118.55638671875,25.5063291139241,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Transform Data\OLE DB Command"
+          TopLeft="106.3,818.299999999999" />
+        <EdgeLayout
+          Id="Package\Transform Data.Paths[Derived Column Output]"
+          TopLeft="191.7,758.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Transform Data\Union All"
+          TopLeft="271.7,919.899999999999" />
+        <EdgeLayout
+          Id="Package\Transform Data.Paths[New Output]"
+          TopLeft="331.7,656.699999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.6666666666666,263.2"
+              Start="0,0"
+              End="18.6666666666666,255.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,151.842105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,151.842105263158"
+                    Point2="0,155.842105263158"
+                    Point3="4,155.842105263158" />
+                  <mssgle:LineSegment
+                    End="14.6666666666666,155.842105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.6666666666666,155.842105263158"
+                    Point2="18.6666666666666,155.842105263158"
+                    Point3="18.6666666666666,159.842105263158" />
+                  <mssgle:LineSegment
+                    End="18.6666666666666,255.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.7580533854167,160.842105263158,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform Data.Paths[OLE DB Command Output]"
+          TopLeft="188.7,859.899999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="124.333333333333,59.9999999999998"
+              Start="0,0"
+              End="124.333333333333,52.4999999999998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
+                  <mssgle:LineSegment
+                    End="120.333333333333,35.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="120.333333333333,35.5263157894736"
+                    Point2="124.333333333333,35.5263157894736"
+                    Point3="124.333333333333,39.5263157894736" />
+                  <mssgle:LineSegment
+                    End="124.333333333333,52.4999999999998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Transform Data\Derived Column 1"
+          TopLeft="250.5,1021.5" />
+        <EdgeLayout
+          Id="Package\Transform Data.Paths[Union All Output 1]"
+          TopLeft="331.7,961.499999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Transform Data\Insert Destination"
+          TopLeft="250.5,1123.1" />
+        <EdgeLayout
+          Id="Package\Transform Data.Paths[Derived Column Output1]"
+          TopLeft="331.7,1063.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Transform Data\OLE DB Command 1"
+          TopLeft="392.5,716.699999999999" />
+        <EdgeLayout
+          Id="Package\Transform Data.Paths[Inferred Member Updates Output]"
+          TopLeft="381.7,656.699999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98,59.9999999999999"
+              Start="0,0"
+              End="98,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.506329113924"
+                    Point2="0,20.506329113924"
+                    Point3="4,20.506329113924" />
+                  <mssgle:LineSegment
+                    End="94,20.506329113924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94,20.506329113924"
+                    Point2="98,20.506329113924"
+                    Point3="98,24.506329113924" />
+                  <mssgle:LineSegment
+                    End="98,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.40298828125,25.506329113924,148.8059765625,11.658203125"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4158,15 +6217,103 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transform Data\Export to DimStore">
+    design-time-name="Package\Transform Data\Slowly Changing Dimension">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
+        <Name>SCDMetadata</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{C5F0D95E-AC94-4C8B-B49B-E5FFF53774C2}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DimStore]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;NewData Sort.Outputs[Sort Output].Columns[CityName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CityName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;NewData Sort.Outputs[Sort Output].Columns[ContinentName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ContinentName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;NewData Sort.Outputs[Sort Output].Columns[FirstName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;FirstName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;NewData Sort.Outputs[Sort Output].Columns[LastName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;LastName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;NewData Sort.Outputs[Sort Output].Columns[RegionCountryName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;RegionCountryName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;NewData Sort.Outputs[Sort Output].Columns[StateProvinceName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;StateProvinceName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;NewData Sort.Outputs[Sort Output].Columns[Status]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Status&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;NewData Sort.Outputs[Sort Output].Columns[StoreBusinessId]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;StoreBusinessId&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;NewData Sort.Outputs[Sort Output].Columns[StoreDescription]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;StoreDescription&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;NewData Sort.Outputs[Sort Output].Columns[StoreName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;StoreName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;NewData Sort.Outputs[Sort Output].Columns[Title]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Title&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;StartDate&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;EndDate&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
