@@ -59,8 +59,15 @@
     <Folder Include="Properties" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\DimDate.sql" />
+    <Build Include="dbo\Tables\DimPlaneData.sql" />
+    <Build Include="dbo\Tables\DimCarriers.sql" />
+    <Build Include="dbo\Tables\DimAirports.sql" />
+    <Build Include="dbo\Stored Procedures\DimPlaneDataNNRow.sql" />
+    <Build Include="dbo\Stored Procedures\DimCarriersNNRow.sql" />
+    <Build Include="dbo\Stored Procedures\DimAirportsNNRow.sql" />
   </ItemGroup>
 </Project>

@@ -11,12 +11,28 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="DimAirports"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{7D929F9D-03CD-4974-942D-D6EE6DEE65ED}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{6F0E812B-986E-4B5D-B9CE-4000ABB00CCC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Add UNKNOWN row"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0CD406FC-633C-401B-98AF-01D8451F5E71}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Add UNKNOWN row"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{85C5CE02-9398-4E13-8D90-863C220B248E}"
+          SQLTask:SqlStatementSource="EXEC dbo.DimAirportsNNRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\DimAirport"
       DTS:CreationName="Microsoft.Pipeline"
@@ -29,10 +45,500 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
-          version="1" />
+          version="1">
+          <components>
+            <component
+              refId="Package\DimAirport\Insert Into DimAirports"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Into DimAirports"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimAirports]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimAirport\Insert Into DimAirports.Connections[OleDbConnection]"
+                  connectionManagerID="{85C5CE02-9398-4E13-8D90-863C220B248E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Database]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].Columns[Air_IATACode]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="Air_IATACode"
+                      externalMetadataColumnId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_IATACode]"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_IATACode]" />
+                    <inputColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].Columns[Air_AirportName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Air_AirportName"
+                      externalMetadataColumnId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_AirportName]"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_AirportName]" />
+                    <inputColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].Columns[Air_CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Air_CityName"
+                      externalMetadataColumnId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_CityName]"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_CityName]" />
+                    <inputColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].Columns[Air_StateCode]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="Air_StateCode"
+                      externalMetadataColumnId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_StateCode]"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_StateCode]" />
+                    <inputColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].Columns[Air_Country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Air_Country"
+                      externalMetadataColumnId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_Country]"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_Country]" />
+                    <inputColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].Columns[Air_Latitude]"
+                      cachedDataType="numeric"
+                      cachedName="Air_Latitude"
+                      cachedPrecision="14"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_Latitude]"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_Latitude]" />
+                    <inputColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].Columns[Air_Longitude]"
+                      cachedDataType="numeric"
+                      cachedName="Air_Longitude"
+                      cachedPrecision="14"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_Longitude]"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_Longitude]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_Id]"
+                      dataType="i4"
+                      name="Air_Id" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_IATACode]"
+                      dataType="wstr"
+                      length="4"
+                      name="Air_IATACode" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_AirportName]"
+                      dataType="wstr"
+                      length="50"
+                      name="Air_AirportName" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_CityName]"
+                      dataType="wstr"
+                      length="50"
+                      name="Air_CityName" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_StateCode]"
+                      dataType="wstr"
+                      length="2"
+                      name="Air_StateCode" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_Country]"
+                      dataType="wstr"
+                      length="50"
+                      name="Air_Country" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_Latitude]"
+                      dataType="numeric"
+                      name="Air_Latitude"
+                      precision="14"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input].ExternalColumns[Air_Longitude]"
+                      dataType="numeric"
+                      name="Air_Longitude"
+                      precision="14"
+                      scale="10" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DimAirport\Insert Into DimAirports.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimAirport\Insert Into DimAirports.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimAirport\Insert Into DimAirports.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimAirport\Insert Into DimAirports.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DimAirport\Load AirportsCSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Load AirportsCSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DimAirport\Load AirportsCSV.Connections[FlatFileConnection]"
+                  connectionManagerID="{D38985E5-6775-4730-BBBF-72C089969F8E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[AirportsCSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_IATACode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[iata]"
+                      length="4"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_IATACode]"
+                      name="Air_IATACode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_AirportName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[airport]"
+                      length="50"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_AirportName]"
+                      name="Air_AirportName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_CityName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      length="50"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_CityName]"
+                      name="Air_CityName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_StateCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[state]"
+                      length="2"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_StateCode]"
+                      name="Air_StateCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[country]"
+                      length="50"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_Country]"
+                      name="Air_Country"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_Latitude]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[lat]"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_Latitude]"
+                      name="Air_Latitude"
+                      precision="14"
+                      scale="10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_Longitude]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[long]"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].Columns[Air_Longitude]"
+                      name="Air_Longitude"
+                      precision="14"
+                      scale="10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[iata]"
+                      dataType="wstr"
+                      length="4"
+                      name="iata" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[airport]"
+                      dataType="wstr"
+                      length="50"
+                      name="airport" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="50"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[state]"
+                      dataType="wstr"
+                      length="2"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="50"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[lat]"
+                      dataType="numeric"
+                      name="lat"
+                      precision="14"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output].ExternalColumns[long]"
+                      dataType="numeric"
+                      name="long"
+                      precision="14"
+                      scale="10" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DimAirport.Paths[Flat File Source Output]"
+              endId="Package\DimAirport\Insert Into DimAirports.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\DimAirport\Load AirportsCSV.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate DimAirport"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BD9250F1-A774-4C73-8B67-7F2B7E08725E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate DimAirport"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{85C5CE02-9398-4E13-8D90-863C220B248E}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE DimAirports" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EA1D1B3A-E4D8-4D58-9271-FCA00DAED7EB}"
+      DTS:From="Package\DimAirport"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Add UNKNOWN row" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2CA5344-7B45-45F6-9E41-B56FDC97A547}"
+      DTS:From="Package\Truncate DimAirport"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DimAirport" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -44,13 +550,116 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\Add UNKNOWN row"
+          TopLeft="139.428573803026,181.69412019525" />
         <NodeLayout
           Size="128.8,41.6"
           Id="Package\DimAirport"
           TopLeft="166.857145698703,92.9882365982426" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="228.542859750864,134.588236598243">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.1058835970076"
+              Start="0,0"
+              End="0,39.6058835970076">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.6058835970076" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Truncate DimAirport"
+          TopLeft="136.571430897226,18.3529414338637" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="227.314288297965,59.9529414338637">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.0352951643789"
+              Start="0,0"
+              End="0,25.5352951643789">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5352951643789" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\DimAirport">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\DimAirport\Load AirportsCSV"
+          TopLeft="141.142859546506,35.4823534388031" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\DimAirport\Insert Into DimAirports"
+          TopLeft="122.285716368228,139.482354897364" />
+        <EdgeLayout
+          Id="Package\DimAirport.Paths[Flat File Source Output]"
+          TopLeft="218.314287957367,77.0823534388031">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.4000014585607"
+              Start="0,0"
+              End="0,54.9000014585607">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.9000014585607" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimAirport\Insert Into DimAirports">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
