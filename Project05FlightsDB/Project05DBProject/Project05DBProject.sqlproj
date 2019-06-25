@@ -60,6 +60,7 @@
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\DimDate.sql" />
@@ -69,5 +70,7 @@
     <Build Include="dbo\Stored Procedures\DimPlaneDataNNRow.sql" />
     <Build Include="dbo\Stored Procedures\DimCarriersNNRow.sql" />
     <Build Include="dbo\Stored Procedures\DimAirportsNNRow.sql" />
+    <Build Include="dbo\Stored Procedures\DimDateFillUp.sql" />
+    <Build Include="Security\raporty.sql" />
   </ItemGroup>
 </Project>
