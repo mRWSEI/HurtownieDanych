@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="DimDate"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{EC7B943E-EE23-45A0-AF25-CF99953446F3}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{6D6A0D03-9E23-457A-B5FE-5E781765F9BD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

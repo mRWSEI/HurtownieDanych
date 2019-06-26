@@ -11,10 +11,22 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="FactFlights"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{65C6D191-000F-4B8E-8503-FA5A894AACD8}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{B916EB5C-FE1B-46A4-9271-AF4F034C7E7D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{7F0286EB-2028-4BE6-8E4D-7A1455B55ED8}"
+      DTS:ObjectName="FlightsCSVFolderPath"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">C:\Users\admin\Downloads\AirplaneDB\</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -29,7 +41,807 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
-          version="1" />
+          version="1">
+          <components>
+            <component
+              refId="Package\Insert data into FactFlights\Load FactsCSV from variable"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Load FactsCSV from variable"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Connections[FlatFileConnection]"
+                  connectionManagerID="{AE89132D-5C3F-4358-9355-947F5128D810}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[FlightsCSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Year]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Year]"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Month]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Month]"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DayofMonth]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[DayofMonth]"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DayofMonth]"
+                      name="DayofMonth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DayOfWeek]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[DayOfWeek]"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DayOfWeek]"
+                      name="DayOfWeek"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[DepTime]"
+                      length="4"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepTime]"
+                      name="DepTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSDepTime]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CRSDepTime]"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSDepTime]"
+                      name="CRSDepTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[ArrTime]"
+                      length="4"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrTime]"
+                      name="ArrTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSArrTime]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CRSArrTime]"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSArrTime]"
+                      name="CRSArrTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[UniqueCarrier]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[UniqueCarrier]"
+                      length="2"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[UniqueCarrier]"
+                      name="UniqueCarrier"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[FlightNum]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[FlightNum]"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[FlightNum]"
+                      name="FlightNum"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TailNum]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[TailNum]"
+                      length="50"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TailNum]"
+                      name="TailNum"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ActualElapsedTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[ActualElapsedTime]"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ActualElapsedTime]"
+                      name="ActualElapsedTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSElapsedTime]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CRSElapsedTime]"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSElapsedTime]"
+                      name="CRSElapsedTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[AirTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[AirTime]"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[AirTime]"
+                      name="AirTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrDelay]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[ArrDelay]"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrDelay]"
+                      name="ArrDelay"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepDelay]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[DepDelay]"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepDelay]"
+                      name="DepDelay"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Origin]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Origin]"
+                      length="3"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Origin]"
+                      name="Origin"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Dest]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Dest]"
+                      length="3"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Dest]"
+                      name="Dest"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Distance]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Distance]"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Distance]"
+                      name="Distance"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TaxiIn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[TaxiIn]"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TaxiIn]"
+                      name="TaxiIn"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TaxiOut]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[TaxiOut]"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TaxiOut]"
+                      name="TaxiOut"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Cancelled]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Cancelled]"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Cancelled]"
+                      name="Cancelled"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CancellationCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CancellationCode]"
+                      length="1"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CancellationCode]"
+                      name="CancellationCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Diverted]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Diverted]"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Diverted]"
+                      name="Diverted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CarrierDelay]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CarrierDelay]"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CarrierDelay]"
+                      name="CarrierDelay"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[WeatherDelay]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[WeatherDelay]"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[WeatherDelay]"
+                      name="WeatherDelay"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[NASDelay]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[NASDelay]"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[NASDelay]"
+                      name="NASDelay"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[SecurityDelay]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[SecurityDelay]"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[SecurityDelay]"
+                      name="SecurityDelay"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[LateAircraftDelay]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[LateAircraftDelay]"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[LateAircraftDelay]"
+                      name="LateAircraftDelay"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Year]"
+                      dataType="i2"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Month]"
+                      dataType="i1"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[DayofMonth]"
+                      dataType="i1"
+                      name="DayofMonth" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[DayOfWeek]"
+                      dataType="i1"
+                      name="DayOfWeek" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[DepTime]"
+                      dataType="wstr"
+                      length="4"
+                      name="DepTime" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CRSDepTime]"
+                      dataType="i2"
+                      name="CRSDepTime" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[ArrTime]"
+                      dataType="wstr"
+                      length="4"
+                      name="ArrTime" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CRSArrTime]"
+                      dataType="i2"
+                      name="CRSArrTime" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[UniqueCarrier]"
+                      dataType="wstr"
+                      length="2"
+                      name="UniqueCarrier" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[FlightNum]"
+                      dataType="i2"
+                      name="FlightNum" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[TailNum]"
+                      dataType="wstr"
+                      length="50"
+                      name="TailNum" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[ActualElapsedTime]"
+                      dataType="wstr"
+                      length="5"
+                      name="ActualElapsedTime" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CRSElapsedTime]"
+                      dataType="i2"
+                      name="CRSElapsedTime" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[AirTime]"
+                      dataType="wstr"
+                      length="5"
+                      name="AirTime" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[ArrDelay]"
+                      dataType="wstr"
+                      length="5"
+                      name="ArrDelay" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[DepDelay]"
+                      dataType="wstr"
+                      length="5"
+                      name="DepDelay" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Origin]"
+                      dataType="wstr"
+                      length="3"
+                      name="Origin" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Dest]"
+                      dataType="wstr"
+                      length="3"
+                      name="Dest" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Distance]"
+                      dataType="i2"
+                      name="Distance" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[TaxiIn]"
+                      dataType="wstr"
+                      length="5"
+                      name="TaxiIn" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[TaxiOut]"
+                      dataType="wstr"
+                      length="5"
+                      name="TaxiOut" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Cancelled]"
+                      dataType="i1"
+                      name="Cancelled" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CancellationCode]"
+                      dataType="wstr"
+                      length="1"
+                      name="CancellationCode" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[Diverted]"
+                      dataType="i1"
+                      name="Diverted" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CarrierDelay]"
+                      dataType="wstr"
+                      length="5"
+                      name="CarrierDelay" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[WeatherDelay]"
+                      dataType="wstr"
+                      length="5"
+                      name="WeatherDelay" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[NASDelay]"
+                      dataType="wstr"
+                      length="5"
+                      name="NASDelay" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[SecurityDelay]"
+                      dataType="wstr"
+                      length="5"
+                      name="SecurityDelay" />
+                    <externalMetadataColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[LateAircraftDelay]"
+                      dataType="wstr"
+                      length="5"
+                      name="LateAircraftDelay" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -48,9 +860,21 @@
         <NodeLayout
           Size="204.8,41.6"
           Id="Package\Insert data into FactFlights"
-          TopLeft="123.428573530548,81.3647070234622" />
+          TopLeft="118.857144881268,104.611766173023" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Insert data into FactFlights">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Insert data into FactFlights\Load FactsCSV from variable"
+          TopLeft="122.857144949388,50.7764713003561" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
