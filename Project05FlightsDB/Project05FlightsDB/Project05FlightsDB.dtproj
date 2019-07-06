@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">ABC2</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAmugtUkNqE0OYRq04cukpTwAAAAACAAAAAAAQZgAAAAEAACAAAACWzht/vHVQo6gVVj0PSCrBqmKa/U4Byz811NqAZeKEfgAAAAAOgAAAAAIAACAAAABRldz0/5QtKH/SrAw5+KnGqcxQHaaAPUEmKS8aRARhrJAAAAAOt9EpK4ecJuwmrg5RPtj5AchXesdjUY5gLXkXRRRcpZ6glBc0ISXGHwDZlMMJAMLosAtEZk0omlLaH7R9W2Yx/ZGRFqfAxV8tCpj0ymzr5YvEBWQDMT3qOKdrN1czyDYWJiH+DuDKsn08qA5VdLPYCXWu14dnyqQIM1Wi951RzaIm7LUiqbC1MrCgHQi1+n1AAAAAxVLNEVMeXWJdqVK/7gtwkZM7oXG9XiSV3Aq1IfFB6gShDRO83g1JGbJVBL1a8Zjc3ghIq7A+TIl1kLQehrpy1A==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAmugtUkNqE0OYRq04cukpTwAAAAACAAAAAAAQZgAAAAEAACAAAAACBrFwXCmTfSVM5MNT8eMpEH2gWs2OuOvRJRfHCmoivQAAAAAOgAAAAAIAACAAAADsXFikm+bRe6UnHM7flbGnnlWxxX6zWjKvNdL6eCRiDZAAAABA8mKxFRs3a0xY/GZC7QkV1XUFSiJIjMxuaHj14KmD7S7fzEjUok1evNk64I6jomd8Y48oLaa23HZKKqrgUvFH5BAwrLajo8SC6hOdeVyJ6NM1tMM3DCmW/l5H8n91HxsdCH7YgnrM5FG8i09ZsWmewam/aV9mqW1VQdu5XvMLKRk1fg+1QzgIShPzMOx9vURAAAAAkfEDVhyrRnvezRuGT6PGKkx7Pcr+HoIjex6bDzDDVczU+ztN5WaHYYf/Zq7LdQXi96FkNHToDMdZBLm184O9MQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -36,6 +36,8 @@
           <SSIS:Package SSIS:Name="FactFlights.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DimDate.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="MASTER.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="MASTER_DIm.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="MASTER_Facts.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="Database.conmgr" />
@@ -921,10 +923,10 @@
                 <SSIS:Property SSIS:Name="Name">FactFlights</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">11</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B916EB5C-FE1B-46A4-9271-AF4F034C7E7D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FBC0020C-1E7E-48CE-A209-CD4D0333E0F9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -970,30 +972,50 @@
                 <SSIS:Property SSIS:Name="Name">MASTER</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{CE669B2A-7FEA-4AF8-A22E-B7769B16E5A8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5C12F2E3-0A53-4270-BFAE-79AE51D2D495}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="FactCSVFolder">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{540B4A67-6BF1-4A74-93DF-1E7854B2CB46}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">Folder z plikami CSV dt lotów</SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\admin\Downloads\AirplaneDB\</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="MASTER_DIm.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{BB751385-9F01-48FE-90D5-F63EF0033251}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">MASTER_DIm</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{8717E8F2-4D52-418D-AB09-36A48DE31B1B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="MASTER_Facts.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{681FC81A-34AA-450F-9890-D18F856C7F63}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">MASTER_Facts</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3AA5B51B-A713-4BDA-AD2C-2D7EEFBB5718}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>

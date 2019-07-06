@@ -11,179 +11,56 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="MASTER"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{CE669B2A-7FEA-4AF8-A22E-B7769B16E5A8}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{5C12F2E3-0A53-4270-BFAE-79AE51D2D495}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:PackageParameters>
-    <DTS:PackageParameter
-      DTS:CreationName=""
-      DTS:DataType="8"
-      DTS:Description="Folder z plikami CSV dt lotów"
-      DTS:DTSID="{540B4A67-6BF1-4A74-93DF-1E7854B2CB46}"
-      DTS:ObjectName="FactCSVFolder"
-      DTS:Required="True">
-      <DTS:Property
-        DTS:DataType="8"
-        DTS:Name="ParameterValue">C:\Users\admin\Downloads\AirplaneDB\</DTS:Property>
-    </DTS:PackageParameter>
-  </DTS:PackageParameters>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Dim_Airports"
+      DTS:refId="Package\Execute Dim Packages"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{0B272743-6139-4721-BFDC-D47A5CC3D454}"
+      DTS:DTSID="{7C08CA9E-0E78-4940-BEB2-1CF78F7C61EF}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Dim_Airports"
+      DTS:ObjectName="Execute Dim Packages"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>DimAirports.dtsx</PackageName>
+          <PackageName>MASTER_DIm.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Dim_Carriers"
+      DTS:refId="Package\Execute Facts Packages"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{2C8D0E41-60B0-4B19-A18D-DE050086AFC5}"
+      DTS:DTSID="{2983B069-D387-44C6-A95E-7DE4F12E7516}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Dim_Carriers"
+      DTS:ObjectName="Execute Facts Packages"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>DimCarriers.dtsx</PackageName>
+          <PackageName>MASTER_Facts.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Dim_Date"
-      DTS:CreationName="Microsoft.ExecutePackageTask"
-      DTS:Description="Execute Package Task"
-      DTS:DTSID="{ADE7089B-A395-4FA1-B99E-D89F68611DDE}"
-      DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Dim_Date"
-      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ExecutePackageTask>
-          <UseProjectReference>True</UseProjectReference>
-          <PackageName>DimDate.dtsx</PackageName>
-        </ExecutePackageTask>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Dim_PlaneData"
-      DTS:CreationName="Microsoft.ExecutePackageTask"
-      DTS:Description="Execute Package Task"
-      DTS:DTSID="{8F55B928-23C3-4BC5-9C7E-7A73AA32194A}"
-      DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Dim_PlaneData"
-      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ExecutePackageTask>
-          <UseProjectReference>True</UseProjectReference>
-          <PackageName>DimPlaneData.dtsx</PackageName>
-        </ExecutePackageTask>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Foreach Fact CSV File"
-      DTS:CreationName="STOCK:FOREACHLOOP"
-      DTS:Description="Foreach Loop Container"
-      DTS:DTSID="{03BFFA7A-1524-425B-8FAC-764628326817}"
-      DTS:ExecutableType="STOCK:FOREACHLOOP"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Foreach Fact CSV File">
-      <DTS:ForEachEnumerator
-        DTS:CreationName="Microsoft.ForEachFileEnumerator"
-        DTS:DTSID="{97E3C1F2-7BB3-435F-A580-3BEC32F43C58}"
-        DTS:ObjectName="{97E3C1F2-7BB3-435F-A580-3BEC32F43C58}">
-        <DTS:PropertyExpression
-          DTS:Name="Directory">@[$Package::FactCSVFolder]</DTS:PropertyExpression>
-        <DTS:ObjectData>
-          <ForEachFileEnumeratorProperties>
-            <FEFEProperty
-              Folder="C:\Users\admin\Downloads\AirplaneDB\" />
-            <FEFEProperty
-              FileSpec="*.csv" />
-            <FEFEProperty
-              FileNameRetrievalType="0" />
-            <FEFEProperty
-              Recurse="0" />
-          </ForEachFileEnumeratorProperties>
-        </DTS:ObjectData>
-      </DTS:ForEachEnumerator>
-      <DTS:Variables />
-      <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\Foreach Fact CSV File\FactFlights"
-          DTS:CreationName="Microsoft.ExecutePackageTask"
-          DTS:Description="Execute Package Task"
-          DTS:DTSID="{EEE174CF-BE46-48EC-BB17-8527546CE1C7}"
-          DTS:ExecutableType="Microsoft.ExecutePackageTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="FactFlights"
-          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <ExecutePackageTask>
-              <UseProjectReference>True</UseProjectReference>
-              <PackageName>FactFlights.dtsx</PackageName>
-              <ParameterAssignment>
-                <ParameterName>FlightsCSVFolderPath</ParameterName>
-                <BindedVariableOrParameterName>$Package::FactCSVFolder</BindedVariableOrParameterName>
-              </ParameterAssignment>
-            </ExecutePackageTask>
-          </DTS:ObjectData>
-        </DTS:Executable>
-      </DTS:Executables>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{2047C8EF-6513-40BF-A092-FE42CCB8942B}"
-      DTS:From="Package\Dim_Airports"
+      DTS:DTSID="{8FC52513-91A6-4638-80F4-2D24EE30A4A0}"
+      DTS:From="Package\Execute Dim Packages"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Foreach Fact CSV File" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
-      DTS:CreationName=""
-      DTS:DTSID="{A0E3FFB2-01E4-439D-8762-1561B56DBE14}"
-      DTS:From="Package\Dim_Carriers"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Foreach Fact CSV File" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
-      DTS:CreationName=""
-      DTS:DTSID="{F4CF6B49-202C-4291-A860-6E997F816A16}"
-      DTS:From="Package\Dim_PlaneData"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Foreach Fact CSV File" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
-      DTS:CreationName=""
-      DTS:DTSID="{B04BC5C9-F4EA-49AB-B8BA-A6C8277BB8FD}"
-      DTS:From="Package\Dim_Date"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 3"
-      DTS:To="Package\Foreach Fact CSV File" />
+      DTS:To="Package\Execute Facts Packages" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -196,162 +73,29 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="139.2,41.6"
-          Id="Package\Dim_Airports"
-          TopLeft="42.2857150058357,36.7058828677273" />
+          Size="184,41.6"
+          Id="Package\Execute Dim Packages"
+          TopLeft="189.714288945101,88.7058835970077" />
         <NodeLayout
-          Size="139.2,41.6"
-          Id="Package\Dim_Carriers"
-          TopLeft="186.938778693753,34.9579836835498" />
-        <NodeLayout
-          Size="124.8,41.6"
-          Id="Package\Dim_Date"
-          TopLeft="445.714293304755,156.000002187841" />
-        <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Dim_PlaneData"
-          TopLeft="335.510209795337,34.9579836835498" />
-        <NodeLayout
-          Size="128.8,41.6"
-          Id="Package\Foreach Fact CSV File\FactFlights"
-          TopLeft="53.1428608407781,18.1647089195912" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="232.8,121.6"
-          Size="232.8,164.8"
-          Id="Package\Foreach Fact CSV File"
-          TopLeft="164.081635447355,155.563027391797" />
+          Size="189.6,41.6"
+          Id="Package\Execute Facts Packages"
+          TopLeft="191.428574688581,182.305884909712" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="111.885715005836,78.3058828677273">
+          TopLeft="283.971431816841,130.305883597008">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="112.395920441519,77.2571445240697"
+              EndConnector="0,52.0000013127047"
               Start="0,0"
-              End="112.395920441519,69.7571445240697">
+              End="0,44.5000013127047">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.9214701166575" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,46.9214701166575"
-                    Point2="0,50.9214701166575"
-                    Point3="4,50.9214701166575" />
-                  <mssgle:LineSegment
-                    End="108.395920441519,50.9214701166575" />
-                  <mssgle:CubicBezierSegment
-                    Point1="108.395920441519,50.9214701166575"
-                    Point2="112.395920441519,50.9214701166575"
-                    Point3="112.395920441519,54.9214701166575" />
-                  <mssgle:LineSegment
-                    End="112.395920441519,69.7571445240697" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="256.538778693753,76.5579836835498">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="23.942856753602,79.0050437082472"
-              Start="0,0"
-              End="23.942856753602,71.5050437082472">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5025218541236" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,35.5025218541236"
-                    Point2="0,39.5025218541236"
-                    Point3="4,39.5025218541236" />
-                  <mssgle:LineSegment
-                    End="19.942856753602,39.5025218541236" />
-                  <mssgle:CubicBezierSegment
-                    Point1="19.942856753602,39.5025218541236"
-                    Point2="23.942856753602,39.5025218541236"
-                    Point3="23.942856753602,43.5025218541236" />
-                  <mssgle:LineSegment
-                    End="23.942856753602,71.5050437082472" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="410.710209795337,76.5579836835498">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-74.028574347982,79.0050437082472"
-              Start="0,0"
-              End="-74.028574347982,71.5050437082472">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.0735395676103" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,48.0735395676103"
-                    Point2="0,52.0735395676103"
-                    Point3="-4,52.0735395676103" />
-                  <mssgle:LineSegment
-                    End="-70.028574347982,52.0735395676103" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-70.028574347982,52.0735395676103"
-                    Point2="-74.028574347982,52.0735395676103"
-                    Point3="-74.028574347982,56.0735395676103" />
-                  <mssgle:LineSegment
-                    End="-74.028574347982,71.5050437082472" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="445.714293304755,176.800002187841">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-48.8326578574,61.163025203956"
-              Start="0,0"
-              End="-41.3326578574,61.163025203956">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-20.4163289287,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-20.4163289287,0"
-                    Point2="-24.4163289287,0"
-                    Point3="-24.4163289287,4" />
-                  <mssgle:LineSegment
-                    End="-24.4163289287,57.163025203956" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-24.4163289287,57.163025203956"
-                    Point2="-24.4163289287,61.163025203956"
-                    Point3="-28.4163289287,61.163025203956" />
-                  <mssgle:LineSegment
-                    End="-41.3326578574,61.163025203956" />
+                    End="0,44.5000013127047" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

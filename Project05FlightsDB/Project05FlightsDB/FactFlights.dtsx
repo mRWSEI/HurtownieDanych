@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="FactFlights"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{B916EB5C-FE1B-46A4-9271-AF4F034C7E7D}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{064A46E3-F342-4E51-9894-1612A0C19EED}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -27,8 +27,34 @@
         DTS:Name="ParameterValue">C:\Users\admin\Downloads\AirplaneDB\</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A6B0B6E2-44B1-4F2B-BC26-04A0B6E964C4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FactFlightsCSVFolder">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E433F4D2-216A-42AE-9F5F-C11214E57138}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{85C5CE02-9398-4E13-8D90-863C220B248E}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE FactFlights" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Insert data into FactFlights"
       DTS:CreationName="Microsoft.Pipeline"
@@ -43,6 +69,772 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Insert data into FactFlights\Combine DateKey"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Combine DateKey"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Insert data into FactFlights\Combine DateKey.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Combine DateKey.Inputs[Derived Column Input].Columns[Year]"
+                      cachedDataType="i2"
+                      cachedName="Year"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Combine DateKey.Inputs[Derived Column Input].Columns[Month]"
+                      cachedDataType="i1"
+                      cachedName="Month"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Combine DateKey.Inputs[Derived Column Input].Columns[DayofMonth]"
+                      cachedDataType="i1"
+                      cachedName="DayofMonth"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DayofMonth]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Insert data into FactFlights\Combine DateKey.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Output].Columns[DateKeyInt]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Output].Columns[DateKeyInt]"
+                      name="DateKeyInt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)((DT_WSTR,10)#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Year]} + [RIGHT]("0" + (DT_WSTR,2)#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Month]},2) + [RIGHT]("0" + (DT_WSTR,2)#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DayofMonth]},2))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)((DT_WSTR,10)Year + RIGHT("0" + (DT_WSTR,2)Month,2) + RIGHT("0" + (DT_WSTR,2)DayofMonth,2))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Insert data into FactFlights\Combine DateKey.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insert data into FactFlights\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Insert data into FactFlights\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insert data into FactFlights\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Insert data into FactFlights\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insert data into FactFlights\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Insert data into FactFlights\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insert data into FactFlights\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[DepTime]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="DepTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepTime]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepTime]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(DepTime,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[CRSDepTime]"
+                      cachedDataType="i2"
+                      cachedName="CRSDepTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSDepTime]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSDepTime]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">CRSDepTime</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[ArrTime]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="ArrTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrTime]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrTime]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(ArrTime,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[CRSArrTime]"
+                      cachedDataType="i2"
+                      cachedName="CRSArrTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSArrTime]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSArrTime]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">CRSArrTime</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[UniqueCarrier]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="UniqueCarrier"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[UniqueCarrier]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[UniqueCarrier]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(UniqueCarrier,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[FlightNum]"
+                      cachedDataType="i2"
+                      cachedName="FlightNum"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[FlightNum]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[FlightNum]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">FlightNum</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[TailNum]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TailNum"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TailNum]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TailNum]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(TailNum,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[ActualElapsedTime]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="ActualElapsedTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ActualElapsedTime]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ActualElapsedTime]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(ActualElapsedTime,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[CRSElapsedTimeInt]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CRSElapsedTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSElapsedTime]"
+                      name="CRSElapsedTimeInt"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I2)[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSElapsedTime]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)REPLACE(CRSElapsedTimeInt,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[AirTime]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="AirTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[AirTime]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[AirTime]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(AirTime,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[ArrDelay]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="ArrDelay"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrDelay]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrDelay]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(ArrDelay,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[DepDelay]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="DepDelay"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepDelay]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepDelay]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(DepDelay,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[Origin]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Origin"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Origin]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Origin]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(Origin,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[Dest]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Dest"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Dest]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Dest]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(Dest,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[Distance]"
+                      cachedDataType="i2"
+                      cachedName="Distance"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Distance]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Distance]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Distance</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[TaxiIn]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="TaxiIn"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TaxiIn]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TaxiIn]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(TaxiIn,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[TaxiOut]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="TaxiOut"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TaxiOut]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[TaxiOut]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(TaxiOut,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[Cancelled]"
+                      cachedDataType="i1"
+                      cachedName="Cancelled"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Cancelled]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Cancelled]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Cancelled</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[CancellationCode]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="CancellationCode"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CancellationCode]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CancellationCode]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(CancellationCode,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[Diverted]"
+                      cachedDataType="i1"
+                      cachedName="Diverted"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Diverted]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Diverted]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Diverted</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[CarrierDelay]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CarrierDelay"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CarrierDelay]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CarrierDelay]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(CarrierDelay,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[WeatherDelay]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="WeatherDelay"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[WeatherDelay]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[WeatherDelay]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(WeatherDelay,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[NASDelay]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="NASDelay"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[NASDelay]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[NASDelay]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(NASDelay,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input].Columns[SecurityDelay]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="SecurityDelay"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[SecurityDelay]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[SecurityDelay]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(SecurityDelay,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insert data into FactFlights\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insert data into FactFlights\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Insert data into FactFlights\Load FactsCSV from variable"
               componentClassID="Microsoft.FlatFileSource"
@@ -321,10 +1113,11 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSElapsedTime]"
-                      dataType="i2"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CRSElapsedTime]"
+                      length="10"
                       lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSElapsedTime]"
                       name="CRSElapsedTime"
                       truncationRowDisposition="FailComponent">
@@ -730,7 +1523,8 @@
                       name="ActualElapsedTime" />
                     <externalMetadataColumn
                       refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[CRSElapsedTime]"
-                      dataType="i2"
+                      dataType="wstr"
+                      length="10"
                       name="CRSElapsedTime" />
                     <externalMetadataColumn
                       refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].ExternalColumns[AirTime]"
@@ -841,10 +1635,37 @@
               </outputs>
             </component>
           </components>
+          <paths>
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output]"
+              endId="Package\Insert data into FactFlights\Derived Column 1.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output1]"
+              endId="Package\Insert data into FactFlights\Conditional Split.Inputs[Conditional Split Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Flat File Source Output]"
+              endId="Package\Insert data into FactFlights\Combine DateKey.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output]" />
+          </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D63559C5-7150-4D7F-8D89-D40A632576B2}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Insert data into FactFlights" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -856,11 +1677,37 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="204.8,41.6"
           Id="Package\Insert data into FactFlights"
-          TopLeft="118.857144881268,104.611766173023" />
+          TopLeft="109.142859001549,121.1294134635" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="128.000002179827,33.6470592954167" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="210.371430590688,75.2470592954167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.8823541680836"
+              Start="0,0"
+              End="0,38.3823541680836">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.3823541680836" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -868,11 +1715,91 @@
     design-time-name="Package\Insert data into FactFlights">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="212.8,41.6"
           Id="Package\Insert data into FactFlights\Load FactsCSV from variable"
           TopLeft="122.857144949388,50.7764713003561" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\Insert data into FactFlights\Conditional Split"
+          TopLeft="145.142859614626,294.258827656281" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Insert data into FactFlights\Combine DateKey"
+          TopLeft="142.857145289986,137.035296039515" />
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Flat File Source Output]"
+          TopLeft="226.457145119687,92.3764713003561">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.6588247391592"
+              Start="0,0"
+              End="0,37.1588247391592">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.1588247391592" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Insert data into FactFlights\Derived Column 1"
+          TopLeft="143.428573871145,215.952944205129" />
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output]"
+          TopLeft="224.142859580565,178.635296039515">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.3176481656138"
+              Start="0,0"
+              End="0,29.8176481656138">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.8176481656138" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output1]"
+          TopLeft="223.485716742886,257.552944205129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.7058834511516"
+              Start="0,0"
+              End="0,29.2058834511516">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.2058834511516" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,6.60294172557579,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
