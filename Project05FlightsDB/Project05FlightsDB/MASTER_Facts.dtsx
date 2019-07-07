@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="MASTER_Facts"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{3AA5B51B-A713-4BDA-AD2C-2D7EEFBB5718}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{0A38B85C-AABE-472B-BA45-4CB2CA5DED75}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -21,9 +21,18 @@
       DTS:DTSID="{43C31211-99D4-475C-9B02-447394C4F58E}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="FactCSVFolder">
+      DTS:ObjectName="MasterFactCSVFolder">
       <DTS:VariableValue
         DTS:DataType="8">C:\Users\admin\Downloads\AirplaneDB\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{806FB72C-6971-4532-B05B-35F9BF9CF678}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MasterFactCSVFolderArchive">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\admin\Downloads\AirplaneDB\Archive\</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -40,7 +49,7 @@
         DTS:DTSID="{34f8aec4-455a-4489-a93c-f2ec2ae1abdf}"
         DTS:ObjectName="{97E3C1F2-7BB3-435F-A580-3BEC32F43C58}">
         <DTS:PropertyExpression
-          DTS:Name="Directory">@[$Package::FactCSVFolder]</DTS:PropertyExpression>
+          DTS:Name="Directory">@[User::FactCSVFolder]</DTS:PropertyExpression>
         <DTS:ObjectData>
           <ForEachFileEnumeratorProperties>
             <FEFEProperty
@@ -54,7 +63,17 @@
           </ForEachFileEnumeratorProperties>
         </DTS:ObjectData>
       </DTS:ForEachEnumerator>
-      <DTS:Variables />
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{070B9949-2F78-488A-936E-31BD809CDC3F}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="MAsterFactCSVCurrentFile">
+          <DTS:VariableValue
+            DTS:DataType="8">C:\Users\admin\Downloads\AirplaneDB\*.csv</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
       <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\Foreach Fact CSV File\FactFlights"
@@ -72,12 +91,50 @@
               <PackageName>FactFlights.dtsx</PackageName>
               <ParameterAssignment>
                 <ParameterName>FlightsCSVFolderPath</ParameterName>
-                <BindedVariableOrParameterName>User::FactCSVFolder</BindedVariableOrParameterName>
+                <BindedVariableOrParameterName>User::MasterFactCSVFolder</BindedVariableOrParameterName>
               </ParameterAssignment>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Fact CSV File\File System Task"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{8D9284CA-BB05-4BD3-BB92-948FE1BEBEB2}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="File System Task"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::MAsterFactCSVCurrentFile"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::MasterFactCSVFolderArchive"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Fact CSV File.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{1996C40F-4426-4C3B-8007-F6ACCA30322A}"
+          DTS:From="Package\Foreach Fact CSV File\FactFlights"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Fact CSV File\File System Task" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{EF562E97-CD3A-4DEB-926B-AA318462D9F2}"
+          DTS:ObjectName="{EF562E97-CD3A-4DEB-926B-AA318462D9F2}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::MAsterFactCSVCurrentFile" />
+      </DTS:ForEachVariableMappings>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -91,16 +148,42 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="128.8,41.6"
+          Size="129,42"
           Id="Package\Foreach Fact CSV File\FactFlights"
           TopLeft="50.2857179349784,28.5647090654473" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Foreach Fact CSV File\File System Task"
+          TopLeft="35,147" />
+        <EdgeLayout
+          Id="Package\Foreach Fact CSV File.PrecedenceConstraints[Constraint]"
+          TopLeft="114.392858967489,70.5647090654473">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.4352909345527"
+              Start="0,0"
+              End="0,68.9352909345527">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.9352909345527" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="232.8,121.6"
-          Size="232.8,164.8"
+          PanelSize="305,266"
+          Size="305,309"
           Id="Package\Foreach Fact CSV File"
           TopLeft="127.428572576873,54.4941175698409" />
       </GraphLayout>

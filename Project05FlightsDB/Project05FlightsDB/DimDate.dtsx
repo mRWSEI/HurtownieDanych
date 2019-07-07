@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="DimDate"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{6D6A0D03-9E23-457A-B5FE-5E781765F9BD}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{D8CE1E2B-EFAA-4188-9557-17C5DCA650D0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -30,7 +30,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{85C5CE02-9398-4E13-8D90-863C220B248E}"
-          SQLTask:SqlStatementSource="EXEC dbo.DimDateFillUp '2015-01-01', '2019-12-31'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="EXEC dbo.DimDateFillUp '2006-01-01', '2010-12-31'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -47,7 +47,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="210.4,41.6"
+          Size="210,42"
           Id="Package\Truncate and Load DimDate"
           TopLeft="123.428573530548,77.6941187366895" />
       </GraphLayout>
