@@ -11,11 +11,31 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="MASTER_Facts"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{0A38B85C-AABE-472B-BA45-4CB2CA5DED75}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{A7267C01-4875-40AA-AFC8-8A8CA08147E3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D0E0E574-B8AF-43B7-8E73-A2D545CD23C6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MAsterFactCSVCurrentFile">
+      <DTS:VariableValue
+        DTS:DataType="8">a.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C9B8ED52-A911-48CD-B9BA-F597D3E5FC7B}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::MasterFactCSVFolder] +  @[User::MAsterFactCSVCurrentFile]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="MasterFactCSVCurrentFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\admin\Downloads\AirpAlaneDB\a.csv</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{43C31211-99D4-475C-9B02-447394C4F58E}"
@@ -23,16 +43,18 @@
       DTS:Namespace="User"
       DTS:ObjectName="MasterFactCSVFolder">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\admin\Downloads\AirplaneDB\</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\admin\Downloads\AirpAlaneDB\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{806FB72C-6971-4532-B05B-35F9BF9CF678}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::MasterFactCSVFolder] + &quot;Archived\\&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="MasterFactCSVFolderArchive">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\admin\Downloads\AirplaneDB\Archive\</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\admin\Downloads\AirpAlaneDB\Archived\</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -49,11 +71,11 @@
         DTS:DTSID="{34f8aec4-455a-4489-a93c-f2ec2ae1abdf}"
         DTS:ObjectName="{97E3C1F2-7BB3-435F-A580-3BEC32F43C58}">
         <DTS:PropertyExpression
-          DTS:Name="Directory">@[User::FactCSVFolder]</DTS:PropertyExpression>
+          DTS:Name="Directory">@[User::MasterFactCSVFolder]</DTS:PropertyExpression>
         <DTS:ObjectData>
           <ForEachFileEnumeratorProperties>
             <FEFEProperty
-              Folder="C:\Users\admin\Downloads\AirplaneDB\" />
+              Folder="C:\Users\admin\Downloads\AirpAlaneDB\" />
             <FEFEProperty
               FileSpec="*.csv" />
             <FEFEProperty
@@ -63,18 +85,28 @@
           </ForEachFileEnumeratorProperties>
         </DTS:ObjectData>
       </DTS:ForEachEnumerator>
-      <DTS:Variables>
-        <DTS:Variable
-          DTS:CreationName=""
-          DTS:DTSID="{070B9949-2F78-488A-936E-31BD809CDC3F}"
-          DTS:IncludeInDebugDump="2345"
-          DTS:Namespace="User"
-          DTS:ObjectName="MAsterFactCSVCurrentFile">
-          <DTS:VariableValue
-            DTS:DataType="8">C:\Users\admin\Downloads\AirplaneDB\*.csv</DTS:VariableValue>
-        </DTS:Variable>
-      </DTS:Variables>
+      <DTS:Variables />
       <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Fact CSV File\Archivize File"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{8D9284CA-BB05-4BD3-BB92-948FE1BEBEB2}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Archivize File"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::MAsterFactCSVCurrentFile"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::MasterFactCSVFolderArchive"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Foreach Fact CSV File\FactFlights"
           DTS:CreationName="Microsoft.ExecutePackageTask"
@@ -93,27 +125,15 @@
                 <ParameterName>FlightsCSVFolderPath</ParameterName>
                 <BindedVariableOrParameterName>User::MasterFactCSVFolder</BindedVariableOrParameterName>
               </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>FlightsCSVFolderPath</ParameterName>
+                <BindedVariableOrParameterName>User::MasterFactCSVFolder</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>FlightsCSVFolderPath</ParameterName>
+                <BindedVariableOrParameterName>User::MasterFactCSVFolder</BindedVariableOrParameterName>
+              </ParameterAssignment>
             </ExecutePackageTask>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Foreach Fact CSV File\File System Task"
-          DTS:CreationName="Microsoft.FileSystemTask"
-          DTS:Description="File System Task"
-          DTS:DTSID="{8D9284CA-BB05-4BD3-BB92-948FE1BEBEB2}"
-          DTS:ExecutableType="Microsoft.FileSystemTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="File System Task"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <FileSystemData
-              TaskOperationType="MoveFile"
-              TaskOverwriteDestFile="True"
-              TaskSourcePath="User::MAsterFactCSVCurrentFile"
-              TaskIsSourceVariable="True"
-              TaskDestinationPath="User::MasterFactCSVFolderArchive"
-              TaskIsDestinationVariable="True" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -125,13 +145,13 @@
           DTS:From="Package\Foreach Fact CSV File\FactFlights"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\Foreach Fact CSV File\File System Task" />
+          DTS:To="Package\Foreach Fact CSV File\Archivize File" />
       </DTS:PrecedenceConstraints>
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{EF562E97-CD3A-4DEB-926B-AA318462D9F2}"
-          DTS:ObjectName="{EF562E97-CD3A-4DEB-926B-AA318462D9F2}"
+          DTS:DTSID="{78C3B437-779C-4AA4-AEE6-5C91284DCCC0}"
+          DTS:ObjectName="{78C3B437-779C-4AA4-AEE6-5C91284DCCC0}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::MAsterFactCSVCurrentFile" />
       </DTS:ForEachVariableMappings>
@@ -155,7 +175,7 @@
           TopLeft="50.2857179349784,28.5647090654473" />
         <NodeLayout
           Size="158,42"
-          Id="Package\Foreach Fact CSV File\File System Task"
+          Id="Package\Foreach Fact CSV File\Archivize File"
           TopLeft="35,147" />
         <EdgeLayout
           Id="Package\Foreach Fact CSV File.PrecedenceConstraints[Constraint]"

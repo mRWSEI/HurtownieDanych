@@ -11,11 +11,298 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="FactFlights"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{60EB02D4-EC02-423D-B724-349CCFF1A445}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{AE4441D2-6C57-4C13-AAC1-8ED39DFDF8C6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FlightsCSV]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{AE89132D-5C3F-4358-9355-947F5128D810}"
+      DTS:ObjectName="FlightsCSV">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::FactFlightsCSVFileName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\admin\Downloads\AirplaneDB\a.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Year"
+              DTS:DTSID="{76EC5835-91FE-4331-B522-2CEC14688117}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Month"
+              DTS:DTSID="{2FBD2C57-70EB-44BE-BE0E-B32EE573ADDE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DayofMonth"
+              DTS:DTSID="{60F0B7AB-4B83-440F-BD3F-5C390B071C5C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DayOfWeek"
+              DTS:DTSID="{7619155D-211C-4927-BACB-371949DC8530}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DepTime"
+              DTS:DTSID="{9E22C065-ACD8-432F-BB55-EA2F6D4AB191}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CRSDepTime"
+              DTS:DTSID="{09941C1A-3602-4794-A691-20A96E7AEEED}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ArrTime"
+              DTS:DTSID="{27CEDE0A-C8EC-42CE-B265-BBD3C9681A39}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CRSArrTime"
+              DTS:DTSID="{04E79C85-5B49-4689-BA5C-6FD52449EDEB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UniqueCarrier"
+              DTS:DTSID="{24CB61F7-AEEB-47F2-BF69-F7B325DE47AE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FlightNum"
+              DTS:DTSID="{6E8E0A08-DD8E-4E90-96B5-8FCAC4CDF950}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TailNum"
+              DTS:DTSID="{19BC92C3-5961-4419-87DA-602D8BF9E976}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ActualElapsedTime"
+              DTS:DTSID="{571FC29B-7413-4CBB-A79D-DD31B9FE8064}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CRSElapsedTime"
+              DTS:DTSID="{DADC52FD-6C61-4530-BAEA-7A8528E306CA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AirTime"
+              DTS:DTSID="{6D0B327E-ACF0-4B8F-82FD-3E162B6CB9AF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ArrDelay"
+              DTS:DTSID="{8461A8D0-1596-4AD5-AEFF-F2423401CF5F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DepDelay"
+              DTS:DTSID="{D9E63BA3-F267-4859-9B4A-161C37C4AEE8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Origin"
+              DTS:DTSID="{121AC462-7BDF-4EDA-85D2-67195E864F00}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Dest"
+              DTS:DTSID="{E5A06060-CE97-4204-B03E-AFC5D252CD58}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Distance"
+              DTS:DTSID="{DFCBA67D-BB5A-4DD6-A96E-8D509708D139}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TaxiIn"
+              DTS:DTSID="{6E376036-005D-4864-ACD7-354A1826A053}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TaxiOut"
+              DTS:DTSID="{D1D4DBC4-EA56-43E9-A647-990C9A3D1411}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Cancelled"
+              DTS:DTSID="{AF74C24D-0843-4BE3-A1D6-402B83209C9D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CancellationCode"
+              DTS:DTSID="{8A8B688B-8937-4F64-B3F7-A29ECAB66734}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Diverted"
+              DTS:DTSID="{89459EFD-E1B7-47DA-80B5-FE91A4305022}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CarrierDelay"
+              DTS:DTSID="{1072858F-3FF0-4984-9418-AEB868CBD88D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="WeatherDelay"
+              DTS:DTSID="{78D1E36D-D352-41B9-AE99-FE1A25B1BBAF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NASDelay"
+              DTS:DTSID="{3A0CEB2D-BB71-450A-B2C8-9AA49C913600}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SecurityDelay"
+              DTS:DTSID="{CF2E2250-A4BE-44FC-B4DC-59B0D027EE3A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LateAircraftDelay"
+              DTS:DTSID="{7F9E28C5-6904-4015-B754-682965C95C8B}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{B5D124DC-A7E6-4428-A829-80FB69B5C41C}"
+      DTS:ObjectName="FlightsCSVFileName"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">a.csv</DTS:Property>
+    </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
@@ -30,12 +317,14 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{A6B0B6E2-44B1-4F2B-BC26-04A0B6E964C4}"
+      DTS:DTSID="{4D5EF6D3-C392-403A-8881-222BAE5138CD}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::FlightsCSVFolderPath] +@[$Package::FlightsCSVFileName]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="FactFlightsCSVFolder">
+      DTS:ObjectName="FactFlightsCSVFileName">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\admin\Downloads\AirplaneDB\</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\admin\Downloads\AirplaneDB\a.csv</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -69,6 +358,102 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Insert data into FactFlights\Additional Columns For Logging"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Additional Columns For Logging"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Insert data into FactFlights\Additional Columns For Logging.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Insert data into FactFlights\Additional Columns For Logging.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Output].Columns[StartTime]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Output].Columns[StartTime]"
+                      name="StartTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Output].Columns[FileName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="5"
+                      lineageId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Output].Columns[FileName]"
+                      name="FileName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::FlightsCSVFileName]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::FlightsCSVFileName]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Insert data into FactFlights\Additional Columns For Logging.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Insert data into FactFlights\CheckErrors"
               componentClassID="Microsoft.ConditionalSplit"
@@ -727,8 +1112,8 @@
               <connections>
                 <connection
                   refId="Package\Insert data into FactFlights\Load FactsCSV from variable.Connections[FlatFileConnection]"
-                  connectionManagerID="{AE89132D-5C3F-4358-9355-947F5128D810}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[FlightsCSV]"
+                  connectionManagerID="Package.ConnectionManagers[FlightsCSV]"
+                  connectionManagerRefId="Package.ConnectionManagers[FlightsCSV]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -1544,7 +1929,7 @@ where [refTable].[Car_Code] = ?</property>
                   dataType="System.Int32"
                   description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
                   name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
+                  typeConverter="LookupNoMatchBehavior">1</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
@@ -1613,7 +1998,6 @@ where [refTable].[Car_Code] = ?</property>
                 <output
                   refId="Package\Insert data into FactFlights\Lookup Carrier.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Insert data into FactFlights\Lookup Carrier.Inputs[Lookup Input]">
@@ -18886,30 +19270,10 @@ where [refTable].[Pld_TailnumCode] = ?</property>
               name="Derived Column Error Output"
               startId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Error Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Derived Column Output]"
-              endId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input]"
-              name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Derived Column Output1]"
-              endId="Package\Insert data into FactFlights\Replace Times to Dates.Inputs[Derived Column Input]"
-              name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Derived Column Output2]"
-              endId="Package\Insert data into FactFlights\Lookup Origin.Inputs[Lookup Input]"
-              name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\Replace Times to Dates.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Derived Column Output3]"
-              endId="Package\Insert data into FactFlights\Sort by OriginKey.Inputs[Sort Input]"
-              name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\NotFound Origin to -1.Outputs[Derived Column Output]" />
-            <path
               refId="Package\Insert data into FactFlights.Paths[Derived Column Output6]"
-              endId="Package\Insert data into FactFlights\Sort by PlaneKey.Inputs[Sort Input]"
+              endId="Package\Insert data into FactFlights\Sort by DestKey.Inputs[Sort Input]"
               name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\NotFound PlaneData to -1.Outputs[Derived Column Output]" />
+              startId="Package\Insert data into FactFlights\NotFound Destination to -1.Outputs[Derived Column Output]" />
             <path
               refId="Package\Insert data into FactFlights.Paths[Derived Column Output5]"
               endId="Package\Insert data into FactFlights\Sort by CarrierKey.Inputs[Sort Input]"
@@ -18917,9 +19281,34 @@ where [refTable].[Pld_TailnumCode] = ?</property>
               startId="Package\Insert data into FactFlights\NotFound Carrier to -1.Outputs[Derived Column Output]" />
             <path
               refId="Package\Insert data into FactFlights.Paths[Derived Column Output4]"
-              endId="Package\Insert data into FactFlights\Sort by DestKey.Inputs[Sort Input]"
+              endId="Package\Insert data into FactFlights\Sort by PlaneKey.Inputs[Sort Input]"
               name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\NotFound Destination to -1.Outputs[Derived Column Output]" />
+              startId="Package\Insert data into FactFlights\NotFound PlaneData to -1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output7]"
+              endId="Package\Insert data into FactFlights\Export to FactsFlights.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output2]"
+              endId="Package\Insert data into FactFlights\Lookup Origin.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\Replace Times to Dates.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output1]"
+              endId="Package\Insert data into FactFlights\Replace Times to Dates.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output]"
+              endId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output3]"
+              endId="Package\Insert data into FactFlights\Sort by OriginKey.Inputs[Sort Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\NotFound Origin to -1.Outputs[Derived Column Output]" />
             <path
               refId="Package\Insert data into FactFlights.Paths[Flat File Source Output]"
               endId="Package\Insert data into FactFlights\Combine DateKey.Inputs[Derived Column Input]"
@@ -18936,12 +19325,12 @@ where [refTable].[Pld_TailnumCode] = ?</property>
               name="Lookup Match Output"
               startId="Package\Insert data into FactFlights\Lookup Origin.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output2]"
+              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output1]"
               endId="Package\Insert data into FactFlights\Sort By CarrierKey.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\Insert data into FactFlights\Lookup Carrier.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output1]"
+              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output2]"
               endId="Package\Insert data into FactFlights\Sort By DestKey.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\Insert data into FactFlights\Lookup Dest.Outputs[Lookup Match Output]" />
@@ -18951,87 +19340,87 @@ where [refTable].[Pld_TailnumCode] = ?</property>
               name="Lookup Match Output"
               startId="Package\Insert data into FactFlights\Lookup PlaneDana TailNumCode.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output2]"
-              endId="Package\Insert data into FactFlights\NotFound Carrier to -1.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Insert data into FactFlights\Lookup Carrier.Outputs[Lookup No Match Output]" />
-            <path
               refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output3]"
-              endId="Package\Insert data into FactFlights\NotFound PlaneData to -1.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Insert data into FactFlights\Lookup PlaneDana TailNumCode.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output1]"
-              endId="Package\Insert data into FactFlights\NotFound Destination to -1.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Insert data into FactFlights\Lookup Dest.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output]"
               endId="Package\Insert data into FactFlights\NotFound Origin to -1.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
               startId="Package\Insert data into FactFlights\Lookup Origin.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Merge Output 11]"
-              endId="Package\Insert data into FactFlights\Lookup Carrier.Inputs[Lookup Input]"
-              name="Merge Output 1"
-              startId="Package\Insert data into FactFlights\Merge DestKey Code.Outputs[Merge Output 1]" />
+              refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output1]"
+              endId="Package\Insert data into FactFlights\NotFound PlaneData to -1.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Insert data into FactFlights\Lookup PlaneDana TailNumCode.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Merge Output 1]"
+              refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output]"
+              endId="Package\Insert data into FactFlights\NotFound Carrier to -1.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Insert data into FactFlights\Lookup Carrier.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output2]"
+              endId="Package\Insert data into FactFlights\NotFound Destination to -1.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Insert data into FactFlights\Lookup Dest.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Merge Output 13]"
+              endId="Package\Insert data into FactFlights\Additional Columns For Logging.Inputs[Derived Column Input]"
+              name="Merge Output 1"
+              startId="Package\Insert data into FactFlights\Merge PlaneKey Code.Outputs[Merge Output 1]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Merge Output 11]"
               endId="Package\Insert data into FactFlights\Lookup Dest.Inputs[Lookup Input]"
               name="Merge Output 1"
               startId="Package\Insert data into FactFlights\Merge OriginKey Code.Outputs[Merge Output 1]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Merge Output 13]"
-              endId="Package\Insert data into FactFlights\Export to FactsFlights.Inputs[OLE DB Destination Input]"
-              name="Merge Output 1"
-              startId="Package\Insert data into FactFlights\Merge PlaneKey Code.Outputs[Merge Output 1]" />
             <path
               refId="Package\Insert data into FactFlights.Paths[Merge Output 12]"
               endId="Package\Insert data into FactFlights\Lookup PlaneDana TailNumCode.Inputs[Lookup Input]"
               name="Merge Output 1"
               startId="Package\Insert data into FactFlights\Merge CarrierKey Code.Outputs[Merge Output 1]" />
             <path
+              refId="Package\Insert data into FactFlights.Paths[Merge Output 1]"
+              endId="Package\Insert data into FactFlights\Lookup Carrier.Inputs[Lookup Input]"
+              name="Merge Output 1"
+              startId="Package\Insert data into FactFlights\Merge DestKey Code.Outputs[Merge Output 1]" />
+            <path
               refId="Package\Insert data into FactFlights.Paths[OLE DB Destination Error Output]"
               endId="Package\Insert data into FactFlights\Error Output.Inputs[Multicast Input 1]"
               name="OLE DB Destination Error Output"
               startId="Package\Insert data into FactFlights\Export to FactsFlights.Outputs[OLE DB Destination Error Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output4]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output]"
               endId="Package\Insert data into FactFlights\Merge CarrierKey Code.Inputs[Merge Input 1]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort By CarrierKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output3]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output1]"
               endId="Package\Insert data into FactFlights\Merge DestKey Code.Inputs[Merge Input 2]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort by DestKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output1]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output2]"
               endId="Package\Insert data into FactFlights\Merge OriginKey Code.Inputs[Merge Input 1]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort By OriginKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output3]"
               endId="Package\Insert data into FactFlights\Merge OriginKey Code.Inputs[Merge Input 2]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort by OriginKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output6]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output4]"
               endId="Package\Insert data into FactFlights\Merge PlaneKey Code.Inputs[Merge Input 1]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort By PlaneKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output7]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output5]"
               endId="Package\Insert data into FactFlights\Merge PlaneKey Code.Inputs[Merge Input 2]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort by PlaneKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output5]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output6]"
               endId="Package\Insert data into FactFlights\Merge CarrierKey Code.Inputs[Merge Input 2]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort by CarrierKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output2]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output7]"
               endId="Package\Insert data into FactFlights\Merge DestKey Code.Inputs[Merge Input 1]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort By DestKey.Outputs[Sort Output]" />
@@ -19101,233 +19490,131 @@ where [refTable].[Pld_TailnumCode] = ?</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="130,42"
+          Id="Package\Insert data into FactFlights\Multicast 1"
+          TopLeft="33,397" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Insert data into FactFlights\Lookup Dest"
+          TopLeft="312,638" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Insert data into FactFlights\Sort by OriginKey"
+          TopLeft="572,481" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Insert data into FactFlights\Sort by CarrierKey"
+          TopLeft="622,983" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Insert data into FactFlights\Merge CarrierKey Code"
+          TopLeft="346,1084" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Insert data into FactFlights\NotFound Origin to -1"
+          TopLeft="566,399" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Insert data into FactFlights\Sort By CarrierKey"
+          TopLeft="323,989" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Insert data into FactFlights\Sort by DestKey"
+          TopLeft="583,712" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Insert data into FactFlights\Sort by PlaneKey"
+          TopLeft="720,1249" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Insert data into FactFlights\Lookup Carrier"
+          TopLeft="337,907" />
+        <NodeLayout
           Size="211,42"
           Id="Package\Insert data into FactFlights\Replace NA to EmptyStrings"
           TopLeft="250.428573871145,216.952944205129" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\Insert data into FactFlights\Combine DateKey"
-          TopLeft="273.857145289986,137.035296039515" />
+          Size="181,42"
+          Id="Package\Insert data into FactFlights\Merge PlaneKey Code"
+          TopLeft="404,1343" />
         <NodeLayout
-          Size="213,42"
-          Id="Package\Insert data into FactFlights\Load FactsCSV from variable"
-          TopLeft="252.857144949388,50.7764713003561" />
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Flat File Source Output]"
-          TopLeft="357.357145119687,92.7764713003561">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44.2588247391589"
-              Start="0,0"
-              End="0,36.7588247391589">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.7588247391589" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Derived Column Output]"
-          TopLeft="355.642859580565,179.035296039515">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.917648165614"
-              Start="0,0"
-              End="0,30.417648165614">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.417648165614" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="232,42"
+          Id="Package\Insert data into FactFlights\Lookup PlaneDana TailNumCode"
+          TopLeft="329,1162" />
         <NodeLayout
           Size="190,42"
           Id="Package\Insert data into FactFlights\Replace Times to Dates"
           TopLeft="255,314" />
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Derived Column Output1]"
-          TopLeft="352.964286935572,258.952944205129">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.047055794871"
-              Start="0,0"
-              End="0,47.547055794871">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.547055794871" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="135,42"
-          Id="Package\Insert data into FactFlights\CheckErrors"
-          TopLeft="7,137" />
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Derived Column Error Output]"
-          TopLeft="273.857145289986,158.017648019758">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-131.857145289986,0"
-              Start="0,0"
-              End="-124.357145289986,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-124.357145289986,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-136.008611707493,5,147.660078125,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="201,42"
+          Id="Package\Insert data into FactFlights\NotFound PlaneData to -1"
+          TopLeft="697,1161" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Insert data into FactFlights\Merge OriginKey Code"
+          TopLeft="291,563" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Insert data into FactFlights\Export to FactsFlights"
+          TopLeft="410,1500" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Insert data into FactFlights\Sort By PlaneKey"
+          TopLeft="389,1250" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Insert data into FactFlights\Error Output"
+          TopLeft="37,1499" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Insert data into FactFlights\Sort By DestKey"
+          TopLeft="301,719" />
         <NodeLayout
           Size="144,42"
           Id="Package\Insert data into FactFlights\Lookup Origin"
           TopLeft="288,397" />
         <NodeLayout
-          Size="130,42"
-          Id="Package\Insert data into FactFlights\Multicast 1"
-          TopLeft="33,397" />
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Lookup Error Output]"
-          TopLeft="288,418">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-125,0"
-              Start="0,0"
-              End="-117.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-117.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-113.4850390625,5,109.470078125,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="213,42"
+          Id="Package\Insert data into FactFlights\Load FactsCSV from variable"
+          TopLeft="252.857144949388,50.7764713003561" />
         <NodeLayout
-          Size="182,42"
-          Id="Package\Insert data into FactFlights\NotFound Origin to -1"
-          TopLeft="566,399" />
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output]"
-          TopLeft="432,419">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="134,0"
-              Start="0,0"
-              End="126.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="126.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="7.44361328125,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="177,42"
+          Id="Package\Insert data into FactFlights\Merge DestKey Code"
+          TopLeft="315,819" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\Insert data into FactFlights\NotFound Destination to -1"
+          TopLeft="547,640" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Insert data into FactFlights\Combine DateKey"
+          TopLeft="273.857145289986,137.035296039515" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Insert data into FactFlights\CheckErrors"
+          TopLeft="7,137" />
         <NodeLayout
           Size="162,42"
           Id="Package\Insert data into FactFlights\Sort By OriginKey"
           TopLeft="275,479" />
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output]"
-          TopLeft="358,439">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40"
-              Start="0,0"
-              End="0,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="161,42"
-          Id="Package\Insert data into FactFlights\Sort by OriginKey"
-          TopLeft="572,481" />
+          Size="185,42"
+          Id="Package\Insert data into FactFlights\NotFound Carrier to -1"
+          TopLeft="606,904" />
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Derived Column Output2]"
-          TopLeft="350,356">
+          Id="Package\Insert data into FactFlights.Paths[Sort Output7]"
+          TopLeft="376.916666666667,761">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="10,41"
+              EndConnector="0,58"
               Start="0,0"
-              End="10,33.5">
+              End="0,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5"
-                    Point2="0,20.5"
-                    Point3="4,20.5" />
-                  <mssgle:LineSegment
-                    End="6,20.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="6,20.5"
-                    Point2="10,20.5"
-                    Point3="10,24.5" />
-                  <mssgle:LineSegment
-                    End="10,33.5" />
+                    End="0,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19337,19 +19624,31 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Derived Column Output3]"
-          TopLeft="654.75,441">
+          Id="Package\Insert data into FactFlights.Paths[Sort Output6]"
+          TopLeft="704.5,1025">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40"
+              EndConnector="-235.166666666667,59"
               Start="0,0"
-              End="0,32.5">
+              End="-235.166666666667,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5" />
+                    End="0,31.0996818663839" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.0996818663839"
+                    Point2="0,35.0996818663839"
+                    Point3="-4,35.0996818663839" />
+                  <mssgle:LineSegment
+                    End="-231.166666666667,35.0996818663839" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-231.166666666667,35.0996818663839"
+                    Point2="-235.166666666667,35.0996818663839"
+                    Point3="-235.166666666667,39.0996818663839" />
+                  <mssgle:LineSegment
+                    End="-235.166666666667,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19358,12 +19657,64 @@ where [refTable].[Pld_TailnumCode] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Insert data into FactFlights\Merge OriginKey Code"
-          TopLeft="291,563" />
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output]"
+          Id="Package\Insert data into FactFlights.Paths[Sort Output5]"
+          TopLeft="799.5,1291">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-276.166666666667,52"
+              Start="0,0"
+              End="-276.166666666667,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.9266155531216" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.9266155531216"
+                    Point2="0,30.9266155531216"
+                    Point3="-4,30.9266155531216" />
+                  <mssgle:LineSegment
+                    End="-272.166666666667,30.9266155531216" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-272.166666666667,30.9266155531216"
+                    Point2="-276.166666666667,30.9266155531216"
+                    Point3="-276.166666666667,34.9266155531216" />
+                  <mssgle:LineSegment
+                    End="-276.166666666667,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Sort Output4]"
+          TopLeft="467.083333333333,1292">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Sort Output3]"
           TopLeft="652.5,523">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19397,7 +19748,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output1]"
+          Id="Package\Insert data into FactFlights.Paths[Sort Output2]"
           TopLeft="354.833333333333,521">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19418,154 +19769,8 @@ where [refTable].[Pld_TailnumCode] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Insert data into FactFlights\Lookup Dest"
-          TopLeft="312,638" />
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Merge Output 1]"
-          TopLeft="382,605">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33"
-              Start="0,0"
-              End="0,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Insert data into FactFlights\Sort By DestKey"
-          TopLeft="301,719" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Insert data into FactFlights\Sort by DestKey"
-          TopLeft="583,712" />
-        <NodeLayout
-          Size="207,42"
-          Id="Package\Insert data into FactFlights\NotFound Destination to -1"
-          TopLeft="547,640" />
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output1]"
-          TopLeft="379.75,680">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39"
-              Start="0,0"
-              End="0,31.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output1]"
-          TopLeft="450,660">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="97,0"
-              Start="0,0"
-              End="89.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="89.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-11.05638671875,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Derived Column Output4]"
-          TopLeft="650.5,682">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="9.5,30"
-              Start="0,0"
-              End="9.5,22.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11"
-                    Point2="0,15"
-                    Point3="4,15" />
-                  <mssgle:LineSegment
-                    End="5.5,15" />
-                  <mssgle:CubicBezierSegment
-                    Point1="5.5,15"
-                    Point2="9.5,15"
-                    Point3="9.5,19" />
-                  <mssgle:LineSegment
-                    End="9.5,22.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Insert data into FactFlights\Merge DestKey Code"
-          TopLeft="315,819" />
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output2]"
-          TopLeft="376.916666666667,761">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output3]"
+          Id="Package\Insert data into FactFlights.Paths[Sort Output1]"
           TopLeft="660,754">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19598,120 +19803,8 @@ where [refTable].[Pld_TailnumCode] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="148,42"
-          Id="Package\Insert data into FactFlights\Lookup Carrier"
-          TopLeft="337,907" />
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Merge Output 11]"
-          TopLeft="407.25,861">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46"
-              Start="0,0"
-              End="0,38.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Insert data into FactFlights\Sort By CarrierKey"
-          TopLeft="323,989" />
-        <NodeLayout
-          Size="185,42"
-          Id="Package\Insert data into FactFlights\NotFound Carrier to -1"
-          TopLeft="606,904" />
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output2]"
-          TopLeft="408.25,949">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40"
-              Start="0,0"
-              End="0,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output2]"
-          TopLeft="485,926.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="121,0"
-              Start="0,0"
-              End="113.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="113.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0.943613281250002,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Insert data into FactFlights\Sort by CarrierKey"
-          TopLeft="622,983" />
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Derived Column Output5]"
-          TopLeft="701.5,946">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37"
-              Start="0,0"
-              End="0,29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="187,42"
-          Id="Package\Insert data into FactFlights\Merge CarrierKey Code"
-          TopLeft="346,1084" />
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output4]"
+          Id="Package\Insert data into FactFlights.Paths[Sort Output]"
           TopLeft="407.583333333333,1031">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19733,43 +19826,29 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output5]"
-          TopLeft="704.5,1025">
+          Id="Package\Insert data into FactFlights.Paths[OLE DB Destination Error Output]"
+          TopLeft="410,1520.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-235.166666666667,59"
+              EndConnector="-235,0"
               Start="0,0"
-              End="-235.166666666667,51.5">
+              End="-227.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.0996818663839" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.0996818663839"
-                    Point2="0,35.0996818663839"
-                    Point3="-4,35.0996818663839" />
-                  <mssgle:LineSegment
-                    End="-231.166666666667,35.0996818663839" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-231.166666666667,35.0996818663839"
-                    Point2="-235.166666666667,35.0996818663839"
-                    Point3="-235.166666666667,39.0996818663839" />
-                  <mssgle:LineSegment
-                    End="-235.166666666667,51.5" />
+                    End="-227.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-195.6200390625,5,163.740078125,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="232,42"
-          Id="Package\Insert data into FactFlights\Lookup PlaneDana TailNumCode"
-          TopLeft="329,1162" />
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Merge Output 12]"
           TopLeft="442.25,1126">
@@ -19792,18 +19871,146 @@ where [refTable].[Pld_TailnumCode] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="201,42"
-          Id="Package\Insert data into FactFlights\NotFound PlaneData to -1"
-          TopLeft="697,1161" />
-        <NodeLayout
-          Size="159,42"
-          Id="Package\Insert data into FactFlights\Sort By PlaneKey"
-          TopLeft="389,1250" />
-        <NodeLayout
-          Size="159,42"
-          Id="Package\Insert data into FactFlights\Sort by PlaneKey"
-          TopLeft="720,1249" />
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Merge Output 11]"
+          TopLeft="382,605">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Merge Output 1]"
+          TopLeft="407.25,861">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output3]"
+          TopLeft="432,419">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="134,0"
+              Start="0,0"
+              End="126.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="126.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.44361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output2]"
+          TopLeft="450,660">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97,0"
+              Start="0,0"
+              End="89.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="89.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-11.05638671875,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output1]"
+          TopLeft="561,1182.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="136,0"
+              Start="0,0"
+              End="128.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="128.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="8.44361328125,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output]"
+          TopLeft="485,926.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="121,0"
+              Start="0,0"
+              End="113.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="113.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0.943613281250002,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Lookup Match Output3]"
           TopLeft="445,1204">
@@ -19841,31 +20048,181 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output3]"
-          TopLeft="561,1182.5">
+          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output2]"
+          TopLeft="379.75,680">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="136,0"
+              EndConnector="0,39"
               Start="0,0"
-              End="128.5,0">
+              End="0,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="128.5,0" />
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="8.44361328125,5,111.6127734375,11.609375"
+              BoundingBox="-48.19138671875,9.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output1]"
+          TopLeft="408.25,949">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,10.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output]"
+          TopLeft="358,439">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,10.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Lookup Error Output]"
+          TopLeft="288,418">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-125,0"
+              Start="0,0"
+              End="-117.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-117.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-113.4850390625,5,109.470078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Flat File Source Output]"
+          TopLeft="357.357145119687,92.7764713003561">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.2588247391589"
+              Start="0,0"
+              End="0,36.7588247391589">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.7588247391589" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Derived Column Output6]"
+          TopLeft="650.5,682">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.5,30"
+              Start="0,0"
+              End="9.5,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11"
+                    Point2="0,15"
+                    Point3="4,15" />
+                  <mssgle:LineSegment
+                    End="5.5,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.5,15"
+                    Point2="9.5,15"
+                    Point3="9.5,19" />
+                  <mssgle:LineSegment
+                    End="9.5,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output5]"
+          TopLeft="701.5,946">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output4]"
           TopLeft="798.5,1203">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19886,24 +20243,20 @@ where [refTable].[Pld_TailnumCode] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="181,42"
-          Id="Package\Insert data into FactFlights\Merge PlaneKey Code"
-          TopLeft="404,1343" />
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output6]"
-          TopLeft="467.083333333333,1292">
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output3]"
+          TopLeft="654.75,441">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,51"
+              EndConnector="0,40"
               Start="0,0"
-              End="0,43.5">
+              End="0,32.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.5" />
+                    End="0,32.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19913,31 +20266,31 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output7]"
-          TopLeft="799.5,1291">
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output2]"
+          TopLeft="350,356">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-276.166666666667,52"
+              EndConnector="10,41"
               Start="0,0"
-              End="-276.166666666667,44.5">
+              End="10,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.9266155531216" />
+                    End="0,16.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.9266155531216"
-                    Point2="0,30.9266155531216"
-                    Point3="-4,30.9266155531216" />
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
                   <mssgle:LineSegment
-                    End="-272.166666666667,30.9266155531216" />
+                    End="6,20.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-272.166666666667,30.9266155531216"
-                    Point2="-276.166666666667,30.9266155531216"
-                    Point3="-276.166666666667,34.9266155531216" />
+                    Point1="6,20.5"
+                    Point2="10,20.5"
+                    Point3="10,24.5" />
                   <mssgle:LineSegment
-                    End="-276.166666666667,44.5" />
+                    End="10,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19946,24 +20299,20 @@ where [refTable].[Pld_TailnumCode] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Insert data into FactFlights\Export to FactsFlights"
-          TopLeft="402,1434" />
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Merge Output 13]"
-          TopLeft="493.25,1385">
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output1]"
+          TopLeft="352.964286935572,258.952944205129">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49"
+              EndConnector="0,55.047055794871"
               Start="0,0"
-              End="0,41.5">
+              End="0,47.547055794871">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.5" />
+                    End="0,47.547055794871" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19972,67 +20321,110 @@ where [refTable].[Pld_TailnumCode] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Insert data into FactFlights\Error Output"
-          TopLeft="33,1429" />
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[OLE DB Destination Error Output]"
-          TopLeft="402,1452.5">
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output]"
+          TopLeft="355.642859580565,179.035296039515">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-231,0"
+              EndConnector="0,37.917648165614"
               Start="0,0"
-              End="-223.5,0">
+              End="0,30.417648165614">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-223.5,0" />
+                    End="0,30.417648165614" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Error Output]"
+          TopLeft="273.857145289986,158.017648019758">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-131.857145289986,0"
+              Start="0,0"
+              End="-124.357145289986,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-124.357145289986,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-193.6200390625,5,163.740078125,16"
+              BoundingBox="-136.008611707493,5,147.660078125,16"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="228,42"
+          Id="Package\Insert data into FactFlights\Additional Columns For Logging"
+          TopLeft="387,1420" />
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Merge Output 13]"
+          TopLeft="497.75,1385">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output7]"
+          TopLeft="500.5,1462">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Insert data into FactFlights\Lookup Origin">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimAirports]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Insert data into FactFlights\Lookup Dest">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -20042,7 +20434,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -20065,7 +20457,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -20078,7 +20470,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -20088,7 +20480,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -20105,6 +20497,29 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insert data into FactFlights\Lookup Origin">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimAirports]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
