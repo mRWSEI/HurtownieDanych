@@ -25,13 +25,18 @@
     [Fli_Cancelled]              SMALLINT      NULL,
     [Fli_CancellationCode]       NVARCHAR (1)  NULL,
     [Fli_Diverted]               SMALLINT      NULL,
+    [Fli_TailNumId]              INT           NULL,
     [Fli_CarrierDelay]           NVARCHAR (5)  NULL,
     [Fli_WeatherDelay]           NVARCHAR (5)  NULL,
     [Fli_NASDelay]               NVARCHAR (5)  NULL,
     [Fli_SecurityDelay]          NVARCHAR (5)  NULL,
     [Fli_LateAircraftDelay]      NVARCHAR (5)  NULL,
-    PRIMARY KEY CLUSTERED ([Fli_Id] ASC)
+    [Fli_PackageStartTime]       DATETIME      NULL,
+    [Fli_PackageFileName]        NVARCHAR (50) NULL,
+    CONSTRAINT [PK__FactFlig__F048FBC4640A5D0B] PRIMARY KEY CLUSTERED ([Fli_Id] ASC)
 );
+
+
 
 
 
