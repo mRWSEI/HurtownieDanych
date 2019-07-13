@@ -63,6 +63,7 @@
     <Folder Include="Security\" />
     <Folder Include="raporty\" />
     <Folder Include="raporty\Views\" />
+    <Folder Include="dbo\Views\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\DimDate.sql" />
@@ -78,5 +79,6 @@
     <Build Include="raporty\Views\Top10Destinations.sql" />
     <Build Include="raporty\Views\MostUsedPlanes.sql" />
     <Build Include="raporty\Views\ArriveDestStatisticsTime.sql" />
+    <Build Include="dbo\Views\TheFastestAirplanesByManufacturer.sql" />
   </ItemGroup>
 </Project>
