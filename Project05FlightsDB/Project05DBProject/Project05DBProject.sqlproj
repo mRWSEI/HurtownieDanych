@@ -61,6 +61,8 @@
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="Security\" />
+    <Folder Include="raporty\" />
+    <Folder Include="raporty\Views\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\DimDate.sql" />
@@ -73,5 +75,8 @@
     <Build Include="dbo\Stored Procedures\DimDateFillUp.sql" />
     <Build Include="Security\raporty.sql" />
     <Build Include="dbo\Tables\FactFlights.sql" />
+    <Build Include="raporty\Views\Top10Destinations.sql" />
+    <Build Include="raporty\Views\MostUsedPlanes.sql" />
+    <Build Include="raporty\Views\ArriveDestStatisticsTime.sql" />
   </ItemGroup>
 </Project>

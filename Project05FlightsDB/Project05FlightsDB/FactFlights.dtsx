@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="FactFlights"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{1E4C8CEB-6F34-43FB-BFEC-04896377B9B7}">
+  DTS:VersionBuild="52"
+  DTS:VersionGUID="{44E0D4F9-6A9D-4553-BF74-9E4049011FCB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -8034,6 +8034,30 @@ where [refTable].[Pld_TailnumCode] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Insert data into FactFlights\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Insert data into FactFlights\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insert data into FactFlights\Multicast.Outputs[Multicast Output 1]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Insert data into FactFlights\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Insert data into FactFlights\Multicast 1"
               componentClassID="Microsoft.Multicast"
               contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -8442,163 +8466,20 @@ where [refTable].[Pld_TailnumCode] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings"
+              refId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Replace NA to EmptyStrings"
+              name="Replace NA to EmptyString Part1"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input]"
+                  refId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[DepTime]"
-                      cachedDataType="wstr"
-                      cachedLength="4"
-                      cachedName="DepTime"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepTime]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepTime]},"NA","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACE(DepTime,"NA","")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[CRSDepTime]"
-                      cachedDataType="wstr"
-                      cachedLength="4"
-                      cachedName="CRSDepTime"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSDepTime]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSDepTime]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">CRSDepTime</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[ArrTime]"
-                      cachedDataType="wstr"
-                      cachedLength="4"
-                      cachedName="ArrTime"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrTime]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrTime]},"NA","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACE(ArrTime,"NA","")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[CRSArrTime]"
-                      cachedDataType="wstr"
-                      cachedLength="4"
-                      cachedName="CRSArrTime"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSArrTime]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSArrTime]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">CRSArrTime</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[UniqueCarrier]"
-                      cachedDataType="wstr"
-                      cachedLength="2"
-                      cachedName="UniqueCarrier"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[UniqueCarrier]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[UniqueCarrier]},"NA","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACE(UniqueCarrier,"NA","")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[FlightNum]"
-                      cachedDataType="i2"
-                      cachedName="FlightNum"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[FlightNum]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[FlightNum]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">FlightNum</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[TailNum]"
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Inputs[Derived Column Input].Columns[TailNum]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="TailNum"
@@ -8622,7 +8503,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[ActualElapsedTime]"
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Inputs[Derived Column Input].Columns[ActualElapsedTime]"
                       cachedDataType="wstr"
                       cachedLength="5"
                       cachedName="ActualElapsedTime"
@@ -8646,14 +8527,13 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[CRSElapsedTimeInt]"
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Inputs[Derived Column Input].Columns[CRSElapsedTime]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="CRSElapsedTime"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSElapsedTime]"
-                      name="CRSElapsedTimeInt"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -8661,160 +8541,68 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_I2)[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSElapsedTime]},"NA","")</property>
+                          name="Expression">(DT_I2)[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSElapsedTime]},"NA","0")</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">(DT_I2)REPLACE(CRSElapsedTimeInt,"NA","")</property>
+                          name="FriendlyExpression">(DT_I2)REPLACE(CRSElapsedTime,"NA","0")</property>
                       </properties>
                     </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="REPLACE NA to EmptyString Part2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[AirTime]"
-                      cachedDataType="wstr"
-                      cachedLength="5"
-                      cachedName="AirTime"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[AirTime]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[AirTime]},"NA","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACE(AirTime,"NA","")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[ArrDelay]"
-                      cachedDataType="wstr"
-                      cachedLength="5"
-                      cachedName="ArrDelay"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrDelay]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrDelay]},"NA","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACE(ArrDelay,"NA","")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[DepDelay]"
-                      cachedDataType="wstr"
-                      cachedLength="5"
-                      cachedName="DepDelay"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepDelay]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepDelay]},"NA","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACE(DepDelay,"NA","")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[Origin]"
-                      cachedDataType="wstr"
-                      cachedLength="3"
-                      cachedName="Origin"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Origin]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Origin]},"NA","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACE(Origin,"NA","")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[Dest]"
-                      cachedDataType="wstr"
-                      cachedLength="3"
-                      cachedName="Dest"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Dest]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Dest]},"NA","")</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REPLACE(Dest,"NA","")</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[Distance]"
-                      cachedDataType="i2"
-                      cachedName="Distance"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Distance]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Distance]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">Distance</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[TaxiIn]"
+                      refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input].Columns[TaxiIn]"
                       cachedDataType="wstr"
                       cachedLength="5"
                       cachedName="TaxiIn"
@@ -8838,7 +8626,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[TaxiOut]"
+                      refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input].Columns[TaxiOut]"
                       cachedDataType="wstr"
                       cachedLength="5"
                       cachedName="TaxiOut"
@@ -8862,7 +8650,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[Cancelled]"
+                      refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input].Columns[Cancelled]"
                       cachedDataType="i1"
                       cachedName="Cancelled"
                       errorOrTruncationOperation="Computation"
@@ -8885,7 +8673,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[CancellationCode]"
+                      refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input].Columns[CancellationCode]"
                       cachedDataType="wstr"
                       cachedLength="1"
                       cachedName="CancellationCode"
@@ -8909,7 +8697,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[Diverted]"
+                      refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input].Columns[Diverted]"
                       cachedDataType="i1"
                       cachedName="Diverted"
                       errorOrTruncationOperation="Computation"
@@ -8932,7 +8720,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[CarrierDelay]"
+                      refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input].Columns[CarrierDelay]"
                       cachedDataType="wstr"
                       cachedLength="5"
                       cachedName="CarrierDelay"
@@ -8956,7 +8744,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[WeatherDelay]"
+                      refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input].Columns[WeatherDelay]"
                       cachedDataType="wstr"
                       cachedLength="5"
                       cachedName="WeatherDelay"
@@ -8980,7 +8768,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[NASDelay]"
+                      refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input].Columns[NASDelay]"
                       cachedDataType="wstr"
                       cachedLength="5"
                       cachedName="NASDelay"
@@ -9004,7 +8792,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[SecurityDelay]"
+                      refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input].Columns[SecurityDelay]"
                       cachedDataType="wstr"
                       cachedLength="5"
                       cachedName="SecurityDelay"
@@ -9025,6 +8813,343 @@ where [refTable].[Pld_TailnumCode] = ?</property>
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
                           name="FriendlyExpression">REPLACE(SecurityDelay,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Replace NA to EmptyStrings"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[DepTime]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="DepTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepTime]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL]([REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepTime]},"NA","")) ? " " : [REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepTime]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(REPLACE(DepTime,"NA","")) ? " " : REPLACE(DepTime,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[CRSDepTime]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="CRSDepTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSDepTime]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSDepTime]}) ? " " : #{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSDepTime]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(CRSDepTime) ? " " : CRSDepTime</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[ArrTime]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="ArrTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrTime]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL]([REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrTime]},"NA","")) ? " " : [REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrTime]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(REPLACE(ArrTime,"NA","")) ? " " : REPLACE(ArrTime,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[CRSArrTime]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="CRSArrTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSArrTime]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSArrTime]}) ? " " : #{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[CRSArrTime]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(CRSArrTime) ? " " : CRSArrTime</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[UniqueCarrier]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="UniqueCarrier"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[UniqueCarrier]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL]([REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[UniqueCarrier]},"NA","")) ? " " : [REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[UniqueCarrier]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(REPLACE(UniqueCarrier,"NA","")) ? " " : REPLACE(UniqueCarrier,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[FlightNum]"
+                      cachedDataType="i2"
+                      cachedName="FlightNum"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[FlightNum]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[FlightNum]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">FlightNum</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[AirTime]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="AirTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[AirTime]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[AirTime]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(AirTime,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[ArrDelay]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="ArrDelay"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrDelay]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[ArrDelay]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(ArrDelay,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[DepDelay]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="DepDelay"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepDelay]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[DepDelay]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(DepDelay,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[Origin]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Origin"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Origin]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Origin]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(Origin,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[Dest]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Dest"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Dest]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Dest]},"NA","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(Dest,"NA","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input].Columns[Distance]"
+                      cachedDataType="i2"
+                      cachedName="Distance"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="RedirectRow"
+                      lineageId="Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Distance]"
+                      truncationRowDisposition="RedirectRow"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Insert data into FactFlights\Load FactsCSV from variable.Outputs[Flat File Source Output].Columns[Distance]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Distance</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -19280,45 +19405,60 @@ where [refTable].[Pld_TailnumCode] = ?</property>
               name="Derived Column Error Output"
               startId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Error Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Derived Column Output6]"
-              endId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input]"
-              name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Derived Column Output5]"
-              endId="Package\Insert data into FactFlights\Replace Times to Dates.Inputs[Derived Column Input]"
-              name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Derived Column Output4]"
-              endId="Package\Insert data into FactFlights\Lookup Origin.Inputs[Lookup Input]"
-              name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\Replace Times to Dates.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Derived Column Output7]"
-              endId="Package\Insert data into FactFlights\Sort by OriginKey.Inputs[Sort Input]"
-              name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\NotFound Origin to -1.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Derived Column Output2]"
-              endId="Package\Insert data into FactFlights\Sort by PlaneKey.Inputs[Sort Input]"
-              name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\NotFound PlaneData to -1.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Derived Column Output1]"
-              endId="Package\Insert data into FactFlights\Sort by CarrierKey.Inputs[Sort Input]"
-              name="Derived Column Output"
-              startId="Package\Insert data into FactFlights\NotFound Carrier to -1.Outputs[Derived Column Output]" />
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Error Output1]"
+              endId="Package\Insert data into FactFlights\Multicast.Inputs[Multicast Input 1]"
+              name="Derived Column Error Output"
+              startId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Outputs[Derived Column Error Output]" />
             <path
               refId="Package\Insert data into FactFlights.Paths[Derived Column Output]"
               endId="Package\Insert data into FactFlights\Sort by DestKey.Inputs[Sort Input]"
               name="Derived Column Output"
               startId="Package\Insert data into FactFlights\NotFound Destination to -1.Outputs[Derived Column Output]" />
             <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output1]"
+              endId="Package\Insert data into FactFlights\Sort by CarrierKey.Inputs[Sort Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\NotFound Carrier to -1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output2]"
+              endId="Package\Insert data into FactFlights\Sort by PlaneKey.Inputs[Sort Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\NotFound PlaneData to -1.Outputs[Derived Column Output]" />
+            <path
               refId="Package\Insert data into FactFlights.Paths[Derived Column Output3]"
               endId="Package\Insert data into FactFlights\Export to FactsFlights.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Insert data into FactFlights\Additional Columns For Logging.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output4]"
+              endId="Package\Insert data into FactFlights\Lookup Origin.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\Replace Times to Dates.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output9]"
+              endId="Package\Insert data into FactFlights\Sort by OriginKey.Inputs[Sort Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\NotFound Origin to -1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output8]"
+              endId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output7]"
+              endId="Package\Insert data into FactFlights\Replace NA to EmptyString Part1.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output6]"
+              endId="Package\Insert data into FactFlights\Replace Times to Dates.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Derived Column Output5]"
+              endId="Package\Insert data into FactFlights\Replace NA to EmptyStrings.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Insert data into FactFlights\Combine DateKey.Outputs[Derived Column Output]" />
             <path
               refId="Package\Insert data into FactFlights.Paths[Flat File Source Output]"
               endId="Package\Insert data into FactFlights\Combine DateKey.Inputs[Derived Column Input]"
@@ -19330,35 +19470,25 @@ where [refTable].[Pld_TailnumCode] = ?</property>
               name="Lookup Error Output"
               startId="Package\Insert data into FactFlights\Lookup Origin.Outputs[Lookup Error Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output]"
+              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output3]"
               endId="Package\Insert data into FactFlights\Sort By OriginKey.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\Insert data into FactFlights\Lookup Origin.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output1]"
+              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output]"
               endId="Package\Insert data into FactFlights\Sort By CarrierKey.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\Insert data into FactFlights\Lookup Carrier.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output2]"
+              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output1]"
               endId="Package\Insert data into FactFlights\Sort By DestKey.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\Insert data into FactFlights\Lookup Dest.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output3]"
+              refId="Package\Insert data into FactFlights.Paths[Lookup Match Output2]"
               endId="Package\Insert data into FactFlights\Sort By PlaneKey.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\Insert data into FactFlights\Lookup PlaneDana TailNumCode.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output3]"
-              endId="Package\Insert data into FactFlights\NotFound Destination to -1.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Insert data into FactFlights\Lookup Dest.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output2]"
-              endId="Package\Insert data into FactFlights\NotFound Carrier to -1.Inputs[Derived Column Input]"
-              name="Lookup No Match Output"
-              startId="Package\Insert data into FactFlights\Lookup Carrier.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output]"
               endId="Package\Insert data into FactFlights\NotFound Origin to -1.Inputs[Derived Column Input]"
@@ -19370,15 +19500,20 @@ where [refTable].[Pld_TailnumCode] = ?</property>
               name="Lookup No Match Output"
               startId="Package\Insert data into FactFlights\Lookup PlaneDana TailNumCode.Outputs[Lookup No Match Output]" />
             <path
+              refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output2]"
+              endId="Package\Insert data into FactFlights\NotFound Carrier to -1.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Insert data into FactFlights\Lookup Carrier.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Lookup No Match Output3]"
+              endId="Package\Insert data into FactFlights\NotFound Destination to -1.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\Insert data into FactFlights\Lookup Dest.Outputs[Lookup No Match Output]" />
+            <path
               refId="Package\Insert data into FactFlights.Paths[Merge Output 1]"
               endId="Package\Insert data into FactFlights\Additional Columns For Logging.Inputs[Derived Column Input]"
               name="Merge Output 1"
               startId="Package\Insert data into FactFlights\Merge PlaneKey Code.Outputs[Merge Output 1]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Merge Output 11]"
-              endId="Package\Insert data into FactFlights\Lookup Dest.Inputs[Lookup Input]"
-              name="Merge Output 1"
-              startId="Package\Insert data into FactFlights\Merge OriginKey Code.Outputs[Merge Output 1]" />
             <path
               refId="Package\Insert data into FactFlights.Paths[Merge Output 12]"
               endId="Package\Insert data into FactFlights\Lookup PlaneDana TailNumCode.Inputs[Lookup Input]"
@@ -19390,50 +19525,55 @@ where [refTable].[Pld_TailnumCode] = ?</property>
               name="Merge Output 1"
               startId="Package\Insert data into FactFlights\Merge DestKey Code.Outputs[Merge Output 1]" />
             <path
+              refId="Package\Insert data into FactFlights.Paths[Merge Output 11]"
+              endId="Package\Insert data into FactFlights\Lookup Dest.Inputs[Lookup Input]"
+              name="Merge Output 1"
+              startId="Package\Insert data into FactFlights\Merge OriginKey Code.Outputs[Merge Output 1]" />
+            <path
               refId="Package\Insert data into FactFlights.Paths[OLE DB Destination Error Output]"
               endId="Package\Insert data into FactFlights\Error Output.Inputs[Multicast Input 1]"
               name="OLE DB Destination Error Output"
               startId="Package\Insert data into FactFlights\Export to FactsFlights.Outputs[OLE DB Destination Error Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output6]"
-              endId="Package\Insert data into FactFlights\Merge CarrierKey Code.Inputs[Merge Input 2]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output2]"
+              endId="Package\Insert data into FactFlights\Merge PlaneKey Code.Inputs[Merge Input 1]"
               name="Sort Output"
-              startId="Package\Insert data into FactFlights\Sort by CarrierKey.Outputs[Sort Output]" />
+              startId="Package\Insert data into FactFlights\Sort By PlaneKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output]"
-              endId="Package\Insert data into FactFlights\Merge CarrierKey Code.Inputs[Merge Input 1]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output5]"
+              endId="Package\Insert data into FactFlights\Merge DestKey Code.Inputs[Merge Input 1]"
               name="Sort Output"
-              startId="Package\Insert data into FactFlights\Sort By CarrierKey.Outputs[Sort Output]" />
+              startId="Package\Insert data into FactFlights\Sort By DestKey.Outputs[Sort Output]" />
             <path
               refId="Package\Insert data into FactFlights.Paths[Sort Output1]"
               endId="Package\Insert data into FactFlights\Merge DestKey Code.Inputs[Merge Input 2]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort by DestKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output2]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output]"
+              endId="Package\Insert data into FactFlights\Merge CarrierKey Code.Inputs[Merge Input 1]"
+              name="Sort Output"
+              startId="Package\Insert data into FactFlights\Sort By CarrierKey.Outputs[Sort Output]" />
+            <path
+              refId="Package\Insert data into FactFlights.Paths[Sort Output7]"
               endId="Package\Insert data into FactFlights\Merge OriginKey Code.Inputs[Merge Input 1]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort By OriginKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output3]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output6]"
               endId="Package\Insert data into FactFlights\Merge OriginKey Code.Inputs[Merge Input 2]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort by OriginKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output4]"
-              endId="Package\Insert data into FactFlights\Merge PlaneKey Code.Inputs[Merge Input 1]"
-              name="Sort Output"
-              startId="Package\Insert data into FactFlights\Sort By PlaneKey.Outputs[Sort Output]" />
-            <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output5]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output3]"
               endId="Package\Insert data into FactFlights\Merge PlaneKey Code.Inputs[Merge Input 2]"
               name="Sort Output"
               startId="Package\Insert data into FactFlights\Sort by PlaneKey.Outputs[Sort Output]" />
             <path
-              refId="Package\Insert data into FactFlights.Paths[Sort Output7]"
-              endId="Package\Insert data into FactFlights\Merge DestKey Code.Inputs[Merge Input 1]"
+              refId="Package\Insert data into FactFlights.Paths[Sort Output4]"
+              endId="Package\Insert data into FactFlights\Merge CarrierKey Code.Inputs[Merge Input 2]"
               name="Sort Output"
-              startId="Package\Insert data into FactFlights\Sort By DestKey.Outputs[Sort Output]" />
+              startId="Package\Insert data into FactFlights\Sort by CarrierKey.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -19462,126 +19602,126 @@ where [refTable].[Pld_TailnumCode] = ?</property>
     design-time-name="Package\Insert data into FactFlights">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="187,42"
           Id="Package\Insert data into FactFlights\Merge CarrierKey Code"
-          TopLeft="346,1084" />
+          TopLeft="407,1084" />
         <NodeLayout
           Size="165,42"
           Id="Package\Insert data into FactFlights\Sort By CarrierKey"
-          TopLeft="323,989" />
+          TopLeft="384,989" />
         <NodeLayout
           Size="154,42"
           Id="Package\Insert data into FactFlights\Sort by DestKey"
-          TopLeft="583,712" />
+          TopLeft="644,712" />
         <NodeLayout
           Size="159,42"
           Id="Package\Insert data into FactFlights\Sort by PlaneKey"
-          TopLeft="720,1249" />
+          TopLeft="781,1249" />
         <NodeLayout
           Size="165,42"
           Id="Package\Insert data into FactFlights\Sort by CarrierKey"
-          TopLeft="622,983" />
+          TopLeft="683,983" />
         <NodeLayout
           Size="138,42"
           Id="Package\Insert data into FactFlights\Error Output"
-          TopLeft="37,1499" />
+          TopLeft="98,1499" />
         <NodeLayout
           Size="148,42"
           Id="Package\Insert data into FactFlights\Lookup Carrier"
-          TopLeft="337,907" />
+          TopLeft="398,907" />
         <NodeLayout
           Size="211,42"
           Id="Package\Insert data into FactFlights\Replace NA to EmptyStrings"
-          TopLeft="250.428573871145,216.952944205129" />
+          TopLeft="312.428573871145,202.952944205129" />
         <NodeLayout
           Size="181,42"
           Id="Package\Insert data into FactFlights\Merge PlaneKey Code"
-          TopLeft="404,1343" />
+          TopLeft="465,1343" />
         <NodeLayout
           Size="228,42"
           Id="Package\Insert data into FactFlights\Additional Columns For Logging"
-          TopLeft="387,1420" />
+          TopLeft="448,1420" />
         <NodeLayout
           Size="190,42"
           Id="Package\Insert data into FactFlights\Replace Times to Dates"
-          TopLeft="255,314" />
+          TopLeft="316,314" />
         <NodeLayout
           Size="201,42"
           Id="Package\Insert data into FactFlights\NotFound PlaneData to -1"
-          TopLeft="697,1161" />
+          TopLeft="758,1161" />
         <NodeLayout
           Size="184,42"
           Id="Package\Insert data into FactFlights\Merge OriginKey Code"
-          TopLeft="291,563" />
+          TopLeft="352,563" />
         <NodeLayout
           Size="180,42"
           Id="Package\Insert data into FactFlights\Export to FactsFlights"
-          TopLeft="410,1500" />
+          TopLeft="471,1500" />
         <NodeLayout
           Size="182,42"
           Id="Package\Insert data into FactFlights\NotFound Origin to -1"
-          TopLeft="566,399" />
+          TopLeft="627,399" />
         <NodeLayout
           Size="232,42"
           Id="Package\Insert data into FactFlights\Lookup PlaneDana TailNumCode"
-          TopLeft="329,1162" />
+          TopLeft="390,1162" />
         <NodeLayout
           Size="144,42"
           Id="Package\Insert data into FactFlights\Lookup Origin"
-          TopLeft="288,397" />
+          TopLeft="349,397" />
         <NodeLayout
           Size="213,42"
           Id="Package\Insert data into FactFlights\Load FactsCSV from variable"
-          TopLeft="252.857144949388,50.7764713003561" />
+          TopLeft="313.857144949388,50.7764713003561" />
         <NodeLayout
           Size="177,42"
           Id="Package\Insert data into FactFlights\Merge DestKey Code"
-          TopLeft="315,819" />
+          TopLeft="376,819" />
         <NodeLayout
           Size="207,42"
           Id="Package\Insert data into FactFlights\NotFound Destination to -1"
-          TopLeft="547,640" />
+          TopLeft="608,640" />
         <NodeLayout
           Size="163,42"
           Id="Package\Insert data into FactFlights\Combine DateKey"
-          TopLeft="273.857145289986,137.035296039515" />
+          TopLeft="334.857145289986,137.035296039515" />
         <NodeLayout
           Size="135,42"
           Id="Package\Insert data into FactFlights\CheckErrors"
-          TopLeft="7,137" />
+          TopLeft="68,137" />
         <NodeLayout
           Size="162,42"
           Id="Package\Insert data into FactFlights\Sort By OriginKey"
-          TopLeft="275,479" />
+          TopLeft="336,479" />
         <NodeLayout
           Size="185,42"
           Id="Package\Insert data into FactFlights\NotFound Carrier to -1"
-          TopLeft="606,904" />
+          TopLeft="667,904" />
         <NodeLayout
           Size="155,42"
           Id="Package\Insert data into FactFlights\Sort By DestKey"
-          TopLeft="301,719" />
+          TopLeft="362,719" />
         <NodeLayout
           Size="159,42"
           Id="Package\Insert data into FactFlights\Sort By PlaneKey"
-          TopLeft="389,1250" />
+          TopLeft="450,1250" />
         <NodeLayout
           Size="130,42"
           Id="Package\Insert data into FactFlights\Multicast 1"
-          TopLeft="33,397" />
+          TopLeft="94,397" />
         <NodeLayout
           Size="138,42"
           Id="Package\Insert data into FactFlights\Lookup Dest"
-          TopLeft="312,638" />
+          TopLeft="373,638" />
         <NodeLayout
           Size="161,42"
           Id="Package\Insert data into FactFlights\Sort by OriginKey"
-          TopLeft="572,481" />
+          TopLeft="633,481" />
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output7]"
-          TopLeft="376.916666666667,761">
+          Id="Package\Insert data into FactFlights.Paths[Sort Output5]"
+          TopLeft="437.916666666667,761">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19602,8 +19742,8 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output6]"
-          TopLeft="704.5,1025">
+          Id="Package\Insert data into FactFlights.Paths[Sort Output4]"
+          TopLeft="765.5,1025">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19636,8 +19776,8 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output5]"
-          TopLeft="799.5,1291">
+          Id="Package\Insert data into FactFlights.Paths[Sort Output3]"
+          TopLeft="860.5,1291">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19670,8 +19810,8 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output4]"
-          TopLeft="467.083333333333,1292">
+          Id="Package\Insert data into FactFlights.Paths[Sort Output2]"
+          TopLeft="528.083333333333,1292">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19692,64 +19832,8 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output3]"
-          TopLeft="652.5,523">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-240.166666666667,40"
-              Start="0,0"
-              End="-240.166666666667,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.7931034482759" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.7931034482759"
-                    Point2="0,23.7931034482759"
-                    Point3="-4,23.7931034482759" />
-                  <mssgle:LineSegment
-                    End="-236.166666666667,23.7931034482759" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-236.166666666667,23.7931034482759"
-                    Point2="-240.166666666667,23.7931034482759"
-                    Point3="-240.166666666667,27.7931034482759" />
-                  <mssgle:LineSegment
-                    End="-240.166666666667,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Sort Output2]"
-          TopLeft="354.833333333333,521">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Sort Output1]"
-          TopLeft="660,754">
+          TopLeft="721,754">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19783,7 +19867,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Sort Output]"
-          TopLeft="407.583333333333,1031">
+          TopLeft="468.583333333333,1031">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19805,7 +19889,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[OLE DB Destination Error Output]"
-          TopLeft="410,1520.5">
+          TopLeft="471,1520.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19829,7 +19913,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Merge Output 13]"
-          TopLeft="407.25,861">
+          TopLeft="468.25,861">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19851,7 +19935,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Merge Output 12]"
-          TopLeft="442.25,1126">
+          TopLeft="503.25,1126">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19873,7 +19957,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Merge Output 11]"
-          TopLeft="382,605">
+          TopLeft="443,605">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19895,7 +19979,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Merge Output 1]"
-          TopLeft="497.75,1385">
+          TopLeft="558.75,1385">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19917,7 +20001,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output3]"
-          TopLeft="450,660">
+          TopLeft="511,660">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19941,7 +20025,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output2]"
-          TopLeft="485,926.5">
+          TopLeft="546,926.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19965,7 +20049,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output1]"
-          TopLeft="561,1182.5">
+          TopLeft="622,1182.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -19989,7 +20073,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Lookup No Match Output]"
-          TopLeft="432,419">
+          TopLeft="493,419">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20012,8 +20096,8 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output3]"
-          TopLeft="445,1204">
+          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output2]"
+          TopLeft="506,1204">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20048,8 +20132,8 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output2]"
-          TopLeft="379.75,680">
+          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output1]"
+          TopLeft="440.75,680">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20072,32 +20156,8 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output1]"
-          TopLeft="408.25,949">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40"
-              Start="0,0"
-              End="0,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Lookup Match Output]"
-          TopLeft="358,439">
+          TopLeft="469.25,949">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20121,7 +20181,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Lookup Error Output]"
-          TopLeft="288,418">
+          TopLeft="349,418">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20145,7 +20205,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Flat File Source Output]"
-          TopLeft="357.357145119687,92.7764713003561">
+          TopLeft="418.357145119687,92.7764713003561">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20166,74 +20226,8 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Derived Column Output7]"
-          TopLeft="654.75,441">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40"
-              Start="0,0"
-              End="0,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Derived Column Output6]"
-          TopLeft="355.642859580565,179.035296039515">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.917648165614"
-              Start="0,0"
-              End="0,30.417648165614">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.417648165614" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Insert data into FactFlights.Paths[Derived Column Output5]"
-          TopLeft="352.964286935572,258.952944205129">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.047055794871"
-              Start="0,0"
-              End="0,47.547055794871">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.547055794871" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Derived Column Output4]"
-          TopLeft="350,356">
+          TopLeft="411,356">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20267,7 +20261,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Derived Column Output3]"
-          TopLeft="500.5,1462">
+          TopLeft="561.5,1462">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20291,7 +20285,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Derived Column Output2]"
-          TopLeft="798.5,1203">
+          TopLeft="859.5,1203">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20313,7 +20307,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Derived Column Output1]"
-          TopLeft="701.5,946">
+          TopLeft="762.5,946">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20335,7 +20329,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Derived Column Output]"
-          TopLeft="650.5,682">
+          TopLeft="711.5,682">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20369,7 +20363,7 @@ where [refTable].[Pld_TailnumCode] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Insert data into FactFlights.Paths[Derived Column Error Output]"
-          TopLeft="273.857145289986,158.017648019758">
+          TopLeft="334.857145289986,158.017648019758">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -20388,6 +20382,268 @@ where [refTable].[Pld_TailnumCode] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-136.008611707493,5,147.660078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Insert data into FactFlights\Multicast"
+          TopLeft="70,215" />
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Error Output1]"
+          TopLeft="312.428573871145,223.952944205129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-122.428573871145,12.047055794871"
+              Start="0,0"
+              End="-114.928573871145,12.047055794871">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-57.2142869355725,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.2142869355725,0"
+                    Point2="-61.2142869355725,0"
+                    Point3="-61.2142869355725,4" />
+                  <mssgle:LineSegment
+                    End="-61.2142869355725,8.047055794871" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-61.2142869355725,8.047055794871"
+                    Point2="-61.2142869355725,12.047055794871"
+                    Point3="-65.2142869355725,12.047055794871" />
+                  <mssgle:LineSegment
+                    End="-114.928573871145,12.047055794871" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-135.044325998072,-22,147.660078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output5]"
+          TopLeft="417.142859580566,179.035296039515">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.917648165614"
+              Start="0,0"
+              End="0,16.417648165614">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.417648165614" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="240,42"
+          Id="Package\Insert data into FactFlights\REPLACE NA to EmptyString Part2"
+          TopLeft="639,278" />
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output6]"
+          TopLeft="639,299">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-133,36"
+              Start="0,0"
+              End="-125.5,36">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-62.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-62.5,0"
+                    Point2="-66.5,0"
+                    Point3="-66.5,4" />
+                  <mssgle:LineSegment
+                    End="-66.5,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-66.5,32"
+                    Point2="-66.5,36"
+                    Point3="-70.5,36" />
+                  <mssgle:LineSegment
+                    End="-125.5,36" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="234,42"
+          Id="Package\Insert data into FactFlights\Replace NA to EmptyString Part1"
+          TopLeft="654,205" />
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output7]"
+          TopLeft="523.428573871145,224.976472102565">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="130.571426128855,0"
+              Start="0,0"
+              End="123.071426128855,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="123.071426128855,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output8]"
+          TopLeft="771,247">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12,31"
+              Start="0,0"
+              End="-12,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="-4,15.5" />
+                  <mssgle:LineSegment
+                    End="-8,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8,15.5"
+                    Point2="-12,15.5"
+                    Point3="-12,19.5" />
+                  <mssgle:LineSegment
+                    End="-12,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Derived Column Output9]"
+          TopLeft="715.75,441">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Sort Output6]"
+          TopLeft="713.5,523">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-240.166666666667,40"
+              Start="0,0"
+              End="-240.166666666667,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.7931034482759" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.7931034482759"
+                    Point2="0,23.7931034482759"
+                    Point3="-4,23.7931034482759" />
+                  <mssgle:LineSegment
+                    End="-236.166666666667,23.7931034482759" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-236.166666666667,23.7931034482759"
+                    Point2="-240.166666666667,23.7931034482759"
+                    Point3="-240.166666666667,27.7931034482759" />
+                  <mssgle:LineSegment
+                    End="-240.166666666667,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Sort Output7]"
+          TopLeft="415.833333333333,521">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Insert data into FactFlights.Paths[Lookup Match Output3]"
+          TopLeft="419,439">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,10.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

@@ -32,11 +32,17 @@
     [Fli_SecurityDelay]          NVARCHAR (5)  NULL,
     [Fli_LateAircraftDelay]      NVARCHAR (5)  NULL,
     [Fli_PackageStartTime]       DATETIME      NULL,
-    [Fli_PackageFileName]        NVARCHAR (50) NULL,
-    CONSTRAINT [PK__FactFlig__F048FBC4640A5D0B] PRIMARY KEY CLUSTERED ([Fli_Id] ASC)
+    [Fli_PackageFileName]        NVARCHAR (50) NULL
 );
 
 
 
 
+
+
+
+
+GO
+CREATE CLUSTERED COLUMNSTORE INDEX [CLMNFactFlights]
+    ON [dbo].[FactFlights];
 
